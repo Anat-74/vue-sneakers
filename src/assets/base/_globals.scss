@@ -1,0 +1,51 @@
+body {
+   @include adaptiveValue("font-size", 15, 12);
+}
+body:has(.dialog-cart[open]) {
+   overflow: hidden;
+   filter: brightness(12%);
+   transition: filter .3s;
+ }
+ body:has(.dialog-contacts[open]) {
+   overflow: hidden;
+   filter: brightness(12%);
+   transition: filter .3s;
+ }
+ @media (max-width:$tablet){
+   body:has(.sidebar_isopen) {
+      overflow: hidden;
+    }
+ }
+
+a,
+button,
+input,
+textarea,
+svg * {
+   transition-duration: var(--transition-duration);
+}
+
+dialog {
+   padding: 0;
+   border: none;
+}
+
+button {
+   padding: 0;
+   cursor: pointer;
+   border: none;
+   background-color: transparent;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+h1 {
+   @include adaptiveValue("font-size", 26, 20);
+}
+
+h2 {
+   @include adaptiveValue("font-size", 22, 18);
+}

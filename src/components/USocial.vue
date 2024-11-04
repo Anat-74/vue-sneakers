@@ -1,0 +1,60 @@
+<script setup>
+</script>
+
+<template>
+   <div class="social">
+      <a href="https://www.viber.com/ru">
+      <font-awesome-icon icon="fa-brands fa-viber"
+      />
+   </a>
+      <a href="https://web.telegram.org">
+      <font-awesome-icon icon="fa-brands fa-telegram"
+      />
+   </a>
+      <a href="https://www.instagram.com">
+      <font-awesome-icon icon="fa-brands fa-instagram"
+      />
+   </a>
+      <a href="https://vk.com">
+      <font-awesome-icon icon="fa-brands fa-vk"
+      />
+   </a>
+   </div>
+</template>
+
+<style lang="scss" scoped>
+   .social {
+      a {
+         display: flex;
+         align-items: center;
+      }
+   }
+
+   .svg-inline--fa {
+      height: toRem(30);
+      @media (min-width:$tablet){
+         height: toRem(34);
+      }
+
+      @media (max-width:$mobileSmall){
+         height: toRem(26);
+      }
+   }
+
+   .fa-telegram {
+      color: #0088cc;
+   }
+
+   .fa-viber {
+      color: #8c60c3;
+   }
+
+   .fa-instagram {
+      color: #dd2a7b;
+   }
+
+   .fa-vk {
+      color: #00bfff;
+   }
+
+</style>
