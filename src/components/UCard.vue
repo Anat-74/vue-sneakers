@@ -13,16 +13,6 @@ import UButton from '@/components/UButton.vue';
    })
 
 const isWatched = ref(false)
-
-// const percentBar = ref(0)
-
-// const addPercentBar = () => {
-//    percentBar.value+=25
-//    if(percentBar.value > 100) {
-//       percentBar.value =25
-//    }
-// }
-
 </script>
 
 <template>
@@ -66,16 +56,6 @@ const isWatched = ref(false)
 </template>
 
 <style lang="scss" scoped>
-
-/**
-         <UProgressBar 
-         maxWidth="84px" 
-         :percent="percentBar" 
-         color="danger"
-         class="card__progress"
-         />
-*/
-
 .card {
    position: relative;
    display: grid;
@@ -119,7 +99,6 @@ const isWatched = ref(false)
    scroll-snap-align: start;
    scroll-snap-stop: always;
    object-fit: contain;
-   // margin-block-end: toEm(14, 15);
 }
 
 &__line {
