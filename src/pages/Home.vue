@@ -1,7 +1,7 @@
 <script setup>
 import { inject, ref, watch, onMounted } from 'vue'
 import axios from 'axios'
-import { filters } from '@/exportFunction/filters'
+import { useFetchItemsStore } from '@/stores/FetchItemsStore'
 
 import UCardList from '@/components/UCardList.vue'
 import UInput from '@/components/UInput.vue'
@@ -11,12 +11,7 @@ import UBrands from '@/components/UBrands.vue'
 const { cartItems, addToCart, removeFromCart } = inject('cart')
 const { isOpenMenu } = inject('toggle')
 
-const items = ref([])
-
-// const filters = reactive({
-//    sortBy: 'title',
-//    searchQuery: ''
-// })
+const fetchItemsStore = useFetchItemsStore()
 
 const onClickAddPlus = (item) => {
   if (!item.isAdded) {
@@ -44,14 +39,14 @@ const addToFavorite = async (item) => {
       item.favoriteId = null
     }
   } catch (err) {
-    console.log(err)
+    console.debug(err)
   }
 }
 
 const fetchFavorites = async () => {
   try {
     const { data: favorites } = await axios.get('https://f1472ab18bd3ee1f.mokky.dev/favorites')
-    items.value = items.value.map((item) => {
+    fetchItemsStore.items = fetchItemsStore.items.map((item) => {
       const favorite = favorites.find((element) => element.item_id === item.id)
 
       if (!favorite) {
@@ -65,36 +60,35 @@ const fetchFavorites = async () => {
       }
     })
   } catch (err) {
-    console.log(err)
+    console.debug(err)
   }
 }
 
-const fetchItems = async () => {
-  try {
-    const params = {
-      sortBy: filters.sortBy
-    }
+// const fetchItems = async () => {
+//   try {
+//     const params = {
+//       sortBy: filters.sortBy
+//     }
 
-    if (filters.searchQuery) {
-      params.title = `*${filters.searchQuery}*`
-    }
+//     if (filters.searchQuery) {
+//       params.title = `*${filters.searchQuery}*`
+//     }
 
-    const { data } = await axios.get('https://f1472ab18bd3ee1f.mokky.dev/items', {
-      params
-    })
-    items.value = data.map((obj) => ({
-       ...obj,
-      isFavorite: false,
-      favoriteId: null,
-       isAdded: false
-    }))
-  } catch (err) {
-    console.log(err)
-   }
-}
+//     const { data } = await axios.get('https://f1472ab18bd3ee1f.mokky.dev/items', {
+//       params
+//     })
+//     items.value = data.map((obj) => ({
+//        ...obj,
+//       isFavorite: false,
+//       favoriteId: null,
+//        isAdded: false
+//     }))
+//   } catch (err) {
+//     console.log(err)
+//    }
+// }
 
 onMounted(async () => {
-  await fetchItems()
   await fetchFavorites()
 
   // const localCartItems = localStorage.getItem('cartItems')
@@ -107,13 +101,11 @@ onMounted(async () => {
 })
 
 watch(cartItems, () => {
-  items.value = items.value.map((item) => ({
+   fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
     ...item,
     isAdded: false
   }))
 })
-
-watch(filters, fetchItems)
 
 const message = ref('')
 </script>
@@ -127,7 +119,7 @@ const message = ref('')
       <h1 class="home__title">Все кроссовки</h1>
       <form class="home__form-sel">
         <USelect 
-        v-model="filters.sortBy" 
+        v-model="fetchItemsStore.filters.sortBy" 
         name="sneakers"
          />
       </form>
@@ -141,7 +133,7 @@ const message = ref('')
     </div>
 
     <UCardList
-      :items="items"
+      :items="fetchItemsStore.items"
       @add-to-favorite="addToFavorite"
       @add-to-cart="onClickAddPlus"
       class="home__card-list"

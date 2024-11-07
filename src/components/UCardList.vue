@@ -33,6 +33,6 @@ const emit = defineEmits(['addToFavorite', 'addToCart'])
 .card-list {
    @include adaptiveValue("gap", 38, 12);
    display: grid;
-   grid-template-columns: repeat(auto-fill, minmax(toRem(220), 1fr));
+   grid-template-columns: repeat(auto-fit, minmax(toRem(240), 1fr));
 }
 </style>

@@ -1,6 +1,7 @@
 <script setup>
 import debounce from 'lodash.debounce';
-import { filters } from '@/exportFunction/filters'
+import { useFetchItemsStore } from '@/stores/FetchItemsStore'
+const fetchItemsStore = useFetchItemsStore()
 
 const emit = defineEmits(['update:modelValue'])
 
@@ -37,7 +38,7 @@ const emit = defineEmits(['update:modelValue'])
 })
 
 const onChangeSearchInput = debounce((e) => {
-   emit('update:modelValue', filters.searchQuery = e.target.value)
+   emit('update:modelValue', fetchItemsStore.filters.searchQuery = e.target.value)
 }, 200)
 
 </script>
