@@ -26,8 +26,8 @@ import UTitlesAccordion from './UTitlesAccordion.vue';
            title: "Асессуары",
            isOpen: false,
             subTitle:[
-             {name: 'Взро', href: '/sneakers-man' },
-             {name: 'Подро', href: '/sneakers-children' }
+             {name: 'Шнурки', href: '/sneakers-man' },
+             {name: 'Стельки', href: '/sneakers-children' }
             ]
        },
        {
@@ -35,8 +35,7 @@ import UTitlesAccordion from './UTitlesAccordion.vue';
           title: "Уход",
           isOpen: false,
           subTitle: [
-             {name: 'Взр', href: '/sneakers-man' },
-             {name: 'Под', href: '/sneakers-children' }
+             {name: 'Крем / Спрей', href: '/sneakers-man' }
             ]
         }
   ]
@@ -50,7 +49,7 @@ const toggleSubTitle = (id) => {
 </script>
 
 <template>
-   <ul class="accordion">
+   <ul>
          <UTitlesAccordion 
          v-for="title in titles"
          :key="title.id"
@@ -64,8 +63,4 @@ const toggleSubTitle = (id) => {
 </template>
 
 <style lang="scss" scoped>
-    .accordion {
-        display: grid;
-        row-gap: toRem(2);
-   }
 </style>
