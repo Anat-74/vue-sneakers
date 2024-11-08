@@ -122,13 +122,14 @@ const { totalPrice } = inject('price')
       display: flex;
       column-gap: toRem(8);
       transition: color .2s ease;
+      color: rgb(0 0 0 / .7);
 
-      &:not(.router-link-active) {
-         color: rgb(0 0 0 / .7);
-   }
+      @media (max-width:$tablet){
+         color: var(--grey-color);
+      }
+
       svg {
          height: toRem(18);
-
          @media (max-width:$tablet){
             @include adaptiveValue("height", 28, 22);
          }

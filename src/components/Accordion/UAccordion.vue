@@ -25,7 +25,7 @@ import UTitlesAccordion from './UTitlesAccordion.vue';
             id: 3,
            title: "Асессуары",
            isOpen: false,
-            subTitle:[
+           subTitle:[
              {name: 'Шнурки', href: '/sneakers-man' },
              {name: 'Стельки', href: '/sneakers-children' }
             ]
