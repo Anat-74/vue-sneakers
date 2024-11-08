@@ -11,10 +11,12 @@ defineProps({
       required: true
     },
     subTitle: {
-      type: Object
+       type: Object,
+       required: true
     },
     isOpen: {
-      type: Boolean
+       type: Boolean,
+       required: false
     }
  })
 const emit = defineEmits(['toggleSubTitle'])

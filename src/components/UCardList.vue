@@ -2,8 +2,14 @@
 import UCard from '@/components/UCard.vue'
 
 defineProps({
-   items: Array,
-   isFavorites: Boolean
+   items: {
+      type: Array,
+      required: true,
+   },
+   isFavorites: {
+      type: Boolean,
+      required: false
+    }
 })
 
 const emit = defineEmits(['addToFavorite', 'addToCart'])

@@ -3,13 +3,34 @@ import { ref } from 'vue';
 import UButton from '@/components/UButton.vue';
 
    defineProps({
-   imageUrl: Array,
-   title: String,
-   price: Number,
-   isFavorite: Boolean,
-   isAdded: Boolean,
-   onClickFavorite: Function,
-   onClickAdd: Function
+   imageUrl: {
+      type: Array,
+      required: true,
+   },
+   title: {
+       type: String,
+      required: true
+    },
+   price: {
+      type: Number,
+      required: true
+    },
+   isFavorite: {
+      type: Boolean,
+      required: false
+    },
+   isAdded: {
+      type: Boolean,
+      required: false
+    },
+   onClickFavorite: {
+       type: Function,
+       required: false
+    },
+   onClickAdd: {
+       type: Function,
+       required: false
+    }
    })
 
 const isWatched = ref(false)
