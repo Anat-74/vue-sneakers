@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue';
 import UButton from '@/components/UButton.vue';
 
  defineProps({
@@ -16,10 +17,17 @@ import UButton from '@/components/UButton.vue';
     isOpen: {
       type: Boolean
     }
-})
+ })
 
 const emit = defineEmits(['toggleSubTitle'])
 const handleClick = (id) => emit('toggleSubTitle', id)
+
+ const links = ref([
+   {name: 'SneakersForMan', href: '/sneakers-man'},
+   {name: 'SneakersForChildren', href: '/sneakers-children' },
+   {name: 'SneakersForMan', href: '/sneakers-man'},
+   {name: 'SneakersForChildren', href: '/sneakers-children' }
+])
 </script>
 
 <template>
@@ -31,12 +39,15 @@ const handleClick = (id) => emit('toggleSubTitle', id)
                :class="['titles__title', {titles__title_open: isOpen}]"
             >{{title}}
             </UButton>
-            <div
-            :class="['titles__subtitle', {titles__subtitle_open: isOpen}]">
-               <router-link 
-               to="/sneakers-man"
+            <div 
                v-for="sub of subTitle"
                :key="sub"
+               :class="['titles__subtitle', {titles__subtitle_open: isOpen}]"
+            >
+               <router-link 
+
+               to="/sneakers-man"
+               
                >{{ sub }}
             </router-link>
             </div>

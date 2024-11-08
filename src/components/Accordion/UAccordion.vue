@@ -3,58 +3,33 @@ import { ref } from 'vue';
 import UTitlesAccordion from './UTitlesAccordion.vue';
 
     const data = [
-         {
-            "id": 1,
-            "title": "Мужские",
-            "subtitle": ["Взрослые, Подростковые"],
-            "isOpen": false
+       {
+            id: 1,
+            title: "Мужские",
+            isOpen: false,
+            subTitle: ["Вз., По."]
+        },
+	         {
+            id: 2,
+            title: "Женские",
+            isOpen: false,
+            subTitle: ["взрсл., подр."]
         },
         {
-            "id": 2,
-            "title": "Женские",
-            "subtitle": [ "Взрослы", "Подростковы"],
-            "isOpen": false
-        },
-        {
-            "id": 3,
-            "title": "Асессуары",
-            "subtitle": "Шнурки",
-            "isOpen": false
+            id: 3,
+           title: "Асессуары",
+           isOpen: false,
+            subTitle: ["взр., под."]
        },
        {
-            "id": 4,
-            "title": "Уход",
-            "subtitle": "The capital of Australia",
-            "isOpen": false
-         }
-
-      //  {
-      //       id: 1,
-      //     title: "Мужские",
-      //     isOpen: false,
-      //       subTitle: ["Вз., По."]
-      //   },
-	   //       {
-      //       id: 2,
-      //          title: "Женские",
-      //          isOpen: false,
-      //       subTitle: ["взрсл., подр."]
-      //   },
-      //   {
-      //       id: 3,
-      //      title: "Асессуары",
-      //      isOpen: false,
-      //       subTitle: ["взр., под."]
-      //  },
-      //  {
-      //     id: 4,
-      //     title: "Уход",
-      //     isOpen: false,
-      //    subTitle: ["в., п."]
-      //   }
+          id: 4,
+          title: "Уход",
+          isOpen: false,
+         subTitle: ["в., п."]
+        }
   ]
 
-const titles = ref(data)
+const titles = ref((data))
 
 const toggleSubTitle = (id) => {
    titles.value = titles.value.map(title => title.isOpen && title.id !== id ? {...title, isOpen: false} : title)

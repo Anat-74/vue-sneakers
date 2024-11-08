@@ -1,13 +1,10 @@
 <script setup>
-import { inject, ref } from 'vue';
+import { inject } from 'vue';
 import UButton from '@/components/UButton.vue'
 import UAccordion from '@/components/Accordion/UAccordion.vue';
 const { isOpenMenu, toggleMenu } = inject('toggle')
 
-// const links = ref([
-// {name: 'Product-1', href: '/product-1'},
-// { name: 'Product-2', href: '/product-2' }
-// ])
+
 </script>
 
 <template>
