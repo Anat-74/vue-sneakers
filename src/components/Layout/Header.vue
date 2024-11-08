@@ -1,14 +1,12 @@
 <script setup>
-import { inject } from 'vue'
 import UNavigation from '@/components/UNavigation.vue'
 import UDialogContacts from '@/components/UDialoglContacts.vue';
-const { isOpenMenu } = inject('toggle')
 
 </script>
 
 <template>
    <header 
-      :class="['header', {header_isopen: isOpenMenu}]">
+      class="header">
          <router-link to="/"
          class="header__logo">
          <img width="40" height="40" 
@@ -40,18 +38,6 @@ const { isOpenMenu } = inject('toggle')
    ;
    position: relative;
    border-bottom: 1px solid var(--grey-color);
-   transition: transform .3s linear, opacity .3s, filter .1s;
-
-      &_isopen {
-         @media (max-width:$tablet){
-            @media (prefers-reduced-motion: no-preference) { 
-               transform: scale(.985);
-         }
-      filter: blur(4px);
-      opacity: .8;
-      transition: transform .3s linear, opacity .3s, filter .3s;
-      }
-   }
 
 &__logo {
    grid-area: logo;

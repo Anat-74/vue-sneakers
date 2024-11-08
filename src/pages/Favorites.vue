@@ -1,10 +1,8 @@
 <script setup>
-import { ref, onMounted, inject } from 'vue';
+import { ref, onMounted } from 'vue';
 import axios from 'axios'
 
 import UCardList from '@/components/UCardList.vue';
-
-const { isOpenMenu } = inject('toggle')
 
 const favorites = ref([])
 
@@ -21,8 +19,7 @@ onMounted(async () => {
 
 <template>
    <section 
-    :class="['favorite', {favorite_isopen: isOpenMenu}]"
-   >
+    class="favorite">
          <router-link to="/">
             назад
          </router-link>
@@ -39,16 +36,6 @@ onMounted(async () => {
    .favorite {
       @media (max-width:$tablet){
          padding-block-end: toRem(40);
-         transition: transform .3s linear, filter .3s;
-
-         &_isopen {
-            @media (prefers-reduced-motion: no-preference) { 
-            transform: scale(.985);
-         }
-         filter: blur(12px);
-         opacity: .7;
-         transition: transform .3s linear filter .3s;
-            }
       }
    }
 </style>

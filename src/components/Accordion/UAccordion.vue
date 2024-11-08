@@ -7,25 +7,37 @@ import UTitlesAccordion from './UTitlesAccordion.vue';
             id: 1,
             title: "Мужские",
             isOpen: false,
-            subTitle: ["Вз., По."]
+            subTitle: [
+             {name: 'Взрослые', href: '/sneakers-man' },
+             {name: 'Подростковые', href: '/sneakers-children' }
+            ]
         },
 	         {
             id: 2,
             title: "Женские",
             isOpen: false,
-            subTitle: ["взрсл., подр."]
+            subTitle: [
+             {name: 'Взросл', href: '/sneakers-man' },
+             {name: 'Подростк', href: '/sneakers-children' }
+            ]
         },
         {
             id: 3,
            title: "Асессуары",
            isOpen: false,
-            subTitle: ["взр., под."]
+            subTitle:[
+             {name: 'Взро', href: '/sneakers-man' },
+             {name: 'Подро', href: '/sneakers-children' }
+            ]
        },
        {
           id: 4,
           title: "Уход",
           isOpen: false,
-         subTitle: ["в., п."]
+          subTitle: [
+             {name: 'Взр', href: '/sneakers-man' },
+             {name: 'Под', href: '/sneakers-children' }
+            ]
         }
   ]
 

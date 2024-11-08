@@ -9,7 +9,6 @@ import USelect from '@/components/USelect.vue'
 import UBrands from '@/components/UBrands.vue'
 
 const { cartItems, addToCart, removeFromCart } = inject('cart')
-const { isOpenMenu } = inject('toggle')
 
 const fetchItemsStore = useFetchItemsStore()
 
@@ -111,7 +110,7 @@ const message = ref('')
 </script>
 
 <template>
-  <section :class="['home', {home_isopen: isOpenMenu}]">
+  <section class="home">
    <div class="home__items-brands">
    <UBrands class="home__brands" />
 </div>
@@ -146,24 +145,6 @@ const message = ref('')
 .home {
    @media (min-width:$tablet){
        padding-inline-start: toRem(19); 
-   }
-
-   @media (max-width:$tablet){
-      min-height: 100dvh;
-      transition: transform .3s linear, opacity .3s, filter .1s;
-
-      &_isopen {
-         @media (prefers-reduced-motion: no-preference) { 
-            transform: scale(.995);
-         }
-      filter: blur(12px);
-      opacity: .7;
-      transition: transform .3s linear, opacity .3s, filter .3s;
-
-      .home__card-list {
-         padding-block-end: 0;
-      }
-   }
    }
 
    &__items-brands {

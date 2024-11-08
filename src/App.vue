@@ -142,7 +142,7 @@ provide('darkMode', {
     .app__container {
       min-height: 100dvh;
       transition: transform 0.6s;
-
+      
       &_isopen {
         transform: translateX(toRem(-160));
         transition: transform 0.6s;
@@ -152,6 +152,20 @@ provide('darkMode', {
 //*min-width: $tablet end---------------------------------------------------------------------------------------------------------
 &__container {
       min-height: 100dvh;
+      transition: transform .3s linear, opacity .3s, filter .1s;
+
+      &_isopen {
+         @media (prefers-reduced-motion: no-preference) { 
+            transform: scale(.995);
+         }
+      filter: blur(12px);
+      opacity: .7;
+      transition: transform .3s linear, opacity .3s, filter .3s;
+
+      .home__card-list {
+         padding-block-end: 0;
+      }
+   }
    } 
 
 &_header {

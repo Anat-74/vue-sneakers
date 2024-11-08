@@ -11,19 +11,6 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
 <aside :class="['sidebar', {sidebar_isopen: isOpenMenu}]">
    <slot />
    <UAccordion class="sidebar__accordion" />
-   <ul class="sidebar__list">
-         <li
-         v-for="link in links"
-         :key="link.name"
-         class="sidebar__item"
-         >
-         <router-link 
-         :to="link.href"
-         >
-         {{ link.name }}
-         </router-link>
-         </li>
-      </ul>
    </aside>
    <UButton
       @click="toggleMenu" 
@@ -69,14 +56,7 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
 
       &__accordion {
          align-self: center;
-      }
-
-      &__list {
-         justify-items: center;
-         align-self: center;
-         display: grid;
-         row-gap: toRem(25);
-      }
+   }
 }
 
 .toggle {

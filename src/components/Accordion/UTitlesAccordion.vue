@@ -1,8 +1,7 @@
 <script setup>
-import { ref } from 'vue';
 import UButton from '@/components/UButton.vue';
 
- defineProps({
+defineProps({
    id: {
       type: Number,
       required: true
@@ -12,22 +11,14 @@ import UButton from '@/components/UButton.vue';
       required: true
     },
     subTitle: {
-      type: Array
+      type: Object
     },
     isOpen: {
       type: Boolean
     }
  })
-
 const emit = defineEmits(['toggleSubTitle'])
 const handleClick = (id) => emit('toggleSubTitle', id)
-
- const links = ref([
-   {name: 'SneakersForMan', href: '/sneakers-man'},
-   {name: 'SneakersForChildren', href: '/sneakers-children' },
-   {name: 'SneakersForMan', href: '/sneakers-man'},
-   {name: 'SneakersForChildren', href: '/sneakers-children' }
-])
 </script>
 
 <template>
@@ -39,18 +30,14 @@ const handleClick = (id) => emit('toggleSubTitle', id)
                :class="['titles__title', {titles__title_open: isOpen}]"
             >{{title}}
             </UButton>
-            <div 
-               v-for="sub of subTitle"
-               :key="sub"
-               :class="['titles__subtitle', {titles__subtitle_open: isOpen}]"
-            >
-               <router-link 
 
-               to="/sneakers-man"
-               
-               >{{ sub }}
+               <router-link 
+               v-for="sub of subTitle"
+               :key="sub.name"
+               :to="sub.href"
+               :class="['titles__subtitle', {titles__subtitle_open: isOpen}]"
+               >{{ sub.name }}
             </router-link>
-            </div>
         </li>
 </template>
 
@@ -62,8 +49,7 @@ const handleClick = (id) => emit('toggleSubTitle', id)
          align-items: center;
          justify-content: space-between;
          width: 100%;
-         // padding-block: toEm(4, 20);
-         // margin-block-end: toRem(4);
+         padding-block: toEm(4, 20);
          cursor: pointer;
          color: rgb(0 0 0 / .6);
          font-weight: 500;
@@ -102,12 +88,7 @@ const handleClick = (id) => emit('toggleSubTitle', id)
          }
 
          &_open {
-            height: toRem(36);
-            margin-block-end: toRem(7);
-
-            a {
-               align-self: start;
-            }
+            height: toRem(26);
 
             @media (min-width:$tablet){
             border: 1px solid var(--grey-color);
