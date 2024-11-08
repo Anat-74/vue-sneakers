@@ -1,57 +1,83 @@
 <script setup>
 import { ref } from 'vue';
-import UFaq from './UFaq.vue';
+import UTitlesAccordion from './UTitlesAccordion.vue';
 
     const data = [
-         {
-            "id": 1,
-            "title": "Мужские",
-            "subtitle": "Взрослые",
-            "subtitleTwo": "Подростковые",
-            "isOpen": false
+      //    {
+      //       "id": 1,
+      //       "title": "Мужские",
+      //       "subtitle": ["Взрослые, Подростковые"],
+      //       "isOpen": false
+      //   },
+      //   {
+      //       "id": 2,
+      //       "title": "Женские",
+      //       "subtitle": [ "Взрослы", "Подростковы"],
+      //       "isOpen": false
+      //   },
+      //   {
+      //       "id": 3,
+      //       "title": "Асессуары",
+      //       "subtitle": "Шнурки",
+      //       "isOpen": false
+      //  },
+      //  {
+      //       "id": 4,
+      //       "title": "Уход",
+      //       "subtitle": "The capital of Australia",
+      //       "isOpen": false
+       //   }
+
+       {
+            id: 1,
+          title: "Мужские",
+          isOpen: false,
+            subTitle: ["Вз., По."]
+        },
+	         {
+            id: 2,
+               title: "Женские",
+               isOpen: false,
+            subTitle: ["взрсл., подр."]
         },
         {
-            "id": 2,
-            "title": "Женские",
-            "subtitle": "Взрослые",
-            "subtitleTwo": "Подростковые",
-            "isOpen": false
-        },
-        {
-            "id": 3,
-            "title": "Асессуары",
-            "subtitle": "Шнурки",
-            "isOpen": false
+            id: 3,
+           title: "Асессуары",
+           isOpen: false,
+            subTitle: ["взр., под."]
        },
        {
-            "id": 4,
-            "title": "Уход",
-            "subtitle": "The capital of Australia",
-            "isOpen": false
+          id: 4,
+          title: "Уход",
+          isOpen: false,
+         subTitle: ["в., п."]
         }
   ]
 
-const faqs = ref(data)
+const titles = ref(data)
 
-const toggleAnswer = (id) => {
-        faqs.value = faqs.value.map(faq => faq.isOpen && faq.id !== id ? {...faq, isOpen: false} : faq)
-        faqs.value = faqs.value.map(faq => faq.id === id ? {...faq, isOpen: !faq.isOpen} : faq)
+const toggleSubTitle = (id) => {
+   titles.value = titles.value.map(title => title.isOpen && title.id !== id ? {...title, isOpen: false} : title)
+   titles.value = titles.value.map(title => title.id === id ? {...title, isOpen: !title.isOpen} : title)
     }
 </script>
 
 <template>
    <ul class="accordion">
-         <UFaq 
-         v-for="faq in faqs"
-         :key="faq.id"
-         :faq="faq"
-         @toggle-answer="toggleAnswer"
+         <UTitlesAccordion 
+         v-for="title in titles"
+         :key="title.id"
+         :id="title.id"
+         :title="title.title"
+         :subTitle="title.subTitle"
+         :isOpen="title.isOpen"
+         @toggle-sub-title="toggleSubTitle"
          />
       </ul>
 </template>
 
 <style lang="scss" scoped>
-    .accordion{
+    .accordion {
         display: grid;
         row-gap: toRem(2);
    }

@@ -121,19 +121,14 @@ const { totalPrice } = inject('price')
       &__link {
       display: flex;
       column-gap: toRem(8);
-      color: var(--grey-color);
       transition: color .2s ease;
 
       &:not(.router-link-active) {
-         color: var(--grey-color); 
-
-         span {
-         color: var(--grey-color);
-      }
+         color: rgb(0 0 0 / .7);
    }
-
       svg {
          height: toRem(18);
+
          @media (max-width:$tablet){
             @include adaptiveValue("height", 28, 22);
          }
@@ -141,7 +136,7 @@ const { totalPrice } = inject('price')
 
       @media (any-hover: hover) {
          &:hover {
-            color: var(--orange-color);
+            color: var(--danger-color);
       }
    } 
 }

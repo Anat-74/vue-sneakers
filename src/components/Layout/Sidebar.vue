@@ -39,7 +39,7 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
 
 <style lang="scss" scoped>
 .sidebar {
-   @include adaptiveValue("width", 320, 245 );
+   @include adaptiveValue("width", 300, 245 );
    @include adaptiveValue("padding-inline", 16, 9);
    @include adaptiveValue("padding-block-start", 12, 10);
    @include adaptiveValue("padding-block-end", 40, 20);
@@ -58,8 +58,8 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
       }
 
       @media (max-width:$tablet){
-      @include adaptiveValue("left", -270, -255);
-      @include adaptiveValue("width", 270, 255 );
+      @include adaptiveValue("left", -270, -205);
+      @include adaptiveValue("width", 270, 205 );
       transition: left .2s;
    }
 

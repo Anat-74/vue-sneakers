@@ -4,6 +4,8 @@ import Home from '@/pages/Home.vue';
 import Favorites from '@/pages/Favorites.vue';
 import Profile from '@/pages/Profile.vue'
 import AboutUs from '@/pages/AboutUs.vue'
+import SneakersForMan from '@/pages/SneakersForMan.vue';
+import SneakersForChildren from '@/pages/SneakersForChildren.vue';
 
 const routes = [
    {
@@ -25,6 +27,16 @@ const routes = [
       path: '/about-us',
       name: 'AboutUs',
       component: AboutUs
+   },
+   {
+      path: '/sneakers-man',
+      name: 'SneakersForMan',
+      component: SneakersForMan
+   },
+   {
+      path: '/sneakers-children',
+      name: 'SneakersForChildren',
+      component: SneakersForChildren
    },
 ]
 

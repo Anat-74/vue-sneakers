@@ -123,17 +123,14 @@ provide('darkMode', {
     main:has(article:hover) {
       article:not(:hover) {
         opacity: 0.8;
-        filter: grayscale(12%);
+        filter: grayscale(90%);
       }
     }
   }
 }
 
 .app {
-   &__container {
-      min-height: 100dvh;
-   }
-   //*-----------------------------------------------------------------------------------------------------------------
+   //*min-width: $tablet start-----------------------------------------------------------------------------------------------------------------
   @media (min-width: $tablet) {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -152,8 +149,12 @@ provide('darkMode', {
       }
     }
   }
-//*---------------------------------------------------------------------------------------------------------
-  &_header {
+//*min-width: $tablet end---------------------------------------------------------------------------------------------------------
+&__container {
+      min-height: 100dvh;
+   } 
+
+&_header {
   }
   &__main {
     margin-block-end: toRem(52);

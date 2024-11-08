@@ -65,7 +65,7 @@ const isWatched = ref(false)
    padding-block-end: toEm(30, 15);
    border-radius: toEm(40, 15);
    box-shadow: 0px toEm(6, 15) toEm(18, 15) toRem(5) hsla(0, 0%, 0%, 0.05);
-   transition: all .1s ease;
+   transition: all .7s ease;
 
 &__btn-heart {
    @include adaptiveValue("left", 32, 27);
