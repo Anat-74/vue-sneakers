@@ -33,8 +33,11 @@ const handleClick = (id) => emit('toggleSubTitle', id)
             </UButton>
             <div
             :class="['titles__subtitle', {titles__subtitle_open: isOpen}]">
-               <router-link to="/sneakers-man"
-               >{{ subTitle }}
+               <router-link 
+               to="/sneakers-man"
+               v-for="sub of subTitle"
+               :key="sub"
+               >{{ sub }}
             </router-link>
             </div>
         </li>
