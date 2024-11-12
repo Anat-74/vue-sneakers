@@ -30,15 +30,15 @@ const handleClick = (id) => emit('toggleSubTitle', id)
                :isOpen="isOpen"
                icon="chevron-right"
                :class="['titles__title', {titles__title_open: isOpen}]"
-            >{{title}}
+               >{{title}}
             </UButton>
 
                <router-link 
-               v-for="sub of subTitle"
-               :key="sub.name"
-               :to="sub.href"
-               :class="['titles__subtitle', {titles__subtitle_open: isOpen}]"
-               >{{ sub.name }}
+                  v-for="sub of subTitle"
+                  :key="sub.name"
+                  :to="sub.href"
+                  :class="['titles__subtitle', {titles__subtitle_open: isOpen}]"
+                  >{{ sub.name }}
             </router-link>
         </li>
 </template>
@@ -51,9 +51,8 @@ const handleClick = (id) => emit('toggleSubTitle', id)
          align-items: center;
          justify-content: space-between;
          width: 100%;
-         padding-block: toEm(4, 20);
+         padding-block: toEm(2, 20);
          cursor: pointer;
-         color: rgb(0 0 0 / .6);
          font-weight: 500;
          transition: transform .4s;
 
@@ -69,11 +68,10 @@ const handleClick = (id) => emit('toggleSubTitle', id)
          height: 0;
          display: grid;
          align-items: center;
-         row-gap: toRem(1);
+         margin-block-end: toRem(3);
          padding-inline: toRem(4);
          overflow-y: scroll;
          background-color: var(--transparent-color);
-         color: rgb(0 0 0 / .9);
          transition: height .3s;
 
          &::-webkit-scrollbar{
@@ -91,7 +89,6 @@ const handleClick = (id) => emit('toggleSubTitle', id)
 
          &_open {
             height: toRem(26);
-
             @media (min-width:$tablet){
             border: 1px solid var(--grey-color);
             border-radius: 0 0 toRem(4) toRem(4);

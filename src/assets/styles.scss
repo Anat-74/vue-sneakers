@@ -42,7 +42,7 @@ $maxWidth: 1920;
 $maxWidthContainer: 1250;
 //? Общий отступ у контейнера
 // (30 = по 15px слева и справа, 0 = нет отступа)
-$containerPadding: 30;
+$containerPadding: 24;
 
 //? Ширина срабатывания первого брейкпоинта
 $containerWidth: $maxWidthContainer + $containerPadding;

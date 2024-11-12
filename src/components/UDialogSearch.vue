@@ -1,11 +1,14 @@
 <script setup>
 import { inject, ref } from 'vue';
-const { isOpenMenu } = inject('toggle')
-import { filters } from '@/exportFunction/filters'
+import { useFetchItemsStore } from '@/stores/FetchItemsStore'
 
 import UInput from '@/components/UInput.vue'
 import USelect from '@/components/USelect.vue'
 import UButton from '@/components/UButton.vue'
+
+const { isOpenMenu } = inject('toggle')
+
+const fetchItemsStore = useFetchItemsStore()
 
 const message = ref('')
 </script>
@@ -24,7 +27,7 @@ const message = ref('')
       label="Brand..."
        />
       <USelect
-      v-model="filters.sortBy" 
+      v-model="fetchItemsStore.filters.sortBy" 
       name="sneakers"
       />
     </form>

@@ -32,10 +32,6 @@
          type: String,
          required: false
     },
-    favorite: {
-         type: String,
-         required: false
-    },
     add: {
          type: String,
          required: false
@@ -50,6 +46,10 @@
     },
     isOpenMenu: {
          type: Boolean,
+         required: false
+    },
+    favorite: {
+         type: String,
          required: false
     },
     isFavorite: {
@@ -167,7 +167,7 @@
       display: block;
       position: absolute;
       z-index: 100;
-      right: toRem(20);
+      right: toRem(1);
       width: toRem(26);
       height: toRem(18);
 

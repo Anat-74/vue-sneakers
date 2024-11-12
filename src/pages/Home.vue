@@ -1,7 +1,7 @@
 <script setup>
-import { inject, ref, watch, onMounted } from 'vue'
-import axios from 'axios'
+import { inject, ref, watch } from 'vue'
 import { useFetchItemsStore } from '@/stores/FetchItemsStore'
+import { useAddToFavoriteStore } from '@/stores/AddToFavoriteStore'
 
 import UCardList from '@/components/UCardList.vue'
 import UInput from '@/components/UInput.vue'
@@ -11,6 +11,9 @@ import UBrands from '@/components/UBrands.vue'
 const { cartItems, addToCart, removeFromCart } = inject('cart')
 
 const fetchItemsStore = useFetchItemsStore()
+const addToFavoriteStore = useAddToFavoriteStore()
+
+const message = ref('')
 
 const onClickAddPlus = (item) => {
   if (!item.isAdded) {
@@ -20,93 +23,12 @@ const onClickAddPlus = (item) => {
   }
 }
 
-const addToFavorite = async (item) => {
-  try {
-    if (!item.isFavorite) {
-      const obj = {
-        item_id: item.id
-      }
-
-      item.isFavorite = true
-
-      const { data } = await axios.post('https://f1472ab18bd3ee1f.mokky.dev/favorites', obj)
-
-      item.favoriteId = data.id
-    } else {
-      item.isFavorite = false
-      await axios.delete(`https://f1472ab18bd3ee1f.mokky.dev/favorites/${item.favoriteId}`)
-      item.favoriteId = null
-    }
-  } catch (err) {
-    console.debug(err)
-  }
-}
-
-const fetchFavorites = async () => {
-  try {
-    const { data: favorites } = await axios.get('https://f1472ab18bd3ee1f.mokky.dev/favorites')
-    fetchItemsStore.items = fetchItemsStore.items.map((item) => {
-      const favorite = favorites.find((element) => element.item_id === item.id)
-
-      if (!favorite) {
-        return item
-      }
-
-      return {
-        ...item,
-        isFavorite: true,
-        favoriteId: favorite.id
-      }
-    })
-  } catch (err) {
-    console.debug(err)
-  }
-}
-
-// const fetchItems = async () => {
-//   try {
-//     const params = {
-//       sortBy: filters.sortBy
-//     }
-
-//     if (filters.searchQuery) {
-//       params.title = `*${filters.searchQuery}*`
-//     }
-
-//     const { data } = await axios.get('https://f1472ab18bd3ee1f.mokky.dev/items', {
-//       params
-//     })
-//     items.value = data.map((obj) => ({
-//        ...obj,
-//       isFavorite: false,
-//       favoriteId: null,
-//        isAdded: false
-//     }))
-//   } catch (err) {
-//     console.log(err)
-//    }
-// }
-
-onMounted(async () => {
-  await fetchFavorites()
-
-  // const localCartItems = localStorage.getItem('cartItems')
-  // cartItems.value = localStorage ? JSON.parse(localCartItems) : [];
-
-  // items.value = items.value.map((item) => ({
-  //    ...item,
-  //    isAdded: cartItems.value.some(cartItem => cartItem.id === item.id)
-  // }))
-})
-
 watch(cartItems, () => {
    fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
     ...item,
     isAdded: false
   }))
 })
-
-const message = ref('')
 </script>
 
 <template>
@@ -133,11 +55,10 @@ const message = ref('')
 
     <UCardList
       :items="fetchItemsStore.items"
-      @add-to-favorite="addToFavorite"
+      @add-to-favorite="addToFavoriteStore.addToFavorite"
       @add-to-cart="onClickAddPlus"
       class="home__card-list"
     />
-
   </section>
 </template>
 

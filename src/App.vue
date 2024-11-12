@@ -80,17 +80,17 @@ provide('darkMode', {
   darkMode
 })
 </script>
-
 <template>
   <div :data-theme="darkMode" class="app">
+
     <div class="app__sidebar">
       <Sidebar>
         <UTheme v-model="toggleDarkMode" />
       </Sidebar>
     </div>
+
     <div :class="['app__container', { app__container_isopen: isOpenMenu }]">
       <Header class="app__header" />
-
       <main class="app__main">
         <RouterView />
       </main>
@@ -102,13 +102,13 @@ provide('darkMode', {
         <template #social>
           <USocial class="app__social"></USocial>
         </template>
-
         <template #home>
           <router-link to="/" @click="filters.searchQuery = ''">
             <font-awesome-icon icon="fa-solid fa-house" />
           </router-link>
         </template>
       </UNavigation>
+
       <Footer class="app__footer" />
 
       <UDialogSearch />

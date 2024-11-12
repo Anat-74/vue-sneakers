@@ -1,10 +1,21 @@
 <script setup>
-import { inject } from 'vue';
+import { inject, onMounted } from 'vue';
 import UButton from '@/components/UButton.vue'
 import UAccordion from '@/components/Accordion/UAccordion.vue';
 const { isOpenMenu, toggleMenu } = inject('toggle')
 
+// onMounted(() => {
+//    const dialogElement = document.querySelector('.sidebar')
+//    dialogElement.addEventListener("click", closeOnBackDropClick)
 
+// function closeOnBackDropClick({ currentTarget, target }) {
+//   const dialogElement = currentTarget
+//   const isClickedOnBackDrop = target !== dialogElement
+//   if (isClickedOnBackDrop) {
+//     !isOpenMenu.value
+//   }
+// }
+// })
 </script>
 
 <template>
@@ -28,6 +39,7 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
    @include adaptiveValue("padding-block-start", 12, 10);
    @include adaptiveValue("padding-block-end", 40, 20);
       height: 100dvh;
+      position: relative;
       overflow-y: auto;
       display: grid;
       grid-template-rows: auto  1fr;

@@ -1,9 +1,6 @@
 * {
    background-color: var(--background-color);
-   // @media (min-width:$tablet){
-   //    transition: background-color .2s;
-   // }
-   transition: background-color .2s;
+   transition: background-color .1s;
 }
 
 //*'TRUE'=================================================================================
@@ -45,7 +42,16 @@
          }
       }
    //*sidebar-end---------------------------------------------------------------------------------------------------------------
-      .menu {
+      .titles {
+         &__title {
+            color: rgb(245 245 245 / 0.8);
+         }
+         &__subtitle {
+            color: var(--grey-color);
+         }
+      }   
+   
+   .menu {
          --background-color: rgb(0 0 0 / .4);
          @media (max-width:$tablet){
             &__price {
@@ -93,6 +99,9 @@
             @media (max-width:$tablet){
                color: var(--whitesmoke-color);
             }
+         }
+         .fa-chevron-right {
+            color: rgb(245 245 245 / 0.8);
          }
       }
    //*buttons-end---------------------------------------------------------------------------------------------------------
@@ -204,7 +213,7 @@
 
 //*FALSE=================================================================================
  [data-theme='false'] {
-
+//*sidebar-start---------------------------------------------------------------------------------------------
    .sidebar {
       --background-color: rgb(245 245 245 / .3);
       border-right: 2px solid var(--whitesmoke-color);
@@ -220,15 +229,18 @@
          --background-color: transparent;
       }
    }
+//*sidebar-end---------------------------------------------------------------------------------------------
+   .titles {
+      &__title {
+         color: rgb(0 0 0 / .6);
+      }
+      &__subtitle {
+         color: rgb(0 0 0 / .9);
+      }
+   }   
 
    .menu {
       --background-color: rgb(245 245 245 / .8);
-   }
-
-   .dialog-cart {
-      &__items {
-         // --background-color: var(--white-color);
-      }
    }
 
    .card {

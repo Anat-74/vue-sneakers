@@ -8,7 +8,7 @@ import UTitlesAccordion from './UTitlesAccordion.vue';
             title: "Мужские",
             isOpen: false,
             subTitle: [
-             {name: 'Взрослые', href: '/sneakers-man' },
+             {name: 'Взрослые', href: '/sneakers-man' }, //path: '/sneakers-man'
              {name: 'Подростковые', href: '/sneakers-children' }
             ]
         },
@@ -45,7 +45,7 @@ const titles = ref((data))
 const toggleSubTitle = (id) => {
    titles.value = titles.value.map(title => title.isOpen && title.id !== id ? {...title, isOpen: false} : title)
    titles.value = titles.value.map(title => title.id === id ? {...title, isOpen: !title.isOpen} : title)
-    }
+}
 </script>
 
 <template>

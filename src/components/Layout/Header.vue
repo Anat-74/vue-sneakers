@@ -32,7 +32,7 @@ import UDialogContacts from '@/components/UDialoglContacts.vue';
    column-gap: toEm(16, 15);
    grid-template: 1fr auto 1fr / repeat(2, auto) 1fr;
    grid-template-areas: 
-   " logo title nav"
+   "logo title nav"
    "logo title nav"
    "logo descr nav "
    ;

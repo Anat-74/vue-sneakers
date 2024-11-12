@@ -18,7 +18,7 @@ const onChangeSelect = (e) => {
  class="select"
    >
    <option disabled value="">Выбериет товар</option>
-      <option value="name">По названию</option>
+      <option value="title">По названию</option>
       <option value="price">По цене (дешевле)</option>
       <option value="-price">По цене (дороже)</option>
    </select> 
@@ -66,7 +66,7 @@ const onChangeSelect = (e) => {
       font-size: toRem(17);
    }
       @include adaptiveValue("padding-block", 14, 10);
-      width: toRem(195);
+      width: toRem(205);
       border: 3px solid var(--whitesmoke-color);
       border-radius: toEm(14, 15);
       padding-inline: toEm(9, 15);
