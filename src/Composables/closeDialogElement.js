@@ -1,5 +1,6 @@
 export function useCloseDialogElement(dialogElement) {
-      dialogElement.addEventListener("click", closeOnBackDropClick)
+   dialogElement.addEventListener("click", closeOnBackDropClick)
+
       function closeOnBackDropClick ({ currentTarget, target }) {
          const dialogElement = currentTarget
          const isClickedOnBackDrop = target === dialogElement

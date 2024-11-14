@@ -1,28 +1,22 @@
 <script setup>
-import { onMounted } from 'vue';
-import { useCloseDialogElement } from '@/composablesFunctions/closeDialogElement';
+import { onMounted } from 'vue'
+import { useCloseDialogElement } from '@/Composables/closeDialogElement'
 
 import UButton from '@/components/UButton.vue'
 import Footer from '@/components/Layout/Footer.vue'
 
 onMounted(() => {
-   const dialogElement = document.querySelector('.dialog-contacts')
-   useCloseDialogElement(dialogElement)
+  const dialogElement = document.querySelector('.dialog-contacts')
+  useCloseDialogElement(dialogElement)
 })
 </script>
 
 <template>
-  <UButton 
-  onclick="window.dialogContacts.showModal()" 
-  burger="burger" 
-  class="open-button">
+  <UButton onclick="window.dialogContacts.showModal()" burger="burger" class="open-button">
     <span></span>
     <span class="visually-hidden">Open navigation menu</span>
   </UButton>
-  <dialog 
-  id="dialogContacts" 
-  aria-label="Контакты" 
-  class="dialog-contacts">
+  <dialog id="dialogContacts" aria-label="Контакты" class="dialog-contacts">
     <div class="dialog-contacts__items">
       <form method="dialog">
         <UButton close="close" type="submit" class="dialog-contacts__btn-close" />
@@ -38,12 +32,14 @@ onMounted(() => {
   min-height: 100dvh;
   margin-inline-end: 0;
   opacity: 0;
-  transition: 
-  display .1s allow-discrete, overlay .1s allow-discrete, opacity .2s;
+  transition:
+    display 0.1s allow-discrete,
+    overlay 0.1s allow-discrete,
+    opacity 0.2s;
 
   &[open] {
     opacity: 1;
-    transition: opacity .8s;
+    transition: opacity 0.8s;
 
     @starting-style {
       opacity: 0;
