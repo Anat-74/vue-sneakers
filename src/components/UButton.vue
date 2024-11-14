@@ -154,7 +154,6 @@
 
 .fa-chevron-right {
    width: toRem(8);
-   color: rgb(0 0 0 / .8);
    transition: transform .3s;
 }
 

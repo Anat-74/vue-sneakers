@@ -50,7 +50,7 @@ const toggleSubTitle = (id) => {
 
 <template>
    <ul>
-         <UTitlesAccordion 
+      <UTitlesAccordion 
          v-for="title in titles"
          :key="title.id"
          :id="title.id"

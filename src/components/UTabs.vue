@@ -71,6 +71,7 @@ const clickOnTab = (tabName) => {
          padding-block-start: 5px;
          font-size: toRem(18);
          font-weight: 500;
+         letter-spacing: 1.2px;
     }
   }
   </style>

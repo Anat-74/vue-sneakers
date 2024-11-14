@@ -6,8 +6,9 @@ import Footer from '@/components/Layout/Footer.vue'
 
 onMounted(() => {
    const dialogElement = document.querySelector('.dialog-contacts')
-   dialogElement.addEventListener("click", closeOnBackDropClick)
 
+   dialogElement.addEventListener("click", closeOnBackDropClick)
+   
 function closeOnBackDropClick({ currentTarget, target }) {
   const dialogElement = currentTarget
   const isClickedOnBackDrop = target === dialogElement

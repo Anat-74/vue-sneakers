@@ -15,9 +15,7 @@ const emit = defineEmits(['onClickRemove'])
 <template>
 <article class="cart-item">
    <img 
-      v-for="image of imageUrl" 
-      :key="image"
-      :src="image" 
+      :src="imageUrl[0]" 
       :alt="title"
       width="85" 
       height="80" 
@@ -38,7 +36,7 @@ const emit = defineEmits(['onClickRemove'])
 <style lang="scss" scoped>
 .cart-item {
    @include adaptiveValue("padding-block-start",25 , 1);
-   position: relative;
+   // position: relative;
    padding-inline: toEm(20, 15);
    padding-block-end: toEm(25, 15);
    border-radius: toEm(20, 15);
@@ -56,24 +54,6 @@ const emit = defineEmits(['onClickRemove'])
    &:not(:last-child) {
       margin-block-end: toEm(20, 15);
       }
-
-   //*@media 'Mobile'=====================================================================================
-   // @media (max-width:$mobile){
-   //    justify-items: center;
-   //    grid-template-areas: 
-   //    "img img img"
-   //    "descr descr descr"
-   //    "price .. btn"
-   //    ;
-   //    .cart-item__image {
-   //       @include adaptiveValue("width",120 ,95);
-   //       justify-self: center;
-   //       margin-inline-end: 0;
-   //       border-radius: toEm(10, 15);
-   //       object-fit: contain;
-   //    }
-   // }
-   //*===================================================================================================
 
 &__image {
    grid-area: img;
