@@ -1,5 +1,6 @@
 <script setup>
 import { computed, provide, ref, watch } from 'vue'
+import { useFetchItemsStore } from '@/stores/FetchItemsStore'
 
 import Header from '@/components/Layout/Header.vue'
 import UDialogCart from '@/components/DialogCart/UDialoglCart.vue'
@@ -11,7 +12,7 @@ import USocial from '@/components/USocial.vue'
 import UButton from '@/components/UButton.vue'
 import UTheme from '@/components/UTheme.vue'
 
-import { filters } from '@/exportFunction/filters'
+const fetchItemsStore = useFetchItemsStore()
 
 const isOpenMenu = ref(false)
 const toggleMenu = () => {
@@ -103,7 +104,7 @@ provide('darkMode', {
           <USocial class="app__social"></USocial>
         </template>
         <template #home>
-          <router-link to="/" @click="filters.searchQuery = ''">
+          <router-link to="/" @click="fetchItemsStore.filters.searchQuery = ''">
             <font-awesome-icon icon="fa-solid fa-house" />
           </router-link>
         </template>

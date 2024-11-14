@@ -1,6 +1,7 @@
 <script setup>
 import { computed, inject ,ref, onMounted } from 'vue';
 import axios from 'axios';
+import { useCloseDialogElement } from '@/composablesFunctions/closeDialogElement';
 
 import UInfoBlock from './UInfoBlock.vue';
 import UCartItemList from './UCartItemList.vue'
@@ -38,16 +39,7 @@ const buttonDisabled = computed(() => isCreating.value || cartEmpty.value)
 
 onMounted(() => {
    const dialogElement = document.querySelector('.dialog-cart')
-
-   dialogElement.addEventListener("click", closeOnBackDropClick)
-   
-function closeOnBackDropClick({ currentTarget, target }) {
-  const dialogElement = currentTarget
-  const isClickedOnBackDrop = target === dialogElement
-  if (isClickedOnBackDrop) {
-    dialogElement.close()
-  }
-}
+   useCloseDialogElement(dialogElement)
 })
 
 </script>

@@ -1,21 +1,13 @@
 <script setup>
 import { onMounted } from 'vue';
+import { useCloseDialogElement } from '@/composablesFunctions/closeDialogElement';
 
 import UButton from '@/components/UButton.vue'
 import Footer from '@/components/Layout/Footer.vue'
 
 onMounted(() => {
    const dialogElement = document.querySelector('.dialog-contacts')
-
-   dialogElement.addEventListener("click", closeOnBackDropClick)
-   
-function closeOnBackDropClick({ currentTarget, target }) {
-  const dialogElement = currentTarget
-  const isClickedOnBackDrop = target === dialogElement
-  if (isClickedOnBackDrop) {
-    dialogElement.close()
-  }
-}
+   useCloseDialogElement(dialogElement)
 })
 </script>
 
