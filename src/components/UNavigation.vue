@@ -1,7 +1,7 @@
 <script setup>
 import { inject } from 'vue';
 import UButton from '@/components/UButton.vue'
-const { totalPrice } = inject('price')
+const { totalPrice } = inject('cart')
 
 </script>
 
@@ -47,6 +47,7 @@ const { totalPrice } = inject('price')
 
 <style lang="scss" scoped>
 .menu {
+   @include adaptiveValue("column-gap", 64, 14);
    display: flex;
    justify-content: center;
    align-items: center;
@@ -62,7 +63,6 @@ const { totalPrice } = inject('price')
 
       @media (max-width:$tablet){
          @include adaptiveValue("padding-inline-end", 32, 4);
-         @include adaptiveValue("translate", 64, 14);
          column-gap: toRem(0);
       }
    }

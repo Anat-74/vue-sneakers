@@ -117,6 +117,7 @@
   transition: .2s;
 
    &:disabled {
+    background-color: var(--grey-color);
     opacity: .5;
     cursor: default;
   }

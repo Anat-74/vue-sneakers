@@ -1,6 +1,7 @@
 <script setup>
-import { computed, provide, ref, watch } from 'vue'
+import { computed, provide, ref, watch, onMounted } from 'vue'
 import { useFetchItemsStore } from '@/stores/FetchItemsStore'
+import { useDarkMode } from '@/Composables/darkMode'
 
 import Header from '@/components/Layout/Header.vue'
 import UDialogCart from '@/components/DialogCart/UDialoglCart.vue'
@@ -12,12 +13,17 @@ import USocial from '@/components/USocial.vue'
 import UButton from '@/components/UButton.vue'
 import UTheme from '@/components/UTheme.vue'
 
+const { darkMode, toggleDarkMode } = useDarkMode()
 const fetchItemsStore = useFetchItemsStore()
 
 const isOpenMenu = ref(false)
 const toggleMenu = () => {
   isOpenMenu.value = !isOpenMenu.value
 }
+provide('toggle', {
+  isOpenMenu,
+  toggleMenu
+})
 
 /* Корзина */
 const cartItems = ref([])
@@ -28,7 +34,7 @@ const vatPrice = computed(() => Math.round((totalPrice.value * 5) / 100))
 
 const removeFromCart = (item) => {
   cartItems.value.splice(cartItems.value.indexOf(item), 1)
-  item.isAdded = false
+   item.isAdded = false
 }
 
 const addToCart = (item) => {
@@ -36,50 +42,39 @@ const addToCart = (item) => {
   item.isAdded = true
 }
 
-watch(
-  cartItems,
-  () => {
+watch(cartItems, () => {
+   fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
+    ...item,
+    isAdded: false
+  }))
+})
+
+onMounted(async () => {
+   const localCartItems = localStorage.getItem('cartItems')
+   cartItems.value = localStorage ? JSON.parse(localCartItems) : []
+
+   await fetchItemsStore.fetchItems()
+
+   fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
+      ...item,
+      isAdded: cartItems.value.some(cartItem => cartItem.id === item.id)
+   }))
+})
+
+watch(cartItems, () => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems.value))
   },
   { deep: true }
 )
 
-provide('toggle', {
-  isOpenMenu,
-  toggleMenu
-})
-
-provide('price', {
-  totalPrice
-})
-
 provide('cart', {
-  cartItems,
+   cartItems,
+   totalPrice,
   addToCart,
   removeFromCart
 })
-
 /* Корзина */
 
-const getInitialDarkMode = () => {
-  const userPreference = localStorage.getItem('darkMode')
-  return userPreference === 'true' ? true : false
-}
-
-const darkMode = ref(getInitialDarkMode())
-
-const saveDarkModePreference = (isDarkMode) => {
-  localStorage.setItem('darkMode', isDarkMode)
-}
-
-const toggleDarkMode = () => {
-  darkMode.value = !darkMode.value
-  saveDarkModePreference(darkMode.value)
-}
-
-provide('darkMode', {
-  darkMode
-})
 </script>
 <template>
   <div :data-theme="darkMode" class="app">

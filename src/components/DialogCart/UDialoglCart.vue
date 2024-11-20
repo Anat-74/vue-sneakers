@@ -24,26 +24,26 @@ const createOrder = async () => {
       items: cartItems.value,
       totalPrice: props.totalPrice
     })
-    cartItems.value = []
-    orderId.value = data.id
-  } catch (err) {
+     cartItems.value = []
+     orderId.value = data.id
+   } catch (err) {
     console.log(err)
   } finally {
     isCreating.value = false
   }
 }
-
-const cartEmpty = computed(() => cartItems.value.length === 0)
-const buttonDisabled = computed(() => isCreating.value || cartEmpty.value)
+const buttonDisabled = computed(() => isCreating.value || cartItems.value.length === 0)
 
 onMounted(() => {
    const dialogElement = document.querySelector('.dialog-cart')
    useCloseDialogElement(dialogElement)
 })
+
 </script>
 
 <template>
   <dialog 
+      @click="orderId = false"
       id="cartDialog" 
       aria-labelledby="cartDialog-name" 
       class="dialog-cart">
@@ -71,10 +71,11 @@ onMounted(() => {
         :description="`Ваш заказ #${orderId} скоро будет передан курьерской доставке`"
       />
 
-      <UCartItemList v-if="totalPrice" class="dialog-cart__item-list" />
+      <UCartItemList v-if="totalPrice" class="dialog-cart__item-list" 
+      />
       <div v-if="totalPrice" class="dialog-cart__bottom">
         <h3 class="bottom__subtitle">Итого:</h3>
-        <span class="bottom__price">{{ totalPrice }} руб. </span>
+        <span class="bottom__price">{{ totalPrice }} руб.</span>
         <h3 class="bottom__subtitle">Налог 5%:</h3>
         <span class="bottom__price">{{ vatPrice }} руб. </span>
         <UButton
@@ -95,15 +96,15 @@ onMounted(() => {
   min-height: 100dvh;
   margin-inline-end: 0;
   transition:
-    min-height 0.2s,
-    display 0.1s allow-discrete,
-    overlay 0.1s allow-discrete,
-    opacity 0.2s;
+    min-height .2s,
+    display .1s allow-discrete,
+    overlay .1s allow-discrete,
+    opacity .2s;
   opacity: 0;
 
   &[open] {
     opacity: 1;
-    transition: opacity 0.4s ease-out;
+    transition: opacity .4s ease-out;
 
     @starting-style {
       opacity: 0;
@@ -117,7 +118,7 @@ onMounted(() => {
   &__items {
     @include adaptiveValue('padding-inline', 22, 12);
     padding-block: toEm(25, 15);
-    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
   }

@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia'
 import { useFetchItemsStore } from './FetchItemsStore'
-import { onMounted } from 'vue'
 import axios from 'axios'
 
 const url = 'https://f1472ab18bd3ee1f.mokky.dev/favorites'
@@ -28,19 +27,6 @@ export const useFetchFavoritesStore = defineStore('fetchFavoritesStore', () => {
         console.debug(err)
       }
     }
-
-    onMounted(async () => {
-      // await fetchFavorites()
-    
-      // const localCartItems = localStorage.getItem('cartItems')
-      // cartItems.value = localStorage ? JSON.parse(localCartItems) : [];
-    
-      // items.value = items.value.map((item) => ({
-      //    ...item,
-      //    isAdded: cartItems.value.some(cartItem => cartItem.id === item.id)
-      // }))
-    })
-   
    return {
       fetchFavorites
    }

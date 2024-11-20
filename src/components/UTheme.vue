@@ -1,8 +1,7 @@
 <script setup>
-import { inject } from 'vue'
-const { darkMode } = inject('darkMode')
+import { useDarkMode } from '@/Composables/darkMode'
+const { darkMode } = useDarkMode()
 const model = defineModel()
-
 </script>
 
 <template>

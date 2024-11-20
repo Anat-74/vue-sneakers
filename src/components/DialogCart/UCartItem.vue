@@ -3,13 +3,12 @@ import UButton from '@/components/UButton.vue'
 
 defineProps({
    id: Number,
-   imageUrl: String,
+   imageUrl: Array,
    title: String,
    price: Number,
 })
 
 const emit = defineEmits(['onClickRemove'])
-
 </script>
 
 <template>
@@ -36,7 +35,6 @@ const emit = defineEmits(['onClickRemove'])
 <style lang="scss" scoped>
 .cart-item {
    @include adaptiveValue("padding-block-start",25 , 1);
-   // position: relative;
    padding-inline: toEm(20, 15);
    padding-block-end: toEm(25, 15);
    border-radius: toEm(20, 15);

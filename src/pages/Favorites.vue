@@ -25,7 +25,6 @@ onMounted(async () => {
    <UCardList
    :items="favorites" 
    is-favorites
-   class="favorite" 
    />
 </section>
 </template>
