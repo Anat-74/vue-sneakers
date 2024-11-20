@@ -92,13 +92,19 @@ provide('cart', {
 
       <UNavigation :class="['app__navigation', { app__navigation_isopen: isOpenMenu }]">
         <template #search>
-          <UButton onclick="window.searchNavigation.show()" icon="magnifying-glass" />
+          <UButton 
+          onclick="window.searchNavigation.show()" 
+          icon="magnifying-glass" 
+          />
         </template>
         <template #social>
           <USocial class="app__social"></USocial>
         </template>
         <template #home>
-          <router-link to="/" @click="fetchItemsStore.filters.searchQuery = ''">
+          <router-link 
+          to="/" 
+          @click="fetchItemsStore.filters.searchQuery = ''"
+          >
             <font-awesome-icon icon="fa-solid fa-house" />
           </router-link>
         </template>
@@ -107,7 +113,10 @@ provide('cart', {
       <Footer class="app__footer" />
 
       <UDialogSearch />
-      <UDialogCart :total-price="totalPrice" :vat-price="vatPrice" />
+      <UDialogCart 
+      :total-price="totalPrice" 
+      :vat-price="vatPrice" 
+      />
     </div>
   </div>
 </template>
