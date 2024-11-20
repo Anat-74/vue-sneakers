@@ -1,7 +1,7 @@
 <script setup>
 import { computed, provide, ref, watch, onMounted } from 'vue'
 import { useFetchItemsStore } from '@/stores/FetchItemsStore'
-import { useDarkMode } from '@/Composables/darkMode'
+import { useDarkMode } from '@/composables/DarkModeTheme'
 
 import Header from '@/components/Layout/Header.vue'
 import UDialogCart from '@/components/DialogCart/UDialoglCart.vue'
@@ -34,7 +34,7 @@ const vatPrice = computed(() => Math.round((totalPrice.value * 5) / 100))
 
 const removeFromCart = (item) => {
   cartItems.value.splice(cartItems.value.indexOf(item), 1)
-   item.isAdded = false
+  item.isAdded = false
 }
 
 const addToCart = (item) => {
@@ -42,43 +42,42 @@ const addToCart = (item) => {
   item.isAdded = true
 }
 
-watch(cartItems, () => {
-   fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
+onMounted(async () => {
+  const localCartItems = localStorage.getItem('cartItems')
+  cartItems.value = localStorage ? JSON.parse(localCartItems) : []
+
+  await fetchItemsStore.fetchItems()
+
+  fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
     ...item,
-    isAdded: false
+    isAdded: cartItems.value.some((cartItem) => cartItem.id === item.id)
   }))
 })
 
-onMounted(async () => {
-   const localCartItems = localStorage.getItem('cartItems')
-   cartItems.value = localStorage ? JSON.parse(localCartItems) : []
-
-   await fetchItemsStore.fetchItems()
-
-   fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
-      ...item,
-      isAdded: cartItems.value.some(cartItem => cartItem.id === item.id)
-   }))
-})
-
-watch(cartItems, () => {
+watch(
+  cartItems, () => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems.value))
   },
   { deep: true }
 )
 
+watch(cartItems, () => {
+  fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
+    ...item,
+    isAdded: false
+  }))
+})
+
 provide('cart', {
-   cartItems,
-   totalPrice,
+  cartItems,
+  totalPrice,
   addToCart,
   removeFromCart
 })
 /* Корзина */
-
 </script>
 <template>
   <div :data-theme="darkMode" class="app">
-
     <div class="app__sidebar">
       <Sidebar>
         <UTheme v-model="toggleDarkMode" />
@@ -126,7 +125,7 @@ provide('cart', {
 }
 
 .app {
-   //*min-width: $tablet start-----------------------------------------------------------------------------------------------------------------
+  //*min-width: $tablet start-----------------------------------------------------------------------------------------------------------------
   @media (min-width: $tablet) {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -138,31 +137,37 @@ provide('cart', {
     .app__container {
       min-height: 100dvh;
       transition: transform 0.6s;
-      
+
       &_isopen {
         transform: translateX(toRem(-160));
         transition: transform 0.6s;
       }
     }
   }
-//*min-width: $tablet end---------------------------------------------------------------------------------------------------------
-&__container {
-      min-height: 100dvh;
+  //*min-width: $tablet end---------------------------------------------------------------------------------------------------------
+  &__container {
+    min-height: 100dvh;
 
-      @media (max-width:$tablet){
-         transition: transform .2s linear, opacity .2s, filter .1s;
-&_isopen {
-   @media (prefers-reduced-motion: no-preference) { 
-      transform: scale(.995);
-   }
-filter: blur(12px);
-opacity: .7;
-transition: transform .2s linear, opacity .2s, filter .2s;
-}
+    @media (max-width: $tablet) {
+      transition:
+        transform 0.2s linear,
+        opacity 0.2s,
+        filter 0.1s;
+      &_isopen {
+        @media (prefers-reduced-motion: no-preference) {
+          transform: scale(0.995);
+        }
+        filter: blur(12px);
+        opacity: 0.7;
+        transition:
+          transform 0.2s linear,
+          opacity 0.2s,
+          filter 0.2s;
       }
-   } 
+    }
+  }
 
-&_header {
+  &_header {
   }
   &__main {
     margin-block-end: toRem(52);
@@ -183,12 +188,16 @@ transition: transform .2s linear, opacity .2s, filter .2s;
       transform: translateX(-50%);
       padding-inline: toRem(15);
       padding-block: toRem(12);
-      transition: visibility .2s linear, opacity .1s linear;
+      transition:
+        visibility 0.2s linear,
+        opacity 0.1s linear;
 
       &_isopen {
         visibility: hidden !important;
         opacity: 0;
-        transition: visibility 0s .2s linear, opacity .2s linear;
+        transition:
+          visibility 0s 0.2s linear,
+          opacity 0.2s linear;
       }
     }
 

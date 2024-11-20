@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted } from 'vue'
-import { useCloseDialogElement } from '@/Composables/closeDialogElement'
+import { useCloseDialogElement } from '@/composables/CloseDialogElement'
 
 import UButton from '@/components/UButton.vue'
 import Footer from '@/components/Layout/Footer.vue'
