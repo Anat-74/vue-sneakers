@@ -34,12 +34,12 @@ const vatPrice = computed(() => Math.round((totalPrice.value * 5) / 100))
 
 const removeFromCart = (item) => {
   cartItems.value.splice(cartItems.value.indexOf(item), 1)
-  item.isAdded = false
+   item.isAdded = false
 }
 
 const addToCart = (item) => {
   cartItems.value.push(item)
-  item.isAdded = true
+   item.isAdded = true
 }
 
 onMounted(async () => {
@@ -61,13 +61,6 @@ watch(
   { deep: true }
 )
 
-watch(cartItems, () => {
-  fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
-    ...item,
-    isAdded: false
-  }))
-})
-
 provide('cart', {
   cartItems,
   totalPrice,
@@ -75,6 +68,27 @@ provide('cart', {
   removeFromCart
 })
 /* Корзина */
+
+const x = ref(1)
+const y = ref(2)
+
+// одиночный ref
+watch(x, (newX) => {
+  console.log(`x is ${newX}`)
+})
+
+// геттер
+watch(
+  () => x.value + y.value,
+  (sum) => {
+    console.log(`сумма x + y равна: ${sum}`)
+  }
+)
+
+// массив из нескольких источников
+watch([x, () => y.value], ([newX, newY]) => {
+  console.log(`x равен ${newX} и y равен ${newY}`)
+})
 </script>
 <template>
   <div :data-theme="darkMode" class="app">

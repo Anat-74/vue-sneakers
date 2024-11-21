@@ -1,11 +1,14 @@
 <script setup>
-import { computed, inject, ref, onMounted } from 'vue'
+import { computed, inject, ref, onMounted, watch } from 'vue'
 import axios from 'axios'
 import { useCloseDialogElement } from '@/composables/CloseDialogElement'
+import { useFetchItemsStore } from '@/stores/FetchItemsStore'
 
 import UInfoBlock from './UInfoBlock.vue'
 import UCartItemList from './UCartItemList.vue'
 import UButton from '@/components/UButton.vue'
+
+const fetchItemsStore = useFetchItemsStore()
 
 const props = defineProps({
   totalPrice: Number,
@@ -29,10 +32,23 @@ const createOrder = async () => {
   } catch (err) {
     console.log(err)
   } finally {
-    isCreating.value = false
+     isCreating.value = false
   }
 }
-const buttonDisabled = computed(() => isCreating.value || cartItems.value.length === 0)
+const buttonDisabled = computed(
+   () => isCreating.value || cartItems.value.length === 0)
+
+ watch(cartItems, () => {
+   if (buttonDisabled.value) {
+      fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
+         ...item,
+         isAdded: false
+         }))
+      }
+   },
+    { deep: true }
+)
+
 
 onMounted(() => {
   const dialogElement = document.querySelector('.dialog-cart')

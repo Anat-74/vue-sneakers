@@ -26,7 +26,8 @@ export const useFetchFavoritesStore = defineStore('fetchFavoritesStore', () => {
       } catch (err) {
         console.debug(err)
       }
-    }
+   }
+
    return {
       fetchFavorites
    }

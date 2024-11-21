@@ -1,5 +1,5 @@
 <script setup>
-import { inject, ref, watch } from 'vue'
+import { inject, ref } from 'vue'
 import { useFetchItemsStore } from '@/stores/FetchItemsStore'
 import { useAddToFavoriteStore } from '@/stores/AddToFavoriteStore'
 
@@ -87,7 +87,6 @@ import UBrands from '@/components/UBrands.vue'
 
 // console.log(result);
 //-----------------------------------------------------------------------------
-
 const { addToCart, removeFromCart } = inject('cart')
 
 const fetchItemsStore = useFetchItemsStore()
@@ -100,15 +99,8 @@ const onClickAddPlus = (item) => {
     addToCart(item)
   } else {
     removeFromCart(item)
-  }
+   }
 }
-
-// watch(cartItems, () => {
-//    fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
-//     ...item,
-//     isAdded: false
-//   }))
-// })
 </script>
 
 <template>
