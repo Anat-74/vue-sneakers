@@ -12,7 +12,6 @@ export const useFetchFavoritesStore = defineStore('fetchFavoritesStore', () => {
         const { data: favorites } = await axios.get(`${url}`)
         fetchItemsStore.items = fetchItemsStore.items.map((item) => {
            const favorite = favorites.find((element) => element.item_id === item.id)
-           console.log(favorite)
           if (!favorite) {
             return item
            }
@@ -22,7 +21,6 @@ export const useFetchFavoritesStore = defineStore('fetchFavoritesStore', () => {
             favoriteId: favorite.id
           }
         })
-         console.log(fetchItemsStore.items)
       } catch (err) {
         console.debug(err)
       }

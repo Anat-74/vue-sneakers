@@ -5,9 +5,9 @@ import axios from 'axios'
 
 const url = 'https://f1472ab18bd3ee1f.mokky.dev/items'
 
-
 export const useFetchItemsStore = defineStore('fetchItemsStore', () => {
    const fetchFavoritesStore = useFetchFavoritesStore()
+
    const items = ref([])
 
    const filters = reactive({
@@ -32,7 +32,6 @@ export const useFetchItemsStore = defineStore('fetchItemsStore', () => {
            isAdded: false,
            favoriteId: null
         }))
-        console.log(items.value)
       } catch (err) {
         console.debug(err)
        }

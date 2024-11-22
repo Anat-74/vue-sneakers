@@ -23,7 +23,7 @@ export const useCreateOrderStore = defineStore('createOrderStore', () => {
          cartItems.value = []
          orderId.value = data.id
        } catch (err) {
-         console.log(err)
+         console.debug(err)
        } finally {
           isCreating.value = false
        }
@@ -32,8 +32,8 @@ export const useCreateOrderStore = defineStore('createOrderStore', () => {
    const buttonDisabled = computed(
       () => isCreating.value || cartItems.value.length === 0)
 
-   watch(cartItems, () => {
-      if (buttonDisabled.value) {
+   watch(cartItems,
+      () => { if (buttonDisabled.value) {
          fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
             ...item,
             isAdded: false
