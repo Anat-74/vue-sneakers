@@ -33,7 +33,7 @@ const totalPrice = computed(() => cartItems.value.reduce((acc, item) => acc + it
 const vatPrice = computed(() => Math.round((totalPrice.value * 5) / 100))
 
 const removeFromCart = (item) => {
-  cartItems.value.splice(cartItems.value.indexOf(item), 1)
+   cartItems.value.splice(cartItems.value.indexOf(item), 1)
    item.isAdded = false
 }
 
@@ -43,10 +43,10 @@ const addToCart = (item) => {
 }
 
 onMounted(async () => {
-  const localCartItems = localStorage.getItem('cartItems')
-  cartItems.value = localStorage ? JSON.parse(localCartItems) : []
+   const localCartItems = localStorage.getItem('cartItems')
+  cartItems.value = localCartItems ? JSON.parse(localCartItems) : []
 
-  await fetchItemsStore.fetchItems()
+   await fetchItemsStore.fetchItems()
 
   fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
     ...item,
