@@ -98,7 +98,7 @@ const onClickAddPlus = (item) => {
   if (!item.isAdded) {
     addToCart(item)
   } else {
-    removeFromCart(item)
+     removeFromCart(item)
    }
 }
 </script>

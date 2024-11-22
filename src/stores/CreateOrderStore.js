@@ -3,6 +3,8 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 import { useFetchItemsStore } from '@/stores/FetchItemsStore'
 
+const url = 'https://f1472ab18bd3ee1f.mokky.dev/orders'
+
 const isCreating = ref(false)
 
 export const useCreateOrderStore = defineStore('createOrderStore', () => {
@@ -14,7 +16,7 @@ export const useCreateOrderStore = defineStore('createOrderStore', () => {
    const createOrder = async () => {
       try {
          isCreating.value = true
-         const { data } = await axios.post('https://f1472ab18bd3ee1f.mokky.dev/orders', {
+         const { data } = await axios.post(`${url}`, {
            items: cartItems.value,
            totalPrice: totalPrice.value
          })
@@ -25,7 +27,8 @@ export const useCreateOrderStore = defineStore('createOrderStore', () => {
        } finally {
           isCreating.value = false
        }
-    }
+   }
+
    const buttonDisabled = computed(
       () => isCreating.value || cartItems.value.length === 0)
 
@@ -35,9 +38,10 @@ export const useCreateOrderStore = defineStore('createOrderStore', () => {
             ...item,
             isAdded: false
             }))
-         } 
+         }
       }
    )
+
    return {
       createOrder,
       orderId,

@@ -1,8 +1,11 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
+const urlPost = 'https://f1472ab18bd3ee1f.mokky.dev/favorites'
+const urlDelete = 'https://f1472ab18bd3ee1f.mokky.dev/favorites/'
+
 export const useAddToFavoriteStore = defineStore('addToFavoriteStore', () => {
-   
+
    const addToFavorite = async (item) => {
       try {
         if (!item.isFavorite) {
@@ -12,12 +15,12 @@ export const useAddToFavoriteStore = defineStore('addToFavoriteStore', () => {
     
           item.isFavorite = true
     
-          const { data } = await axios.post('https://f1472ab18bd3ee1f.mokky.dev/favorites', obj)
+          const { data } = await axios.post(`${urlPost}`, obj)
            item.favoriteId = data.id
  
         } else {
           item.isFavorite = false
-          await axios.delete(`https://f1472ab18bd3ee1f.mokky.dev/favorites/${item.favoriteId}`)
+          await axios.delete(`${urlDelete}${item.favoriteId}`)
           item.favoriteId = null
          }
       } catch (err) {

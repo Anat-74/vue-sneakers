@@ -56,7 +56,7 @@ onMounted(async () => {
 
 watch(
   cartItems, () => {
-    localStorage.setItem('cartItems', JSON.stringify(cartItems.value))
+      localStorage.setItem('cartItems', JSON.stringify(cartItems.value))
   },
   { deep: true }
 )
