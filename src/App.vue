@@ -44,7 +44,7 @@ const addToCart = (item) => {
 
 onMounted(async () => {
    const localCartItems = localStorage.getItem('cartItems')
-  cartItems.value = localCartItems ? JSON.parse(localCartItems) : []
+      cartItems.value = localCartItems ? JSON.parse(localCartItems) : []
 
    await fetchItemsStore.fetchItems()
 
@@ -68,27 +68,6 @@ provide('cart', {
   removeFromCart
 })
 /* Корзина */
-
-const x = ref(1)
-const y = ref(2)
-
-// одиночный ref
-watch(x, (newX) => {
-  console.log(`x is ${newX}`)
-})
-
-// геттер
-watch(
-  () => x.value + y.value,
-  (sum) => {
-    console.log(`сумма x + y равна: ${sum}`)
-  }
-)
-
-// массив из нескольких источников
-watch([x, () => y.value], ([newX, newY]) => {
-  console.log(`x равен ${newX} и y равен ${newY}`)
-})
 </script>
 <template>
   <div :data-theme="darkMode" class="app">

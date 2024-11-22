@@ -12,7 +12,7 @@ onMounted(async () => {
 
 <template>
    <section 
-    class="favorite">
+    class="favorites">
          <router-link to="/">
             назад
          </router-link>
@@ -25,7 +25,7 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-   .favorite {
+   .favorites {
       @media (max-width:$tablet){
          padding-block-end: toRem(40);
       }
