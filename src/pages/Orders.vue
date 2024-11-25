@@ -52,6 +52,7 @@ onMounted(async () => {
       }
 
       &__text {
+         text-align: center;
          font-size: toRem(20);
          font-family: var(--font-family);
          color: var(--danger-color);
