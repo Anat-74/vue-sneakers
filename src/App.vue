@@ -44,10 +44,9 @@ const addToCart = (item) => {
 
 onMounted(async () => {
    const localCartItems = localStorage.getItem('cartItems')
-      cartItems.value = localCartItems ? JSON.parse(localCartItems) : []
+   cartItems.value = localCartItems ? JSON.parse(localCartItems) : []
 
    await fetchItemsStore.fetchItems()
-
   fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
     ...item,
     isAdded: cartItems.value.some((cartItem) => cartItem.id === item.id)

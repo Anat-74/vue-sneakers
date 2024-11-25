@@ -37,11 +37,11 @@ onMounted(async () => {
          color: var(--grey-color);
          margin-block-end: toRem(16);
       }
-      .fa-arrow-left {
+   }
+   .fa-arrow-left {
          width: toRem(22);
          height: toRem(20);
          color: var(--orange-color);
          margin-block-end: toRem(16);
       }
-   }
 </style>
