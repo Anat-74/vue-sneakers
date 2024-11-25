@@ -28,7 +28,7 @@ const emit = defineEmits(['addToFavorite', 'addToCart'])
       :price="item.price"
       :isFavorite="item.isFavorite"
       :isAdded="item.isAdded"
-      :onClickFavorite="isFavorites ? null : () => emit('addToFavorite', item)"
+      :onClickFavorite="isFavorites ? null :() => emit('addToFavorite', item)"
       :onClickAdd="isFavorites ? null : () => emit('addToCart', item)"
       />
    </div>

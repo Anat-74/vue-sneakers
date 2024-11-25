@@ -14,7 +14,7 @@ export const useFetchItemsStore = defineStore('fetchItemsStore', () => {
       sortBy: 'title',
       searchQuery: ''
    })
-   
+
    const fetchItems = async () => {
       try {
         const params = {
@@ -24,8 +24,8 @@ export const useFetchItemsStore = defineStore('fetchItemsStore', () => {
         if (filters.searchQuery) {
           params.title = `*${filters.searchQuery}*`
         }
-    
-        const { data } = await axios.get(`${url}`, {params})
+
+         const { data } = await axios.get(`${url}`, { params })
         items.value = data.map((obj) => ({
            ...obj,
            isFavorite: false,
