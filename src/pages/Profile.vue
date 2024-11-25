@@ -1,12 +1,12 @@
 <script setup>
 import { onMounted } from 'vue'
-import { useFetchOrdersStore } from '@/stores/FechOrdersStore';
+import { usePageOrdersStore } from '@/stores/PageOrdersStore';
 import UOrderList from '@/components/UOrderList.vue';
 
-const fetchOrdersStore = useFetchOrdersStore()
+const pageOrdersStore = usePageOrdersStore()
 
 onMounted(async () => {
-   await fetchOrdersStore.fetchOrders()
+   await pageOrdersStore.fetchOrders()
 })
 </script>
 
@@ -17,7 +17,7 @@ onMounted(async () => {
          </router-link>
       <h2 class="orders__title">Мои заказы</h2>
    <UOrderList 
-      :orders="fetchOrdersStore.orders"
+      :orders="pageOrdersStore.orders"
       isOrders
       />
    </section>

@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const url = 'https://f1472ab18bd3ee1f.mokky.dev/orders'
 
-export const useFetchOrdersStore = defineStore('fetchOrdersStore', () => {
+export const usePageOrdersStore = defineStore('pageOrdersStore', () => {
 
    const orders = ref([])
 
