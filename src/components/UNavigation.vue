@@ -47,12 +47,15 @@ const { totalPrice } = inject('cart')
 
 <style lang="scss" scoped>
 .menu {
-   @include adaptiveValue("column-gap", 64, 14);
    display: flex;
    justify-content: center;
    align-items: center;
    @media (min-width:$tablet){
       background-color: var(--transparent-color);
+   }
+
+   @media (max-width:$tablet){
+      @include adaptiveValue("column-gap", 64, 14);
    }
 
    &__cart {
