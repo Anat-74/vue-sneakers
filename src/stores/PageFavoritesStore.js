@@ -11,8 +11,7 @@ export const usePageFavoritesStore = defineStore('pageFavoritesStore', () => {
    const pageFavorites = async () => {
       try {
          const { data } = await axios.get(`${url}`)
-         favorites.value = data
-            .map((obj) => ({
+         favorites.value = data.map((obj) => ({
             ...obj.item
             }))
             console.log(favorites.value)

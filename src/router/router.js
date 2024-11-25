@@ -2,7 +2,7 @@ import { createWebHistory, createRouter } from 'vue-router'
 
 import Home from '@/pages/Home.vue';
 import Favorites from '@/pages/Favorites.vue';
-import Profile from '@/pages/Profile.vue'
+import Profile from '@/pages/Orders.vue'
 import AboutUs from '@/pages/AboutUs.vue'
 import SneakersForMan from '@/pages/SneakersForMan.vue';
 import SneakersForChildren from '@/pages/SneakersForChildren.vue';

@@ -1,26 +1,19 @@
 <script setup>
-import { inject, ref } from 'vue'
+import { ref } from 'vue'
 import { useFetchItemsStore } from '@/stores/FetchItemsStore'
 import { useAddToFavoriteStore } from '@/stores/AddToFavoriteStore'
+import { useOnClickAddOrRemove } from '@/composables/OnClickAddOrRemove'
 
 import UCardList from '@/components/UCardList.vue'
 import UInput from '@/components/UInput.vue'
 import USelect from '@/components/USelect.vue'
 import UBrands from '@/components/UBrands.vue'
 
-const { addToCart, removeFromCart } = inject('cart')
+const { onClickAddOrRemove } = useOnClickAddOrRemove()
 const fetchItemsStore = useFetchItemsStore()
 const addToFavoriteStore = useAddToFavoriteStore()
 
 const message = ref('')
-
-const onClickAddPlus = (item) => {
-  if (!item.isAdded) {
-    addToCart(item)
-  } else {
-     removeFromCart(item)
-   }
-}
 </script>
 
 <template>
@@ -48,7 +41,7 @@ const onClickAddPlus = (item) => {
     <UCardList
       :items="fetchItemsStore.items"
       @add-to-favorite="addToFavoriteStore.addToFavorite"
-      @add-to-cart="onClickAddPlus"
+      @add-to-cart="onClickAddOrRemove"
       class="home__card-list"
     />
   </section>

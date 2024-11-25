@@ -32,16 +32,6 @@ const totalPrice = computed(() => cartItems.value.reduce((acc, item) => acc + it
 
 const vatPrice = computed(() => Math.round((totalPrice.value * 5) / 100))
 
-const removeFromCart = (item) => {
-   cartItems.value.splice(cartItems.value.indexOf(item), 1)
-   item.isAdded = false
-}
-
-const addToCart = (item) => {
-  cartItems.value.push(item)
-   item.isAdded = true
-}
-
 onMounted(async () => {
    const localCartItems = localStorage.getItem('cartItems')
    cartItems.value = localCartItems ? JSON.parse(localCartItems) : []
@@ -62,9 +52,7 @@ watch(cartItems,
 
 provide('cart', {
   cartItems,
-  totalPrice,
-  addToCart,
-  removeFromCart
+  totalPrice
 })
 /* Корзина */
 </script>

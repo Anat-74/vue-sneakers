@@ -21,17 +21,16 @@ onMounted(async () => {
       :orders="pageOrdersStore.orders"
       isOrders
       />
-      <div v-else>
+      <div v-else
+      class="orders__no-orders">
    <p
    class="orders__text">
       У Вас пока нет заказов
    </p>
-   <div class="orders__image" >
    <img 
    width="44" 
    height="44"
    src="/image/emoji-1.avif" alt="emoji"> 
-</div>
 </div>
    </section>
 </template>
@@ -47,18 +46,17 @@ onMounted(async () => {
          margin-block-end: toRem(16);
       }
 
+      &__no-orders {
+         display: grid;
+         justify-items: center;
+      }
+
       &__text {
-         text-align: center;
          font-size: toRem(20);
          font-family: var(--font-family);
          color: var(--danger-color);
          letter-spacing: 1px;
          margin-block-end: toRem(9);
-      }
-
-      &__image {
-         display: flex;
-         justify-content: center;
       }
    }
    .fa-arrow-left {
