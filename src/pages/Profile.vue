@@ -21,7 +21,8 @@ onMounted(async () => {
       :orders="pageOrdersStore.orders"
       isOrders
       />
-   <p v-else
+      <div v-else>
+   <p
    class="orders__text">
       У Вас пока нет заказов
    </p>
@@ -30,6 +31,7 @@ onMounted(async () => {
    width="44" 
    height="44"
    src="/image/emoji-1.avif" alt="emoji"> 
+</div>
 </div>
    </section>
 </template>
