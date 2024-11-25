@@ -1,21 +1,12 @@
 <script setup>
-import { onMounted, ref } from 'vue'
-import axios from 'axios';
+import { onMounted } from 'vue'
+import { useFetchOrdersStore } from '@/stores/FechOrdersStore';
 import UOrderList from '@/components/UOrderList.vue';
 
-const orders = ref([])
-
-const fetchOrder = async () => {
-   try {
-   const { data } =  await axios.get('https://f1472ab18bd3ee1f.mokky.dev/orders')
-   orders.value = data.reduce((prev, obj) => [...prev, ...obj.items], [])
-   } catch (error) {
-      console.debug(error)
-   }
-}
+const fetchOrdersStore = useFetchOrdersStore()
 
 onMounted(async () => {
-   await fetchOrder()
+   await fetchOrdersStore.fetchOrders()
 })
 </script>
 
@@ -26,7 +17,7 @@ onMounted(async () => {
          </router-link>
       <h2 class="orders__title">Мои заказы</h2>
    <UOrderList 
-      :orders="orders"
+      :orders="fetchOrdersStore.orders"
       isOrders
       />
    </section>

@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 
 const url = 'https://f1472ab18bd3ee1f.mokky.dev/favorites?_relations=items'
+
 export const usePageFavoritesStore = defineStore('pageFavoritesStore', () => {
 
    const favorites = ref([])
