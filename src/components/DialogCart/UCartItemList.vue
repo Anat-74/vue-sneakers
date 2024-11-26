@@ -1,8 +1,10 @@
 <script setup>
 import { inject } from 'vue';
-import UCartItem from './UCartItem.vue'
+import { useOnClickAddOrRemove } from '@/composables/OnClickAddOrRemove'
 
-const { cartItems, removeFromCart } = inject('cart')
+import UCartItem from './UCartItem.vue'
+const { removeFromCart } = useOnClickAddOrRemove()
+const { cartItems } = inject('cart')
 </script>
 
 <template>

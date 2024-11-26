@@ -21,7 +21,9 @@ export function useOnClickAddOrRemove() {
    }
 
    return {
-      onClickAddOrRemove
+      onClickAddOrRemove,
+      removeFromCart,
+      addToCart
    }
 }
 
