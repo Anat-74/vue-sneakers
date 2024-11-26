@@ -13,13 +13,12 @@ const addToFavoriteStore = useAddToFavoriteStore()
 onMounted(async () => {
    const localCartItems = localStorage.getItem('cartItems')
    cartItems.value = localCartItems ? JSON.parse(localCartItems) : []
-
    await pageFavoritesStore.pageFavorites()
 
    pageFavoritesStore.favorites = pageFavoritesStore.favorites.map((item) => ({
     ...item,
-    isAdded: cartItems.value.some((cartItem) => cartItem.id === item.id)
-  }))
+      isAdded: cartItems.value.some((cartItem) => cartItem.id === item.id)
+   }))
 })
 
 watch(cartItems,

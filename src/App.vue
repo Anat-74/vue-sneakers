@@ -45,6 +45,16 @@ onMounted(async () => {
 
 watch(cartItems,
    () => {
+      fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
+    ...item,
+    isAdded: cartItems.value.some((cartItem) => cartItem.id === item.id)
+  }))
+  },
+  { deep: true }
+)
+
+watch(cartItems,
+   () => {
       localStorage.setItem('cartItems', JSON.stringify(cartItems.value))
   },
   { deep: true }
