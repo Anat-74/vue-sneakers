@@ -23,7 +23,11 @@ onMounted(async () => {
 
 watch(cartItems,
    () => {
-      localStorage.setItem('cartItems', JSON.stringify(cartItems.value))
+      localStorage.setItem('cartItems', JSON.stringify(cartItems.value)),
+      pageFavoritesStore.favorites = pageFavoritesStore.favorites.map((item) => ({
+    ...item,
+      isAdded: cartItems.value.some((cartItem) => cartItem.id === item.id)
+   }))
   },
   { deep: true }
 )
