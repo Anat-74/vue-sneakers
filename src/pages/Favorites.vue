@@ -10,20 +10,15 @@ const { onClickAddOrRemove } = useOnClickAddOrRemove()
 const pageFavoritesStore = usePageFavoritesStore()
 const addToFavoriteStore = useAddToFavoriteStore()
 
-onMounted(async () => {
+onMounted(() => {
    const localCartItems = localStorage.getItem('cartItems')
    cartItems.value = localCartItems ? JSON.parse(localCartItems) : []
-   await pageFavoritesStore.pageFavorites()
-
-   pageFavoritesStore.favorites = pageFavoritesStore.favorites.map((item) => ({
-    ...item,
-      isAdded: cartItems.value.some((cartItem) => cartItem.id === item.id)
-   }))
 })
 
 watch(cartItems,
-   () => {
+  async () => {
       localStorage.setItem('cartItems', JSON.stringify(cartItems.value)),
+      await pageFavoritesStore.pageFavorites()
       pageFavoritesStore.favorites = pageFavoritesStore.favorites.map((item) => ({
     ...item,
       isAdded: cartItems.value.some((cartItem) => cartItem.id === item.id)
