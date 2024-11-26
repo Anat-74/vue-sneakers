@@ -1,31 +1,17 @@
 <script setup>
-import { onMounted, watch, inject } from 'vue';
+import { onMounted } from 'vue';
 import { usePageFavoritesStore } from '@/stores/PageFavoritesStore';
 import { useAddToFavoriteStore } from '@/stores/AddToFavoriteStore'
 import { useOnClickAddOrRemove } from '@/composables/OnClickAddOrRemove'
 import UCardList from '@/components/UCardList.vue';
 
-const { cartItems } = inject('cart')
 const { onClickAddOrRemove } = useOnClickAddOrRemove()
 const pageFavoritesStore = usePageFavoritesStore()
 const addToFavoriteStore = useAddToFavoriteStore()
 
-onMounted(() => {
-   const localCartItems = localStorage.getItem('cartItems')
-   cartItems.value = localCartItems ? JSON.parse(localCartItems) : []
+onMounted(async() => {
+   await pageFavoritesStore.pageFavorites()
 })
-
-watch(cartItems,
-  async () => {
-      localStorage.setItem('cartItems', JSON.stringify(cartItems.value)),
-      await pageFavoritesStore.pageFavorites()
-      pageFavoritesStore.favorites = pageFavoritesStore.favorites.map((item) => ({
-    ...item,
-      isAdded: cartItems.value.some((cartItem) => cartItem.id === item.id)
-   }))
-  },
-  { deep: true }
-)
 </script>
 
 <template>
@@ -43,7 +29,7 @@ watch(cartItems,
    />
    <div v-else
    class="favorites__no-favorites">
-      <p
+   <p
    class="favorites__text">
       У Вас пока нет избранных товаров
    </p>
