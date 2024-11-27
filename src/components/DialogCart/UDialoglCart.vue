@@ -75,15 +75,14 @@ onMounted(() => {
   min-height: 100dvh;
   margin-inline-end: 0;
   transition:
-    min-height 0.2s,
-    display 0.1s allow-discrete,
-    overlay 0.1s allow-discrete,
-    opacity 0.2s;
-  opacity: 0;
-
+    min-height .2s,
+    display .1s allow-discrete,
+    overlay .1s allow-discrete,
+    opacity .2s;
   &[open] {
+   margin-inline-end: 0px;
     opacity: 1;
-    transition: opacity 0.4s ease-out;
+    transition: opacity .5s ease-out;
 
     @starting-style {
       opacity: 0;

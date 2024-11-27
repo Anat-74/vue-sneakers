@@ -71,7 +71,7 @@ const handleClick = (id) => emit('toggleSubTitle', id)
          padding-inline: toRem(4);
          overflow-y: scroll;
          background-color: var(--transparent-color);
-         transition: height .3s;
+         transition: height .4s;
 
          &::-webkit-scrollbar{
              width: toRem(3);

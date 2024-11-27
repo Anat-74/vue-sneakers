@@ -9,7 +9,7 @@ import UTitlesAccordion from './UTitlesAccordion.vue';
             isOpen: false,
             subTitle: [
              {name: 'Взрослые', path: '/sneakers-man' },
-             {name: 'Подростковые', path: '/sneakers-children' }
+            { name: 'Подростковые', path: '/sneakers-children' }
             ]
         },
 	         {

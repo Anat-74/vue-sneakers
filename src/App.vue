@@ -63,7 +63,10 @@ provide('cart', {
       </Sidebar>
     </div>
 
-    <div :class="['app__container', { app__container_isopen: isOpenMenu }]">
+    <div 
+    @click="isOpenMenu = false"
+    :class="['app__container', { app__container_isopen: isOpenMenu }]"
+    >
       <Header class="app__header" />
       <main class="app__main">
             <RouterView />
@@ -124,11 +127,11 @@ provide('cart', {
 
     .app__container {
       min-height: 100dvh;
-      transition: transform 0.6s;
+      transition: transform .6s;
 
       &_isopen {
         transform: translateX(toRem(-160));
-        transition: transform 0.6s;
+        transition: transform .6s;
       }
     }
   }
@@ -138,9 +141,9 @@ provide('cart', {
 
     @media (max-width: $tablet) {
       transition:
-        transform 0.2s linear,
-        opacity 0.2s,
-        filter 0.1s;
+        transform .2s linear,
+        opacity .2s,
+        filter .1s;
       &_isopen {
         @media (prefers-reduced-motion: no-preference) {
           transform: scale(0.995);
@@ -148,9 +151,16 @@ provide('cart', {
         filter: blur(12px);
         opacity: 0.7;
         transition:
-          transform 0.2s linear,
-          opacity 0.2s,
-          filter 0.2s;
+        transform 0.2s linear,
+        opacity 0.2s,
+        filter 0.2s;
+
+       &::before {
+         content: '';
+         position: absolute;
+         inset: 0;
+         z-index: 999;
+         }
       }
     }
   }
