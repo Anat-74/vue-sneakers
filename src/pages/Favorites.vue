@@ -12,6 +12,7 @@ const addToFavoriteStore = useAddToFavoriteStore()
 onMounted(async() => {
    await pageFavoritesStore.pageFavorites()
 })
+
 </script>
 
 <template>

@@ -9,7 +9,7 @@ defineProps({
    isFavorites: {
       type: Boolean,
       required: false
-    }
+   }
 })
 
 const emit = defineEmits(['addToFavorite', 'addToCart'])
@@ -24,12 +24,12 @@ const emit = defineEmits(['addToFavorite', 'addToCart'])
       v-for="item in items"
       :key="item.id"
       :title="item.title" 
-      :imageUrl="item.imageUrl" 
+      :image-url="item.imageUrl" 
       :price="item.price"
-      :isFavorite="item.isFavorite"
-      :isAdded="item.isAdded"
-      :onClickFavorite="isFavorites ? null : () => emit('addToFavorite', item)"
-      :onClickAdd="isFavorites ? null : () => emit('addToCart', item)"
+      :is-favorite="item.isFavorite"
+      :is-added="item.isAdded"
+      :on-click-favorite="isFavorites ? null : () => emit('addToFavorite', item)"
+      :on-click-add="isFavorites ? null : () => emit('addToCart', item)"
       />
    </div>
 
