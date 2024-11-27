@@ -30,6 +30,7 @@
             border-right: 1px solid var(--main-color); 
             --background-color: rgb(0 0 0 / .1);
          }
+
          --background-color: rgb(0 0 0 / .3);
          color: var(--grey-color);
 
@@ -37,8 +38,17 @@
             --background-color: transparent;
          }
 
-         &__list{
-            --background-color: transparent;
+         // &__list{
+         //    --background-color: transparent;
+         // }
+      }
+
+      .animate-items {
+         --background-color: transparent;
+         &__title {
+            &:nth-child(1) {
+               color: #ffff;
+            }
          }
       }
 
