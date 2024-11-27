@@ -2,11 +2,14 @@
 import { inject } from 'vue';
 import UButton from '@/components/UButton.vue'
 import UAccordion from '@/components/Accordion/UAccordion.vue';
+
+import UAnimateTitle from '@/components/UAnimateTitle.vue';
 const { isOpenMenu, toggleMenu } = inject('toggle')
 </script>
 
 <template>
 <aside :class="['sidebar', {sidebar_isopen: isOpenMenu}]">
+   <UAnimateTitle class="sidebar__animate-title" />
    <slot />
    <UAccordion class="sidebar__accordion" />
    </aside>
@@ -52,6 +55,12 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
             left: 0;
          }
       }
+
+      &__animate-title {
+         position: absolute;
+         top: toRem(11);
+         right: toRem(12);
+}
 
       &__accordion {
          align-self: center;
