@@ -60,7 +60,7 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
          position: absolute;
          top: toRem(11);
          right: toRem(12);
-}
+      }
 
       &__accordion {
          align-self: center;

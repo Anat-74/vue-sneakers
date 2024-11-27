@@ -48,6 +48,7 @@
          &__title {
             &:nth-child(1) {
                color: #ffff;
+               filter: blur(.8px);
             }
          }
       }
@@ -249,11 +250,14 @@
       &__accordion {
          --background-color: transparent;
       }
-      &__list{
-         --background-color: transparent;
-      }
+      // &__list{
+      //    --background-color: transparent;
+      // }
    }
 
+   .animate-items {
+      --background-color: rgb(245 245 245 / .3);
+   }
    .titles {
       &__title {
          color: rgb(0 0 0 / .5);
