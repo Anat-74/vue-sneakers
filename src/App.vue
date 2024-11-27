@@ -35,7 +35,7 @@ const vatPrice = computed(() => Math.round((totalPrice.value * 5) / 100))
 onMounted(async() => {
    const localCartItems = localStorage.getItem('cartItems')
    cartItems.value = localCartItems ? JSON.parse(localCartItems) : []
-   await fetchItemsStore.fetchItems(),
+   await fetchItemsStore.fetchItems()
       fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
     ...item,
          isAdded: cartItems.value.some((cartItem) => cartItem.id === item.id)
