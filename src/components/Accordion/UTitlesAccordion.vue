@@ -24,23 +24,22 @@ const handleClick = (id) => emit('toggleSubTitle', id)
 </script>
 
 <template>
-           <li class="titles">
-            <UButton
-               @click="handleClick(id)"
-               :isOpen="isOpen"
-               icon="chevron-right"
-               :class="['titles__title', {titles__title_open: isOpen}]"
-               >{{title}}
-            </UButton>
-
-               <router-link 
-                  v-for="sub of subTitle"
-                  :key="sub.name"
-                  :to="sub.href"
-                  :class="['titles__subtitle', {titles__subtitle_open: isOpen}]"
-                  >{{ sub.name }}
-            </router-link>
-        </li>
+    <li class="titles">
+       <UButton
+          @click="handleClick(id)"
+          :is-open="isOpen"
+          icon="chevron-right"
+          :class="['titles__title', {titles__title_open: isOpen}]"
+          >{{title}}
+       </UButton>
+          <router-link 
+             v-for="sub of subTitle"
+             :key="sub.name"
+             :to="sub.path"
+             :class="['titles__subtitle', {titles__subtitle_open: isOpen}]"
+             >{{ sub.name }}
+       </router-link>
+   </li>
 </template>
 
 <style lang="scss" scoped>
@@ -96,5 +95,9 @@ const handleClick = (id) => emit('toggleSubTitle', id)
             }
          }
       }
+      .router-link-active {
+      color: var(--danger-hover);
+      font-weight: 500;
+   }
    }
 </style>

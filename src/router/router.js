@@ -2,10 +2,13 @@ import { createWebHistory, createRouter } from 'vue-router'
 
 import Home from '@/pages/Home.vue';
 import Favorites from '@/pages/Favorites.vue';
-import Profile from '@/pages/Orders.vue'
-import AboutUs from '@/pages/AboutUs.vue'
 import SneakersForMan from '@/pages/SneakersForMan.vue';
 import SneakersForChildren from '@/pages/SneakersForChildren.vue';
+import SneakersForChildrenWooman from '@/pages/SneakersForChildrenWooman.vue';
+import SneakersWooman from '@/pages/SneakersWooman.vue';
+import LacesAccessories from '@/pages/LacesAccessories.vue';
+import InsolesAccessories from '@/pages/InsolesAccessories.vue';
+import Cream from '@/pages/Cream.vue';
 
 const routes = [
    {
@@ -19,16 +22,6 @@ const routes = [
       component: Favorites
    },
    {
-      path: '/profile',
-      name: 'Profile',
-      component: Profile
-   },
-   {
-      path: '/about-us',
-      name: 'AboutUs',
-      component: AboutUs
-   },
-   {
       path: '/sneakers-man',
       name: 'SneakersForMan',
       component: SneakersForMan
@@ -37,6 +30,31 @@ const routes = [
       path: '/sneakers-children',
       name: 'SneakersForChildren',
       component: SneakersForChildren
+   },
+   {
+      path: '/sneakers-children-wooman',
+      name: 'SneakersForChildrenWooman',
+      component: SneakersForChildrenWooman
+   },
+   {
+      path: '/sneakers-wooman',
+      name: 'SneakersWooman',
+      component: SneakersWooman
+   },
+   {
+      path: '/laces-accessories',
+      name: 'LacesAccessories',
+      component: LacesAccessories
+   },
+   {
+      path: '/insoles-accessories',
+      name: 'InsolesAccessories',
+      component: InsolesAccessories
+   },
+   {
+      path: '/Cream',
+      name: 'Cream',
+      component: Cream
    },
 ]
 

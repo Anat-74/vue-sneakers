@@ -1,21 +1,8 @@
 <script setup>
-import { inject, onMounted } from 'vue';
+import { inject } from 'vue';
 import UButton from '@/components/UButton.vue'
 import UAccordion from '@/components/Accordion/UAccordion.vue';
 const { isOpenMenu, toggleMenu } = inject('toggle')
-
-// onMounted(() => {
-//    const dialogElement = document.querySelector('.sidebar')
-//    dialogElement.addEventListener("click", closeOnBackDropClick)
-
-// function closeOnBackDropClick({ currentTarget, target }) {
-//   const dialogElement = currentTarget
-//   const isClickedOnBackDrop = target !== dialogElement
-//   if (isClickedOnBackDrop) {
-//     !isOpenMenu.value
-//   }
-// }
-// })
 </script>
 
 <template>

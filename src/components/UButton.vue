@@ -123,6 +123,7 @@
   }
 
   &_is-open-accordion {
+   color: var(--danger-color) !important;
    svg {
       transition: transform .3s;
       transform: rotate(90deg);

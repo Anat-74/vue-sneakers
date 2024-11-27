@@ -8,8 +8,8 @@ import UTitlesAccordion from './UTitlesAccordion.vue';
             title: "Мужские",
             isOpen: false,
             subTitle: [
-             {name: 'Взрослые', href: '/sneakers-man' }, //path: '/sneakers-man'
-             {name: 'Подростковые', href: '/sneakers-children' }
+             {name: 'Взрослые', path: '/sneakers-man' },
+             {name: 'Подростковые', path: '/sneakers-children' }
             ]
         },
 	         {
@@ -17,8 +17,8 @@ import UTitlesAccordion from './UTitlesAccordion.vue';
             title: "Женские",
             isOpen: false,
             subTitle: [
-             {name: 'Взросл', href: '/sneakers-man' },
-             {name: 'Подростк', href: '/sneakers-children' }
+             {name: 'Взросл', path: '/sneakers-wooman' },
+             {name: 'Подростк', path: '/sneakers-children-wooman' }
             ]
         },
         {
@@ -26,8 +26,8 @@ import UTitlesAccordion from './UTitlesAccordion.vue';
            title: "Асессуары",
            isOpen: false,
            subTitle:[
-             {name: 'Шнурки', href: '/sneakers-man' },
-             {name: 'Стельки', href: '/sneakers-children' }
+             {name: 'Шнурки', path: '/laces-accessories' },
+             {name: 'Стельки', path: '/insoles-accessories' }
             ]
        },
        {
@@ -35,7 +35,7 @@ import UTitlesAccordion from './UTitlesAccordion.vue';
           title: "Уход",
           isOpen: false,
           subTitle: [
-             {name: 'Крем / Спрей', href: '/sneakers-man' }
+             {name: 'Крем / Спрей', path: '/Cream' }
             ]
         }
   ]
@@ -55,8 +55,8 @@ const toggleSubTitle = (id) => {
          :key="title.id"
          :id="title.id"
          :title="title.title"
-         :subTitle="title.subTitle"
-         :isOpen="title.isOpen"
+         :sub-title="title.subTitle"
+         :is-open="title.isOpen"
          @toggle-sub-title="toggleSubTitle"
          />
       </ul>

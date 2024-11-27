@@ -41,7 +41,7 @@
             --background-color: transparent;
          }
       }
-   //*sidebar-end---------------------------------------------------------------------------------------------------------------
+
       .titles {
          &__title {
             color: rgb(245 245 245 / 0.8);
@@ -49,7 +49,7 @@
          &__subtitle {
             color: var(--grey-color);
             @media (max-width:$tablet){
-               text-decoration: 1px underline  var( --grey-color);
+               text-decoration: 1px underline  currentColor;
             }
          }
 
@@ -63,7 +63,8 @@
          //    }
          // }
       }   
-   
+    //*sidebar-end---------------------------------------------------------------------------------------------------------------
+
    .menu {
          --background-color: rgb(0 0 0 / .4);
          @media (max-width:$tablet){
@@ -242,7 +243,7 @@
          --background-color: transparent;
       }
    }
-//*sidebar-end---------------------------------------------------------------------------------------------
+
    .titles {
       &__title {
          color: rgb(0 0 0 / .5);
@@ -255,11 +256,12 @@
             color: var(--lime-color);
          }
          &__subtitle {
-            color: var(--warning-color);
-            text-decoration: 1px underline  var( --warning-color);
+            // color: var(--blue-color);
+            text-decoration: 1px underline  currentColor;
          }
       }
    }   
+//*sidebar-end---------------------------------------------------------------------------------------------
 
    .menu {
       --background-color: rgb(245 245 245 / .8);

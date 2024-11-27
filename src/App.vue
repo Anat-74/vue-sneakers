@@ -66,7 +66,7 @@ provide('cart', {
     <div :class="['app__container', { app__container_isopen: isOpenMenu }]">
       <Header class="app__header" />
       <main class="app__main">
-        <RouterView />
+            <RouterView />
       </main>
 
       <UNavigation :class="['app__navigation', { app__navigation_isopen: isOpenMenu }]">

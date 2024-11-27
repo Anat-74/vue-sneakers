@@ -1,13 +1,11 @@
-<script setup>
-
-</script>
-
 <template>
-   <div>
+   <h1>
       Кроссовки Детские
-  </div>
+   </h1>
 </template>
 
 <style lang="scss" scoped>
-   
+h1 {
+   font-weight: 800;
+}
 </style>
