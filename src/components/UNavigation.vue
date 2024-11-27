@@ -34,7 +34,7 @@ const { totalPrice } = inject('cart')
             </li>
 
             <li class="nav__item">
-               <router-link to="/profile" class="nav__link">
+               <router-link to="/orders" class="nav__link">
                   <font-awesome-icon icon="fa-regular fa-user"
                   />
                <span class="nav__profile">Профиль</span>
