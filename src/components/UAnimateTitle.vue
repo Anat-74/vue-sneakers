@@ -1,15 +1,23 @@
+<script setup>
+import { inject } from 'vue';
+
+const { isOpenMenu } = inject('toggle')
+</script>
+
 <template>
- <div class="animate-items">
-		<h2 class="animate-items__title">Sneakers</h2>
-		<h2 class="animate-items__title">Sneakers</h2>
-		<h2 class="animate-items__title">Sneakers</h2>
+ <div class="animate-items" @click="isOpenMenu = false">
+   <router-link  to="/">
+		<h2 class="animate-items__title">Vue</h2>
+		<h2 class="animate-items__title">Vue</h2>
+		<h2 class="animate-items__title">Vue</h2>
+   </router-link>
 		</div> 
 </template>
 
 <style lang="scss" scoped>
 		.animate-items {
          &__title {
-         @include adaptiveValue("font-size", 28, 22);
+         @include adaptiveValue("font-size", 30, 22);
 			position: absolute;
 			right: 0;
 			top: toRem(3);

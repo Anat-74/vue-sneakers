@@ -1,5 +1,8 @@
 <script setup>
+import { inject } from 'vue';
 import UButton from '@/components/UButton.vue';
+
+const { isOpenMenu } = inject('toggle')
 
 defineProps({
    id: {
@@ -33,6 +36,7 @@ const handleClick = (id) => emit('toggleSubTitle', id)
           >{{title}}
        </UButton>
           <router-link 
+            @click="isOpenMenu = false"
              v-for="sub of subTitle"
              :key="sub.name"
              :to="sub.path"

@@ -37,10 +37,6 @@
          &__accordion {
             --background-color: transparent;
          }
-
-         // &__list{
-         //    --background-color: transparent;
-         // }
       }
 
       .animate-items {
@@ -250,9 +246,6 @@
       &__accordion {
          --background-color: transparent;
       }
-      // &__list{
-      //    --background-color: transparent;
-      // }
    }
 
    .animate-items {
@@ -270,7 +263,8 @@
             color: var(--lime-color);
          }
          &__subtitle {
-            // color: var(--blue-color);
+            color: var(--lime-color);
+            opacity: .9;
             text-decoration: 1px underline  currentColor;
          }
       }
