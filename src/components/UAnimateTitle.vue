@@ -19,7 +19,7 @@ const { isOpenMenu } = inject('toggle')
          &__title {
          @include adaptiveValue("font-size", 30, 22);
 			position: absolute;
-			right: 0;
+			right: toRem(2);
 			top: toRem(3);
          font-family: Rubik Doodle;
          font-weight: 600;

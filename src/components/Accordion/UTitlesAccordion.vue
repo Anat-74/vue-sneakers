@@ -1,7 +1,6 @@
 <script setup>
 import { inject } from 'vue';
 import UButton from '@/components/UButton.vue';
-
 const { isOpenMenu } = inject('toggle')
 
 defineProps({
@@ -21,7 +20,8 @@ defineProps({
        type: Boolean,
        required: true
     }
- })
+})
+
 const emit = defineEmits(['toggleSubTitle'])
 const handleClick = (id) => emit('toggleSubTitle', id)
 </script>
