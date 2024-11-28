@@ -14,13 +14,10 @@ const fetchItemsStore = useFetchItemsStore()
 const addToFavoriteStore = useAddToFavoriteStore()
 
 const message = ref('')
-
-import UFrontBack from '@/components/UFrontBack.vue'
 </script>
 
 <template>
   <section class="home">
-   <UFrontBack />
    <div class="home__items-brands">
    <UBrands class="home__brands" />
 </div>

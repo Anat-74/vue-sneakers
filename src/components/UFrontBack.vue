@@ -36,6 +36,7 @@
       backface-visibility: hidden;
       border-radius: .6rem;
       transition: transform 1s;
+      box-shadow: 0px toEm(6, 15) toEm(18, 15) toRem(5) hsla(0, 0%, 0%, 0.05);
    }
 
    &__front {

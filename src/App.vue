@@ -107,7 +107,7 @@ provide('cart', {
     main:has(article:hover) {
       article:not(:hover) {
         opacity: 0.8;
-        filter: grayscale(90%);
+        filter: grayscale(77%);
       }
     }
   }

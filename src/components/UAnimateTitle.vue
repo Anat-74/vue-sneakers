@@ -17,16 +17,17 @@ const { isOpenMenu } = inject('toggle')
 <style lang="scss" scoped>
 		.animate-items {
          &__title {
-         @include adaptiveValue("font-size", 30, 22);
+         @include adaptiveValue("font-size", 32, 26);
 			position: absolute;
 			right: toRem(2);
-			top: toRem(3);
+			top: 0;
          font-family: Rubik Doodle;
          font-weight: 600;
          &:nth-child(1) {
          color: transparent;
 			-webkit-text-stroke: 1px var(--main-color);
 			filter: blur(.3px);
+
          }
          &:nth-child(2) {
             z-index: 10;
