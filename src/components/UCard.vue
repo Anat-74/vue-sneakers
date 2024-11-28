@@ -88,6 +88,14 @@ const isWatched = ref(false)
    box-shadow: 0px toEm(6, 15) toEm(18, 15) toRem(5) hsla(0, 0%, 0%, 0.05);
    transition: all .7s ease;
 
+   @media (max-width:$mobile){
+   @media (prefers-reduced-motion: no-preference) {
+   animation: scroll-animate;
+   animation-timeline: view();
+   animation-range: entry 0% entry 150%;
+   }
+}
+
 &__btn-heart {
    @include adaptiveValue("left", 32, 27);
    @include adaptiveValue("top", 30, 25);
@@ -110,7 +118,7 @@ const isWatched = ref(false)
    border-radius: toRem(10);
 
    @media (max-width:$tablet){
-      outline: 2px inset rgb(245 245 245 / .3);
+      outline: 1px inset rgb(245 245 245 / .2);
       box-shadow: 0px toEm(1, 15) toEm(1, 15) toRem(1) hsla(0, 0%, 0%, 0.015);
    }
 }
@@ -123,13 +131,13 @@ const isWatched = ref(false)
 }
 
 &__line {
-   width: toRem(22);
-   border-bottom: 2px dashed var(--grey-color);
+   width: toRem(24);
+   border-bottom: toRem(3) dashed var(--grey-color);
    margin-block-start: toEm(12, 15);
    margin-block-end: toEm(5, 15);
 
    &_watched {
-      border-color: var(--lime-color) !important;
+      border-color: var(--turquoise-color) !important;
    }
 }
 
@@ -175,4 +183,11 @@ const isWatched = ref(false)
       }
    }
 }
+@keyframes scroll-animate {
+      0% {
+         opacity: 0;
+         filter: brightness(2);
+         scale: .4;
+      }
+   }
 </style>

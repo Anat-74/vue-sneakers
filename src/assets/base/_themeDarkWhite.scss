@@ -153,7 +153,7 @@
          &__slider {
             scrollbar-color: #464646 #333333;
             @media (max-width:$tablet){
-               outline: 2px inset rgb(0 0 0 / .3);
+               outline: 2px outset rgb(0 0 0 / .4);
             }
          }
    

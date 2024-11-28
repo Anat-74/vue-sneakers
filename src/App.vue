@@ -63,9 +63,7 @@ provide('cart', {
       </Sidebar>
     </div>
 
-    <div 
-    @click="isOpenMenu = false"
-    :class="['app__container', { app__container_isopen: isOpenMenu }]"
+    <div :class="['app__container', { app__container_isopen: isOpenMenu }]"
     >
       <Header class="app__header" />
       <main class="app__main">
