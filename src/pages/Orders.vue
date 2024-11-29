@@ -2,6 +2,7 @@
 import { onMounted } from 'vue'
 import { usePageOrdersStore } from '@/stores/PageOrdersStore';
 import UOrderList from '@/components/UOrderList.vue';
+import ULoader from '@/components/ULoader.vue'
 
 const pageOrdersStore = usePageOrdersStore()
 
@@ -16,6 +17,7 @@ onMounted(async () => {
          <font-awesome-icon icon="fa-solid fa-arrow-left" />
          </router-link>
       <h2 class="orders__title">Мои заказы</h2>
+      <ULoader v-if="pageOrdersStore.loader" />
    <UOrderList 
       v-if="pageOrdersStore.orders.length"
       :orders="pageOrdersStore.orders"

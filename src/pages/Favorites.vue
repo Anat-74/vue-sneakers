@@ -4,6 +4,7 @@ import { usePageFavoritesStore } from '@/stores/PageFavoritesStore';
 import { useAddToFavoriteStore } from '@/stores/AddToFavoriteStore'
 import { useOnClickAddOrRemove } from '@/composables/OnClickAddOrRemove'
 import UCardList from '@/components/UCardList.vue';
+import ULoader from '@/components/ULoader.vue'
 
 const { onClickAddOrRemove } = useOnClickAddOrRemove()
 const pageFavoritesStore = usePageFavoritesStore()
@@ -21,6 +22,7 @@ onMounted(async() => {
          <font-awesome-icon icon="fa-solid fa-arrow-left" />
          </router-link>
    <h2 class="favorites__title">Мои закладки</h2>
+   <ULoader v-if="pageFavoritesStore.loader" />
    <UCardList
    v-if="pageFavoritesStore.favorites.length"
    @add-to-favorite="addToFavoriteStore.addToFavorite"

@@ -6,7 +6,6 @@ import { useFetchItemsStore } from '@/stores/FetchItemsStore'
 const url = 'https://f1472ab18bd3ee1f.mokky.dev/orders'
 
 const isCreating = ref(false)
-const loader = ref(false)
 
 export const useCreateOrderStore = defineStore('createOrderStore', () => {
    const fetchItemsStore = useFetchItemsStore()

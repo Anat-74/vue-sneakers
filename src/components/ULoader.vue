@@ -19,7 +19,7 @@
    position: absolute;
    left: 8px;
    width: 16px;
-   background: #cef;
+   background-color: var(--blue-color);
    animation: loader-animate 1.2s cubic-bezier(0, .5, .5, 1) infinite;
    }
    span:nth-child(1) {

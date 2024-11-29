@@ -8,13 +8,13 @@ import UCardList from '@/components/UCardList.vue'
 import UInput from '@/components/UInput.vue'
 import USelect from '@/components/USelect.vue'
 import UBrands from '@/components/UBrands.vue'
+import ULoader from '@/components/ULoader.vue'
 
 const { onClickAddOrRemove } = useOnClickAddOrRemove()
 const fetchItemsStore = useFetchItemsStore()
 const addToFavoriteStore = useAddToFavoriteStore()
 
 const message = ref('')
-import ULoader from '@/components/ULoader.vue'
 </script>
 
 <template>
