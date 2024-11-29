@@ -17,7 +17,7 @@ export const useAddToFavoriteStore = defineStore('addToFavoriteStore', () => {
           const { data } = await axios.post(`${postUrl}`, obj)
            item.favoriteId = data.id
         } else {
-          item.isFavorite = false
+           item.isFavorite = false
            await axios.delete(`${deleteUrl}${item.favoriteId}`)
            item.favoriteId = null
          }

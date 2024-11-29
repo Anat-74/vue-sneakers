@@ -1,14 +1,9 @@
 <script setup>
-import { onMounted } from 'vue'
 import { usePageOrdersStore } from '@/stores/PageOrdersStore';
 import UOrderList from '@/components/UOrderList.vue';
 import ULoader from '@/components/ULoader.vue'
 
 const pageOrdersStore = usePageOrdersStore()
-
-onMounted(async () => {
-   await pageOrdersStore.fetchOrders()
-})
 </script>
 
 <template>
@@ -21,7 +16,7 @@ onMounted(async () => {
    <UOrderList 
       v-if="pageOrdersStore.orders.length"
       :orders="pageOrdersStore.orders"
-      isOrders
+      is-orders
       />
       <div v-else
       class="orders__no-orders">
@@ -58,7 +53,7 @@ onMounted(async () => {
          font-size: toRem(20);
          font-family: var(--font-family);
          color: var(--danger-color);
-         letter-spacing: 1px;
+         letter-spacing: .7px;
          margin-block-end: toRem(9);
       }
    }

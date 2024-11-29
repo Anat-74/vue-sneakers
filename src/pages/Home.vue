@@ -39,7 +39,6 @@ const message = ref('')
       </form>
     </div>
     <ULoader v-if="fetchItemsStore.loader" />
-
     <UCardList
       :items="fetchItemsStore.items"
       @add-to-favorite="addToFavoriteStore.addToFavorite"
