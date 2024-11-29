@@ -21,12 +21,12 @@ const emit = defineEmits(['addToFavorite', 'addToCart'])
       v-for="order in orders"
       :key="order.id"
       :title="order.title" 
-      :imageUrl="order.imageUrl" 
+      :image-url="order.imageUrl" 
       :price="order.price"
-      :isFavorite="order.isFavorite"
-      :isAdded="order.isAdded"
-      :onClickFavorite="isOrders ? null : () => emit('addToFavorite', order)"
-      :onClickAdd="isOrders ? null :() => emit('addToCart', order)"
+      :is-favorite="order.isFavorite"
+      :is-added="order.isAdded"
+      :on-click-favorite="isOrders ? null : () => emit('addToFavorite', order)"
+      :on-click-add="isOrders ? null :() => emit('addToCart', order)"
    />
 </div>
 </template>

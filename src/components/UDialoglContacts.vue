@@ -33,13 +33,13 @@ onMounted(() => {
   margin-inline-end: 0;
   opacity: 0;
   transition:
-    display 0.1s allow-discrete,
-    overlay 0.1s allow-discrete,
-    opacity 0.2s;
+    display .1s allow-discrete,
+    overlay .1s allow-discrete,
+    opacity .2s;
 
   &[open] {
     opacity: 1;
-    transition: opacity 0.8s;
+    transition: opacity .8s;
 
     @starting-style {
       opacity: 0;
