@@ -9,6 +9,7 @@ export const useFetchItemsStore = defineStore('fetchItemsStore', () => {
    const fetchFavoritesStore = useFetchFavoritesStore()
 
    const items = ref([])
+   const loader = ref(false)
 
    const filters = reactive({
       sortBy: 'title',
@@ -25,6 +26,7 @@ export const useFetchItemsStore = defineStore('fetchItemsStore', () => {
           params.title = `*${filters.searchQuery}*`
         }
 
+         loader.value = true
          const { data } = await axios.get(`${url}`, { params })
         items.value = data.map((obj) => ({
            ...obj,
@@ -32,6 +34,7 @@ export const useFetchItemsStore = defineStore('fetchItemsStore', () => {
            isAdded: false,
            favoriteId: null
         }))
+        loader.value = false
       } catch (err) {
         console.debug(err)
        }
@@ -47,6 +50,7 @@ export const useFetchItemsStore = defineStore('fetchItemsStore', () => {
    return {
       items,
       filters,
+      loader,
       fetchItems
    }
 })

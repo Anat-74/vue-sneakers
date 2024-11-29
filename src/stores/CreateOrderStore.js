@@ -6,6 +6,7 @@ import { useFetchItemsStore } from '@/stores/FetchItemsStore'
 const url = 'https://f1472ab18bd3ee1f.mokky.dev/orders'
 
 const isCreating = ref(false)
+const loader = ref(false)
 
 export const useCreateOrderStore = defineStore('createOrderStore', () => {
    const fetchItemsStore = useFetchItemsStore()
@@ -24,8 +25,8 @@ export const useCreateOrderStore = defineStore('createOrderStore', () => {
          orderId.value = data.id
        } catch (err) {
          console.debug(err)
-       } finally {
-          isCreating.value = false
+      } finally {
+         isCreating.value = false
        }
    }
 

@@ -14,6 +14,7 @@ const fetchItemsStore = useFetchItemsStore()
 const addToFavoriteStore = useAddToFavoriteStore()
 
 const message = ref('')
+import ULoader from '@/components/ULoader.vue'
 </script>
 
 <template>
@@ -37,6 +38,7 @@ const message = ref('')
         />
       </form>
     </div>
+    <ULoader v-if="fetchItemsStore.loader" />
 
     <UCardList
       :items="fetchItemsStore.items"
