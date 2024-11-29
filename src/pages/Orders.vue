@@ -1,9 +1,14 @@
 <script setup>
+import { onMounted } from 'vue';
 import { usePageOrdersStore } from '@/stores/PageOrdersStore';
 import UOrderList from '@/components/UOrderList.vue';
 import ULoader from '@/components/ULoader.vue'
 
 const pageOrdersStore = usePageOrdersStore()
+
+onMounted(async () => {
+      await pageOrdersStore.fetchOrders()
+   })
 </script>
 
 <template>

@@ -1,9 +1,14 @@
 <script setup>
+import { onMounted } from 'vue';
 import { usePageFavoritesStore } from '@/stores/PageFavoritesStore';
 import UCardList from '@/components/UCardList.vue';
 import ULoader from '@/components/ULoader.vue'
 
 const pageFavoritesStore = usePageFavoritesStore()
+
+onMounted(async() => {
+      await pageFavoritesStore.pageFavorites()
+})
 </script>
 
 <template>

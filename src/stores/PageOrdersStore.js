@@ -1,4 +1,4 @@
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
@@ -19,10 +19,6 @@ export const usePageOrdersStore = defineStore('pageOrdersStore', () => {
          console.debug(err)
       }
    }
-
-   onMounted(async () => {
-      await fetchOrders()
-   })
 
    return {
       fetchOrders,

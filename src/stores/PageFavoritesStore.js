@@ -1,4 +1,4 @@
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
@@ -20,10 +20,6 @@ export const usePageFavoritesStore = defineStore('pageFavoritesStore', () => {
          console.debug(err)
       }
    }
-
-   onMounted(async() => {
-      await pageFavorites()
-   })
 
    return {
       pageFavorites,
