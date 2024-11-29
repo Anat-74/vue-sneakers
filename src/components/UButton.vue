@@ -236,9 +236,9 @@
    &_favorite {
    padding: toRem(6);
    border-radius: toRem(8);
-   opacity: .4;
+   opacity: .6;
    color: var(--grey-color);
-   box-shadow: 0px toEm(1, 15) toEm(1, 15) toRem(2) hsla(0, 0%, 0%, 0.035);
+   box-shadow: 0px toEm(1, 15) toEm(1, 15) toRem(2) hsla(0, 0%, 0%, 0.07);
 
     span {
       display: flex;
@@ -266,7 +266,7 @@
    position: relative;
    opacity: .4;
    border-radius: toRem(8);
-   box-shadow: 0px toEm(1, 15) toEm(1, 15) toRem(2) hsla(0, 0%, 0%, 0.040);
+   box-shadow: 0px toEm(1, 15) toEm(1, 15) toRem(2) hsla(0, 0%, 0%, 0.09);
 
        &::before,
       &::after{

@@ -1,14 +1,15 @@
 <script setup>
 import { onMounted } from 'vue';
 import { usePageOrdersStore } from '@/stores/PageOrdersStore';
-import UOrderList from '@/components/UOrderList.vue';
 import ULoader from '@/components/ULoader.vue'
 
 const pageOrdersStore = usePageOrdersStore()
 
 onMounted(async () => {
-      await pageOrdersStore.fetchOrders()
-   })
+   await pageOrdersStore.fetchOrders()
+})
+
+import UCardList from '@/components/UCardList.vue'
 </script>
 
 <template>
@@ -18,10 +19,10 @@ onMounted(async () => {
          </router-link>
       <h2 class="orders__title">Мои заказы</h2>
       <ULoader v-if="pageOrdersStore.loader" />
-   <UOrderList 
+   <UCardList 
       v-if="pageOrdersStore.orders.length"
-      :orders="pageOrdersStore.orders"
-      is-orders
+      :items="pageOrdersStore.orders"
+      is-favorites
       />
       <div v-else
       class="orders__no-orders">
