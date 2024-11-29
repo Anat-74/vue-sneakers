@@ -1,48 +1,50 @@
 <template>
-   <div class="lds-facebook">
-     <div></div>
-     <div></div>
-     <div></div>
+   <div class="loader">
+     <span></span>
+     <span></span>
+     <span></span>
    </div>
  </template>
  
- <style scoped>
- .lds-facebook {
+ <style lang="scss" scoped>
+ .loader {
    display: block;
    margin: auto;
    position: relative;
-   width: 80px;
-   height: 80px;
- }
- .lds-facebook div {
+   width: toRem(80);
+   height: toRem(80);
+
+   span {
    display: inline-block;
    position: absolute;
    left: 8px;
    width: 16px;
    background: #cef;
-   animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
- }
- .lds-facebook div:nth-child(1) {
-   left: 8px;
-   animation-delay: -0.24s;
- }
- .lds-facebook div:nth-child(2) {
-   left: 32px;
-   animation-delay: -0.12s;
- }
- .lds-facebook div:nth-child(3) {
-   left: 56px;
+   animation: loader-animate 1.2s cubic-bezier(0, .5, .5, 1) infinite;
+   }
+   span:nth-child(1) {
+   left: toRem(8);
+   animation-delay: -.24s;
+   }
+ span:nth-child(2) {
+   left: toRem(32);
+   animation-delay: -.12s;
+   }
+ span:nth-child(3) {
+   left: toRem(56);
    animation-delay: 0;
+   }
  }
- @keyframes lds-facebook {
+
+ @keyframes loader-animate {
    0% {
-     top: 8px;
-     height: 64px;
+     top: toRem(8);
+     height: toRem(64);
    }
    50%,
    100% {
-     top: 24px;
-     height: 32px;
+     top: toRem(24);
+     height: toRem(32);
    }
  }
  </style>
