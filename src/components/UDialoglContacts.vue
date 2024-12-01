@@ -1,13 +1,13 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted,  useTemplateRef } from 'vue'
 import { useCloseDialogElement } from '@/composables/CloseDialogElement'
 
 import UButton from '@/components/UButton.vue'
 import Footer from '@/components/Layout/Footer.vue'
 
+const dialogElement = useTemplateRef('dialog-contacts')
 onMounted(() => {
-  const dialogElement = document.querySelector('.dialog-contacts')
-  useCloseDialogElement(dialogElement)
+  useCloseDialogElement(dialogElement.value)
 })
 </script>
 
@@ -16,7 +16,11 @@ onMounted(() => {
     <span></span>
     <span class="visually-hidden">Open navigation menu</span>
   </UButton>
-  <dialog id="dialogContacts" aria-label="Контакты" class="dialog-contacts">
+  <dialog 
+  ref="dialog-contacts"
+  id="dialogContacts" 
+  aria-label="Контакты" 
+  class="dialog-contacts">
     <div class="dialog-contacts__items">
       <form method="dialog">
         <UButton close="close" type="submit" class="dialog-contacts__btn-close" />

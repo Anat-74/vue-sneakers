@@ -12,6 +12,7 @@ import Footer from '@/components/Layout/Footer.vue'
 import USocial from '@/components/USocial.vue'
 import UButton from '@/components/UButton.vue'
 import UTheme from '@/components/UTheme.vue'
+import UScrollTop from '@/components/UScrollTop.vue'
 
 const { darkMode, toggleDarkMode } = useDarkMode()
 const fetchItemsStore = useFetchItemsStore()
@@ -98,6 +99,7 @@ provide('cart', {
       :vat-price="vatPrice" 
       />
     </div>
+    <UScrollTop class="app__scroll-button"/>
   </div>
 </template>
 
@@ -115,7 +117,7 @@ provide('cart', {
 
 .app {
   //*min-width: $tablet start-----------------------------------------------------------------------------------------------------------------
-  @media (min-width: $tablet) {
+ @media (min-width: $tablet) {
     display: grid;
     grid-template-columns: auto 1fr;
 
@@ -261,6 +263,13 @@ provide('cart', {
   }
 
   &__footer {
+  }
+
+  &__scroll-button {
+   display: none;
+   position: fixed;
+   bottom: toRem(80);
+   right: 0;
   }
 }
 </style>

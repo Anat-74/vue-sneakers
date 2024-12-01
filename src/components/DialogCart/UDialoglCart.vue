@@ -1,28 +1,68 @@
 <script setup>
-import { onMounted } from 'vue'
+// import { onMounted } from 'vue'
+import { ref, watch, computed, inject,onMounted, useTemplateRef } from 'vue'
 import { useCloseDialogElement } from '@/composables/CloseDialogElement'
-import { useCreateOrderStore } from '@/stores/CreateOrderStore'
-
+// import { useCreateOrderStore } from '@/stores/CreateOrderStore'
+import axios from 'axios'
+import { useFetchItemsStore } from '@/stores/FetchItemsStore'
 import UInfoBlock from './UInfoBlock.vue'
 import UCartItemList from './UCartItemList.vue'
 import UButton from '@/components/UButton.vue'
 
-defineProps({
+const props = defineProps({
   totalPrice: Number,
   vatPrice: Number
 })
 
-const createOrderStore = useCreateOrderStore()
+// const createOrderStore = useCreateOrderStore()
+const { cartItems } = inject('cart')
 
+const dialogElement = useTemplateRef('dialog-cart')
 onMounted(() => {
-  const dialogElement = document.querySelector('.dialog-cart')
-  useCloseDialogElement(dialogElement)
+  useCloseDialogElement(dialogElement.value)
 })
+
+const fetchItemsStore = useFetchItemsStore()
+
+const url = 'https://f1472ab18bd3ee1f.mokky.dev/orders'
+
+const isCreating = ref(false)
+const orderId = ref(null)
+   
+   const createOrder = async () => {
+      try {
+         isCreating.value = true
+         const { data } = await axios.post(`${url}`, {
+           items: cartItems.value,
+           totalPrice: props.totalPrice
+         })
+         cartItems.value = []
+         orderId.value = data.id
+       } catch (err) {
+         console.debug(err)
+      } finally {
+         isCreating.value = false
+       }
+   }
+
+   const buttonDisabled = computed(
+      () => isCreating.value || cartItems.value.length === 0)
+
+   watch(cartItems,
+      () => { if (buttonDisabled.value) {
+         fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
+            ...item,
+            isAdded: false
+            }))
+         }
+      }
+   )
 </script>
 
 <template>
   <dialog
-    @click="createOrderStore.orderId = false"
+    @click="orderId = false"
+    ref="dialog-cart"
     id="cartDialog"
     aria-labelledby="cartDialog-name"
     class="dialog-cart"
@@ -31,7 +71,7 @@ onMounted(() => {
       <form class="dialog-cart__form" method="dialog">
         <h2 class="dialog-cart__title" id="cartDialog-name">Корзина</h2>
         <UButton
-          @click="createOrderStore.orderId = false"
+          @click="orderId = false"
           close="close"
           type="submit"
           class="dialog-cart__btn-close"
@@ -39,16 +79,16 @@ onMounted(() => {
       </form>
 
       <UInfoBlock
-        v-if="!totalPrice && !createOrderStore.orderId"
+        v-if="!totalPrice && !orderId"
         image-url="/image/package-icon.avif"
         title="Корзина пустая"
         description="Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."
       />
       <UInfoBlock
-        v-if="createOrderStore.orderId"
+        v-if="orderId"
         image-url="/image/order-success-icon.avif"
         title="Заказ оформлен!"
-        :description="`Ваш заказ #${createOrderStore.orderId} скоро будет передан курьерской доставке`"
+        :description="`Ваш заказ #${orderId} скоро будет передан курьерской доставке`"
       />
 
       <UCartItemList v-if="totalPrice" class="dialog-cart__item-list" />
@@ -58,10 +98,10 @@ onMounted(() => {
         <h3 class="bottom__subtitle">Налог 5%:</h3>
         <span class="bottom__price">{{ vatPrice }} руб. </span>
         <UButton
-          @click="createOrderStore.createOrder()"
+          @click="createOrder()"
           label="Оформить заказ"
           size="large"
-          :disabled="createOrderStore.buttonDisabled"
+          :disabled="buttonDisabled"
           class="bottom__btn"
         />
       </div>
