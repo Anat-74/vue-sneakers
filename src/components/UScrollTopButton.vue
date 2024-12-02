@@ -27,15 +27,26 @@ function topFunction() {
 <template>
       <button
       ref="scroll-button"
-      title="Вернуться наверх">
-      Наверх
+      title="Вернуться наверх"
+      >
+      <font-awesome-icon icon="fa-chevron-right" />
    </button>
 </template>
 
 <style lang="scss" scoped>
-
 button {
-   background-color: green !important;
+   width: toRem(32);
+   height: toRem(28);
+   border-radius: toRem(6);
+   background-color: var(--lime-color) !important;
+   opacity: .3;
 
+   svg {
+   width: toRem(12);
+   height: toRem(28);
+   transform: rotate(-90deg);
+   color: var(--white-color);
+   background-color: transparent;
+   }
 }
 </style>

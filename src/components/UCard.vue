@@ -187,7 +187,7 @@ const isWatched = ref(false)
       0% {
          opacity: 0;
          filter: brightness(2);
-         scale: .2;
+         scale: .5;
       }
    }
 </style>

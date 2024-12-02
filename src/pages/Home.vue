@@ -102,7 +102,7 @@ const message = ref('')
 
   &__card-list {
    @media (max-width:$tablet){
-      @include adaptiveValue("padding-block-end", 109, 94);
+      padding-block-end: toRem(108);
    }
   }
 }

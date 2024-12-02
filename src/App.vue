@@ -1,7 +1,6 @@
 <script setup>
-import { computed, provide, ref, watch, onMounted } from 'vue'
+import { provide, ref } from 'vue'
 import { useFetchItemsStore } from '@/stores/FetchItemsStore'
-import { useCartStore } from '@/stores/CartStore'
 import { useDarkMode } from '@/composables/DarkModeTheme'
 
 import Header from '@/components/Layout/Header.vue'
@@ -17,7 +16,6 @@ import UScrollToTopButton from '@/components/UScrollTopButton.vue'
 
 const { darkMode, toggleDarkMode } = useDarkMode()
 const fetchItemsStore = useFetchItemsStore()
-const cartStore = useCartStore()
 
 const isOpenMenu = ref(false)
 const toggleMenu = () => {
@@ -27,37 +25,8 @@ provide('toggle', {
   isOpenMenu,
   toggleMenu
 })
-
-/* Корзина */
-// const cartItems = ref([])
-
-// const totalPrice = computed(() => cartItems.value.reduce((acc, item) => acc + item.price, 0))
-
-// const vatPrice = computed(() => Math.round((totalPrice.value * 5) / 100))
-
-// onMounted(async() => {
-//    const localCartItems = localStorage.getItem('cartItems')
-//    cartStore.cartItems = localCartItems ? JSON.parse(localCartItems) : []
-//    await fetchItemsStore.fetchItems()
-//       fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
-//     ...item,
-//          isAdded: cartStore.cartItems.some((cartItem) => cartItem.id === item.id)
-//   }))
-// })
-
-// watch(cartStore.cartItems,
-//      async () => {
-//          localStorage.setItem('cartItems', JSON.stringify(cartStore.cartItems))
-//    },
-//   { deep: true }
-// )
-
-// provide('cart', {
-//   cartItems,
-//   totalPrice
-// })
-/* Корзина */
 </script>
+
 <template>
   <div :data-theme="darkMode" class="app">
     <div class="app__sidebar">
@@ -98,7 +67,9 @@ provide('toggle', {
       <UDialogSearch />
       <UDialogCart />
     </div>
-    <UScrollToTopButton class="app__scroll-button"/>
+    <UScrollToTopButton 
+    :class="['app__scroll-button', { close: isOpenMenu }]"
+   />
   </div>
 </template>
 
@@ -267,8 +238,13 @@ provide('toggle', {
   &__scroll-button {
    display: none;
    position: fixed;
-   bottom: toRem(80);
-   right: 0;
+   z-index: 99;
+   right: toRem(38);
+   bottom: toRem(74);
+
+   &.close {
+      display: none !important;
+   }
   }
 }
 </style>
