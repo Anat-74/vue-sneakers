@@ -33,8 +33,6 @@ const message = ref('')
     </form>
     <form method="dialog">
       <UButton
-      label="" 
-      color="" 
       close="close"
       type="submit" 
       class="dialog-search__btn-close"

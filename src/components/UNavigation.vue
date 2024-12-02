@@ -1,7 +1,8 @@
 <script setup>
-import { inject } from 'vue';
+import { useCartStore } from '@/stores/CartStore'
 import UButton from '@/components/UButton.vue'
-const { totalPrice } = inject('cart')
+
+const cartStore = useCartStore()
 
 </script>
 
@@ -10,12 +11,12 @@ const { totalPrice } = inject('cart')
       <slot name="search"></slot>
       <UButton
       onclick="window.cartDialog.showModal()" 
-      :totalPrice="totalPrice"
+      :totalPrice="cartStore.totalPrice"
       icon="opencart"
       class="menu__cart" 
       >
-      <span class="menu__price">{{ totalPrice }} <font-awesome-icon icon="fa-solid fa-ruble-sign" /></span>
-         </UButton>
+         <span class="menu__price">{{ cartStore.totalPrice }} <font-awesome-icon icon="fa-solid fa-ruble-sign" /></span>
+      </UButton>
 
          <slot name="social"></slot>
 

@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useFetchItemsStore } from '@/stores/FetchItemsStore'
 import { useAddToFavoriteStore } from '@/stores/AddToFavoriteStore'
-import { useOnClickAddOrRemove } from '@/composables/OnClickAddOrRemove'
+import { useCartStore } from '@/stores/CartStore'
 
 import UCardList from '@/components/UCardList.vue'
 import UInput from '@/components/UInput.vue'
@@ -10,9 +10,9 @@ import USelect from '@/components/USelect.vue'
 import UBrands from '@/components/UBrands.vue'
 import ULoader from '@/components/ULoader.vue'
 
-const { onClickAddOrRemove } = useOnClickAddOrRemove()
 const fetchItemsStore = useFetchItemsStore()
 const addToFavoriteStore = useAddToFavoriteStore()
+const cartStore = useCartStore()
 
 const message = ref('')
 </script>
@@ -42,7 +42,7 @@ const message = ref('')
     <UCardList
       :items="fetchItemsStore.items"
       @add-to-favorite="addToFavoriteStore.addToFavorite"
-      @add-to-cart="onClickAddOrRemove"
+      @add-to-cart="cartStore.onClickAddOrRemove"
       class="home__card-list"
     />
   </section>

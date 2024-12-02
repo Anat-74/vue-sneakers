@@ -1,67 +1,27 @@
 <script setup>
-// import { onMounted } from 'vue'
-import { ref, watch, computed, inject,onMounted, useTemplateRef } from 'vue'
+import { onMounted, useTemplateRef } from 'vue'
+
 import { useCloseDialogElement } from '@/composables/CloseDialogElement'
-// import { useCreateOrderStore } from '@/stores/CreateOrderStore'
-import axios from 'axios'
-import { useFetchItemsStore } from '@/stores/FetchItemsStore'
+import { useCreateOrderStore } from '@/stores/CreateOrderStore'
+import { useCartStore } from '@/stores/CartStore'
+
 import UInfoBlock from './UInfoBlock.vue'
 import UCartItemList from './UCartItemList.vue'
 import UButton from '@/components/UButton.vue'
 
-const props = defineProps({
-  totalPrice: Number,
-  vatPrice: Number
-})
-
-// const createOrderStore = useCreateOrderStore()
-const { cartItems } = inject('cart')
+const createOrderStore = useCreateOrderStore()
+const cartStore = useCartStore()
 
 const dialogElement = useTemplateRef('dialog-cart')
+
 onMounted(() => {
   useCloseDialogElement(dialogElement.value)
 })
-
-const fetchItemsStore = useFetchItemsStore()
-
-const url = 'https://f1472ab18bd3ee1f.mokky.dev/orders'
-
-const isCreating = ref(false)
-const orderId = ref(null)
-   
-   const createOrder = async () => {
-      try {
-         isCreating.value = true
-         const { data } = await axios.post(`${url}`, {
-           items: cartItems.value,
-           totalPrice: props.totalPrice
-         })
-         cartItems.value = []
-         orderId.value = data.id
-       } catch (err) {
-         console.debug(err)
-      } finally {
-         isCreating.value = false
-       }
-   }
-
-   const buttonDisabled = computed(
-      () => isCreating.value || cartItems.value.length === 0)
-
-   watch(cartItems,
-      () => { if (buttonDisabled.value) {
-         fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
-            ...item,
-            isAdded: false
-            }))
-         }
-      }
-   )
 </script>
 
 <template>
   <dialog
-    @click="orderId = false"
+    @click="createOrderStore.orderId = false"
     ref="dialog-cart"
     id="cartDialog"
     aria-labelledby="cartDialog-name"
@@ -71,7 +31,7 @@ const orderId = ref(null)
       <form class="dialog-cart__form" method="dialog">
         <h2 class="dialog-cart__title" id="cartDialog-name">Корзина</h2>
         <UButton
-          @click="orderId = false"
+          @click="createOrderStore.orderId = false"
           close="close"
           type="submit"
           class="dialog-cart__btn-close"
@@ -79,29 +39,29 @@ const orderId = ref(null)
       </form>
 
       <UInfoBlock
-        v-if="!totalPrice && !orderId"
+        v-if="!cartStore.totalPrice && !createOrderStore.orderId"
         image-url="/image/package-icon.avif"
         title="Корзина пустая"
         description="Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."
       />
       <UInfoBlock
-        v-if="orderId"
+        v-if="createOrderStore.orderId"
         image-url="/image/order-success-icon.avif"
         title="Заказ оформлен!"
-        :description="`Ваш заказ #${orderId} скоро будет передан курьерской доставке`"
+        :description="`Ваш заказ #${createOrderStore.orderId} скоро будет передан курьерской доставке`"
       />
 
-      <UCartItemList v-if="totalPrice" class="dialog-cart__item-list" />
-      <div v-if="totalPrice" class="dialog-cart__bottom">
+      <UCartItemList v-if="cartStore.totalPrice" class="dialog-cart__item-list" />
+      <div v-if="cartStore.totalPrice" class="dialog-cart__bottom">
         <h3 class="bottom__subtitle">Итого:</h3>
-        <span class="bottom__price">{{ totalPrice }} руб.</span>
+        <span class="bottom__price">{{ cartStore.totalPrice }} руб.</span>
         <h3 class="bottom__subtitle">Налог 5%:</h3>
-        <span class="bottom__price">{{ vatPrice }} руб. </span>
+        <span class="bottom__price">{{ cartStore.vatPrice }} руб. </span>
         <UButton
-          @click="createOrder()"
+          @click="createOrderStore.createOrder"
           label="Оформить заказ"
           size="large"
-          :disabled="buttonDisabled"
+          :disabled="createOrderStore.buttonDisabled"
           class="bottom__btn"
         />
       </div>

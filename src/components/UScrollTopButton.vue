@@ -27,7 +27,6 @@ function topFunction() {
 <template>
       <button
       ref="scroll-button"
-      id="myBtn" 
       title="Вернуться наверх">
       Наверх
    </button>
