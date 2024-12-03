@@ -28,13 +28,15 @@ function topFunction() {
       <button
       ref="scroll-button"
       title="Вернуться наверх"
+      type="button"
+      class="scroll-btn"
       >
       <font-awesome-icon icon="fa-chevron-right" />
    </button>
 </template>
 
 <style lang="scss" scoped>
-button {
+.scroll-btn {
    width: toRem(32);
    height: toRem(28);
    border-radius: toRem(6);

@@ -422,7 +422,7 @@
   .fa-angles-left {
       @media (max-width:$tablet){
          transform: rotate(180deg);
-         color: var(--danger-color) !important;
+         color: var(--blue-color) !important;
          border-radius: 50%;
       }
   }
