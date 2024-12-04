@@ -17,6 +17,7 @@ import { faTelegram, faViber, faInstagram, faVk, faOpencart } from '@fortawesome
 library.add([ faMagnifyingGlass, faTelegram, faViber, faInstagram, faVk, faHouse,  faHeart, faUser, faAnglesLeft, faCartShopping, faOpencart, faRubleSign, faHeart, faChevronRight, faArrowLeft ])
 
 const pinia = createPinia()
+
 const app = createApp(App, {
    setup() {
       const {t, rt, tm} = useI18n()

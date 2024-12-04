@@ -22,10 +22,14 @@ const switchLang = () => {
    <UAnimateTitle class="sidebar__animate-title" />
    <slot />
    <UAccordion class="sidebar__accordion" />
-   <button
-         @click="switchLang"
-         >{{ $t('switchLang') }}</button>
+   <UButton 
+      @click="switchLang"
+      switchLang="switchLang"
+      class="sidebar__switch-lang"
+      >{{ $t('switchLang') }}
+   </UButton>
    </aside>
+
    <UButton
       @click="toggleMenu" 
       :isOpenMenu="isOpenMenu"
@@ -77,6 +81,10 @@ const switchLang = () => {
 
       &__accordion {
          align-self: center;
+   }
+
+   &__switch-lang {
+      justify-self: center;
    }
 }
 
