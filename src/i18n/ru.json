@@ -1,31 +1,31 @@
 {
       "switchLang": "Переключить язык",
 
-      "accordion": [
+      "accordionSidebar": [
          {
             "title": "Мужские",
-            "subTitle": [
+            "links": [
                {"name": "Взрослые", "path": "/sneakers-man"},
               { "name": "Подростковые", "path": "/sneakers-children"}
               ]
          },
          {
             "title": "Женские",
-            "subTitle": [
+            "links": [
                {"name": "Взрослые", "path": "/sneakers-wooman"},
               { "name": "Подростковые", "path": "/sneakers-children-wooman"}
               ]
          },
          {
             "title": "Асессуары",
-            "subTitle": [
+            "links": [
                {"name": "Шнурки", "path": "/laces-accessories"},
               { "name": "Стельки", "path": "/insoles-accessories"}
               ]
          },
          {
             "title": "Уход",
-            "subTitle": [
+            "links": [
                {"name": "Крем / Спрей", "path": "/Cream"}
               ]
          }

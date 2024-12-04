@@ -2,7 +2,7 @@
 import { inject } from 'vue';
 import { useI18n } from 'vue-i18n'
 
-const {rt, tm, t, locale } = useI18n({
+const {rt, tm } = useI18n({
    useScope: 'global'
 })
 
@@ -12,8 +12,8 @@ const { isOpenMenu } = inject('toggle')
 <template>
    <ul >
          <template
-            v-for="accord in tm('accordion')"
-            :key="accord.title"
+            v-for="accordion in tm('accordionSidebar')"
+            :key="accordion.title"
          >
          <li class="accordion">
          <details 
@@ -22,7 +22,7 @@ const { isOpenMenu } = inject('toggle')
          >
            <summary 
            class="accordion__summary"> 
-           {{ rt(accord.title) }}
+           {{ rt(accordion.title) }}
            <font-awesome-icon icon="fa-chevron-right" />
          </summary> 
          </details>
@@ -32,10 +32,10 @@ const { isOpenMenu } = inject('toggle')
             <router-link
                class="accordion__link"
                @click="isOpenMenu = false"
-               v-for="sub in accord.subTitle"
-               :key="sub.name"
-               :to="sub.path"
-            >{{ rt(sub.name) }}
+               v-for="link in accordion.links"
+               :key="link.name"
+               :to="link.path"
+            >{{ rt(link.name) }}
             </router-link>
                   </div>
                </div>

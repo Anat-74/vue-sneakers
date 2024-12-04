@@ -1,31 +1,31 @@
 {
    "switchLang": "Пераключыць мову",
-   
-   "accordion": [
+
+   "accordionSidebar": [
       {
          "title": "Мужчынскія",
-         "subTitle": [
+         "links": [
             {"name": "Дарослыя", "path": "/sneakers-man"},
            { "name": "Падлеткавыя", "path": "/sneakers-children"}
            ]
       },
       {
          "title": "Жаночыя",
-         "subTitle": [
+         "links": [
             {"name": "Дарослыя", "path": "/sneakers-wooman"},
            { "name": "Падлеткавыя", "path": "/sneakers-children-wooman"}
            ]
       },
       {
          "title": "Аксэсуары",
-         "subTitle": [
+         "links": [
             {"name": "Шнурки", "path": "/laces-accessories"},
            { "name": "Вусцілкі", "path": "/insoles-accessories"}
            ]
       },
       {
          "title": "Догляд",
-         "subTitle": [
+         "links": [
             {"name": "Крэм / Спрэй", "path": "/Cream"}
            ]
       }

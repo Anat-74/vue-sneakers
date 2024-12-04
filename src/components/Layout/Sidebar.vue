@@ -7,7 +7,7 @@ import UAccordion from '@/components/Accordion/UAccordion.vue';
 import UAnimateTitle from '@/components/UAnimateTitle.vue';
 const { isOpenMenu, toggleMenu } = inject('toggle')
 
-const {rt, tm, t, locale } = useI18n({
+const { locale } = useI18n({
    useScope: 'global'
 })
 
