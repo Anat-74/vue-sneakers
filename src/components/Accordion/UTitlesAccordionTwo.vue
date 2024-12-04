@@ -1,10 +1,48 @@
 <script setup>
+import { inject } from 'vue';
+import UButton from '@/components/UButton.vue';
+const { isOpenMenu } = inject('toggle')
 
+defineProps({
+   id: {
+      type: Number,
+      required: true
+    },
+    title: {
+       type: String,
+      required: true
+    },
+    subTitle: {
+       type: Object,
+       required: true
+    },
+    isOpen: {
+       type: Boolean,
+       required: true
+    }
+})
+
+const emit = defineEmits(['toggleSubTitle'])
+const handleClick = (id) => emit('toggleSubTitle', id)
 </script>
 
 <template>
     <li class="titles">
-
+       <UButton
+          @click="handleClick(id)"
+          :is-open="isOpen"
+          icon="chevron-right"
+          :class="['titles__title', {titles__title_open: isOpen}]"
+          >{{title}}
+       </UButton>
+          <router-link 
+            @click="isOpenMenu = false"
+             v-for="sub of subTitle"
+             :key="sub.name"
+             :to="sub.path"
+             :class="['titles__subtitle', {titles__subtitle_open: isOpen}]"
+             >{{ sub.name }}
+       </router-link>
    </li>
 </template>
 

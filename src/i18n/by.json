@@ -1,16 +1,34 @@
 {
-   "title": "Мужчынскія Красоўкі",
-   "titles": [
-      "Мужчынскія", "Жаночыя", "Аксэсуары", "Догляд"
-   ],
-   "subtitles": [
-      "Дарослыя", "Падлеткавыя", "Шнуркі", "Вусцілкі", "Крэм", "Спрэй"
-   ],
-   "buttons": {
-      "footer": [
-         "Пра нас", "Нашы паслугі", "Навіны", "Кантакты"
-      ],
-      "dialogBtn": "Аформіць замову"
-   },
-   "switchLang": "Пераключыць мову"
-   }
+   "switchLang": "Пераключыць мову",
+   
+   "accordion": [
+      {
+         "title": "Мужчынскія",
+         "subTitle": [
+            {"name": "Дарослыя", "path": "/sneakers-man"},
+           { "name": "Падлеткавыя", "path": "/sneakers-children"}
+           ]
+      },
+      {
+         "title": "Жаночыя",
+         "subTitle": [
+            {"name": "Дарослыя", "path": "/sneakers-wooman"},
+           { "name": "Падлеткавыя", "path": "/sneakers-children-wooman"}
+           ]
+      },
+      {
+         "title": "Аксэсуары",
+         "subTitle": [
+            {"name": "Шнурки", "path": "/laces-accessories"},
+           { "name": "Вусцілкі", "path": "/insoles-accessories"}
+           ]
+      },
+      {
+         "title": "Догляд",
+         "subTitle": [
+            {"name": "Крэм / Спрэй", "path": "/Cream"}
+           ]
+      }
+   ]
+
+}

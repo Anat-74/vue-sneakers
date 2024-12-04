@@ -19,8 +19,8 @@ library.add([ faMagnifyingGlass, faTelegram, faViber, faInstagram, faVk, faHouse
 const pinia = createPinia()
 const app = createApp(App, {
    setup() {
-      const {t} = useI18n()
-      return {t}
+      const {t, rt, tm} = useI18n()
+      return {t, rt, tm}
    }
 });
 

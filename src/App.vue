@@ -16,7 +16,7 @@ import UButton from '@/components/UButton.vue'
 import UTheme from '@/components/UTheme.vue'
 import UScrollToTopButton from '@/components/UScrollTopButton.vue'
 
-const { locale } = useI18n({
+const {rt, tm, t, locale } = useI18n({
    useScope: 'global'
 })
 
@@ -36,6 +36,8 @@ const switchLang = () => {
    locale.value === 'ru' ? locale.value = 'by' : locale.value = 'ru'
    localStorage.setItem('lang', locale.value)
 }
+
+
 </script>
 
 <template>
@@ -53,7 +55,7 @@ const switchLang = () => {
          <button
          @click="switchLang"
          >{{ $t('switchLang') }}</button>
-         <div>{{ $t('title')}}</div>
+
             <RouterView />
       </main>
 

@@ -1,16 +1,33 @@
 {
-"title": "Мужские Кроссовки",
-"titles": [
-   "Мужские", "Женские", "Аксессуары", "Уход"
-],
-"subtitles": [
-   "Взрослые", "Подростковые", "Шнурки", "Стельки", "Крем", "Спрей"
-],
-"buttons": {
-   "footer": [
-      "О нас", "Наши услуги", "Новости", "Контакты"
-   ],
-   "dialogBtn": "Оформить заказ"
-},
-"switchLang": "Переключить язык"
-}
+      "switchLang": "Переключить язык",
+
+      "accordion": [
+         {
+            "title": "Мужские",
+            "subTitle": [
+               {"name": "Взрослые", "path": "/sneakers-man"},
+              { "name": "Подростковые", "path": "/sneakers-children"}
+              ]
+         },
+         {
+            "title": "Женские",
+            "subTitle": [
+               {"name": "Взрослые", "path": "/sneakers-wooman"},
+              { "name": "Подростковые", "path": "/sneakers-children-wooman"}
+              ]
+         },
+         {
+            "title": "Асессуары",
+            "subTitle": [
+               {"name": "Шнурки", "path": "/laces-accessories"},
+              { "name": "Стельки", "path": "/insoles-accessories"}
+              ]
+         },
+         {
+            "title": "Уход",
+            "subTitle": [
+               {"name": "Крем / Спрей", "path": "/Cream"}
+              ]
+         }
+      ]
+   }

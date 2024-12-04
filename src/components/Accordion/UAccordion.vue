@@ -1,64 +1,27 @@
 <script setup>
-import { ref } from 'vue';
 import UTitlesAccordion from './UTitlesAccordion.vue';
+import { useI18n } from 'vue-i18n'
 
-    const data = [
-       {
-            id: 1,
-            title: "Мужские",
-            isOpen: false,
-            subTitle: [
-             {name: 'Взрослые', path: '/sneakers-man' },
-            { name: 'Подростковые', path: '/sneakers-children' }
-            ]
-        },
-	         {
-            id: 2,
-            title: "Женские",
-            isOpen: false,
-            subTitle: [
-             {name: 'Взросл', path: '/sneakers-wooman' },
-             {name: 'Подростк', path: '/sneakers-children-wooman' }
-            ]
-        },
-        {
-            id: 3,
-           title: "Асессуары",
-           isOpen: false,
-           subTitle:[
-             {name: 'Шнурки', path: '/laces-accessories' },
-             {name: 'Стельки', path: '/insoles-accessories' }
-            ]
-       },
-       {
-          id: 4,
-          title: "Уход",
-          isOpen: false,
-          subTitle: [
-             {name: 'Крем / Спрей', path: '/Cream' }
-            ]
-        }
-  ]
+const {rt, tm, t, locale } = useI18n({
+   useScope: 'global'
+})
 
-const titles = ref((data))
-
-const toggleSubTitle = (id) => {
-   titles.value = titles.value.map(title => title.isOpen && title.id !== id ? {...title, isOpen: false} : title)
-   titles.value = titles.value.map(title => title.id === id ? {...title, isOpen: !title.isOpen} : title)
-}
 </script>
 
 <template>
    <ul>
-      <UTitlesAccordion 
-         v-for="title in titles"
-         :key="title.id"
-         :id="title.id"
-         :title="title.title"
-         :sub-title="title.subTitle"
-         :is-open="title.isOpen"
-         @toggle-sub-title="toggleSubTitle"
-         />
+      <template
+            v-for="accord in tm('accordion')"
+            :key="accord.title">
+           <h2> {{ rt(accord.title) }}</h2> 
+             
+            <router-link
+            v-for="sub in accord.subTitle"
+            :key="sub.name"
+            :to="sub.path"
+            >{{ rt(sub.name) }}
+            </router-link>
+         </template>
       </ul>
 </template>
 
