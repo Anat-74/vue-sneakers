@@ -1,6 +1,5 @@
 <script setup>
 import { provide, ref } from 'vue'
-import { useI18n } from 'vue-i18n'
 
 import { useFetchItemsStore } from '@/stores/FetchItemsStore'
 import { useDarkMode } from '@/composables/DarkModeTheme'
@@ -16,10 +15,6 @@ import UButton from '@/components/UButton.vue'
 import UTheme from '@/components/UTheme.vue'
 import UScrollToTopButton from '@/components/UScrollTopButton.vue'
 
-const {rt, tm, t, locale } = useI18n({
-   useScope: 'global'
-})
-
 const { darkMode, toggleDarkMode } = useDarkMode()
 const fetchItemsStore = useFetchItemsStore()
 
@@ -31,13 +26,6 @@ provide('toggle', {
   isOpenMenu,
   toggleMenu
 })
-
-const switchLang = () => {
-   locale.value === 'ru' ? locale.value = 'by' : locale.value = 'ru'
-   localStorage.setItem('lang', locale.value)
-}
-
-
 </script>
 
 <template>
@@ -52,11 +40,7 @@ const switchLang = () => {
     >
       <Header class="app__header" />
       <main class="app__main">
-         <button
-         @click="switchLang"
-         >{{ $t('switchLang') }}</button>
-
-            <RouterView />
+          <RouterView />
       </main>
 
       <UNavigation :class="['app__navigation', { app__navigation_isopen: isOpenMenu }]">

@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import { inject } from 'vue';
 import UButton from '@/components/UButton.vue';
 const { isOpenMenu } = inject('toggle')
@@ -24,14 +24,12 @@ defineProps({
 
 const emit = defineEmits(['toggleSubTitle'])
 const handleClick = (id) => emit('toggleSubTitle', id)
-</script>
+</script> -->
 
-<template>
+<!-- <template>
     <li class="titles">
-       <UButton
+      <UButton
           @click="handleClick(id)"
-          :is-open="isOpen"
-          icon="chevron-right"
           :class="['titles__title', {titles__title_open: isOpen}]"
           >{{title}}
        </UButton>
@@ -44,9 +42,9 @@ const handleClick = (id) => emit('toggleSubTitle', id)
              >{{ sub.name }}
        </router-link>
    </li>
-</template>
+</template> -->
 
-<style lang="scss" scoped>
+<!-- <style lang="scss" scoped>
    .titles {
       &__title {
          @include adaptiveValue("font-size", 20, 18);
@@ -67,7 +65,7 @@ const handleClick = (id) => emit('toggleSubTitle', id)
       }
 
       &__subtitle {
-         @include adaptiveValue("font-size", 18, 16);
+         @include adaptiveValue("font-size", 20, 18);
          height: 0;
          display: grid;
          align-items: center;
@@ -104,4 +102,4 @@ const handleClick = (id) => emit('toggleSubTitle', id)
       font-weight: 500;
    }
    }
-</style>
+</style> -->

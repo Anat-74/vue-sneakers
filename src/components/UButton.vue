@@ -67,11 +67,7 @@
     burger: {
          type: String,
          required: false
-    },
-    isOpen: {
-         type: Boolean,
-         required: false
-    },
+    }
  })
 
  const emit = defineEmits(['click'])
@@ -89,7 +85,6 @@
       'btn',
       { 'btn_burger': burger },
       { 'btn_toggle-menu': toggle }, { 'btn_is-open': isOpenMenu },
-      { 'btn_is-open-accordion': isOpen },
       { 'btn_icon': icon }, { 'btn_close': close },
       { 'btn_favorite': favorite }, { 'btn_is-favorite': isFavorite },
       { 'btn_add': add }, { 'btn_is-added': isAdded },
@@ -122,15 +117,6 @@
     cursor: default;
   }
 
-  &_is-open-accordion {
-   color: var(--danger-color) !important;
-   svg {
-      transition: transform .3s;
-      transform: rotate(90deg);
-   }
-
-  }
-
   &_icon {
    .svg-inline--fa {
    height: toRem(18);
@@ -152,11 +138,6 @@
   //-------------------------------------------------------------------------------------------
   .fa-magnifying-glass {
    color: var(--warning-hover);
-}
-
-.fa-chevron-right {
-   width: toRem(8);
-   transition: transform .3s;
 }
 
   }

@@ -49,26 +49,16 @@
          }
       }
 
-      .titles {
-         &__title {
-            color: rgb(245 245 245 / 0.8);
+      .accordion {
+         &__summary {
+            color: rgb(245 245 245 / .8);
          }
-         &__subtitle {
+         &__link {
             color: var(--grey-color);
             @media (max-width:$tablet){
                text-decoration: 1px underline  currentColor;
             }
          }
-
-         // @media (max-width:$tablet){
-         //    &__title {
-         //       color: var(--lime-color);
-         //    }
-         //    &__subtitle {
-         //       color: var(--warning-color);
-         //       text-decoration: 1px underline  var( --warning-color);
-         //    }
-         // }
       }   
     //*sidebar-end---------------------------------------------------------------------------------------------------------------
 
@@ -252,18 +242,18 @@
       --background-color: transparent;
       opacity: .7;
    }
-   .titles {
-      &__title {
+   .accordion {
+      &__summary {
          color: rgb(0 0 0 / .5);
       }
-      &__subtitle {
+      &__link {
          color: rgb(0 0 0 / .8);
       }
       @media (max-width:$tablet){
-         &__title {
+         &__summary {
             color: var(--lime-color);
          }
-         &__subtitle {
+         &__link {
             color: var(--lime-color);
             opacity: .9;
             text-decoration: 1px underline  currentColor;
