@@ -1,8 +1,5 @@
 {
-   "switchLang": {
-      "lang": "Беларусский",
-      "all": "Уся мова"
-      },
+   "switchLang": "Беларусский",
    "accordionSidebar": [
       {
          "title": "Мужчынскія",

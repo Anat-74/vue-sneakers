@@ -2,7 +2,9 @@
 import { inject } from 'vue';
 import { useI18n } from 'vue-i18n'
 
-const { rt, tm } = useI18n()
+const { rt, tm, } = useI18n({
+   useScope: 'global'
+})
 
 const { isOpenMenu } = inject('toggle')
 </script>

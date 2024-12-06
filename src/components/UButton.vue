@@ -67,10 +67,6 @@
     burger: {
          type: String,
          required: false
-    },
-    switchLang: {
-      type: String,
-      required: false
     }
  })
 
@@ -87,7 +83,7 @@
       :disabled="disabled"
       :class="[
       'btn',
-      { 'btn_burger': burger }, { 'btn_switch-lang': switchLang },
+      { 'btn_burger': burger },
       { 'btn_toggle-menu': toggle }, { 'btn_is-open': isOpenMenu },
       { 'btn_icon': icon }, { 'btn_close': close },
       { 'btn_favorite': favorite }, { 'btn_is-favorite': isFavorite },
@@ -179,14 +175,6 @@
 			top: calc(50% - toRem(1));
 		   }
       }
-  }
-
-  &_switch-lang {
-   padding-block: toRem(7);
-   padding-inline: toRem(9);
-   border-radius: toRem(9);
-   background-color: var(--tab-hover);
-   color: var(--white-color);
   }
 
    &_close {
