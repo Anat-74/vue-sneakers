@@ -35,7 +35,7 @@ const { locale } = useI18n({
       pointer-events: none;
       position: absolute;
       top: toRem(11);
-      width: toRem(7);
+      width: toRem(6);
       height: toRem(2);
       background-color: var(--tab-hover);
    }

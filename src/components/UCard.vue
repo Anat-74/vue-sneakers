@@ -52,7 +52,7 @@ const isWatched = ref(false)
       class="card__slider" 
       >
       <img 
-         v-for="image of imageUrl"
+         v-for="image in imageUrl"
          :key="image"
          :src="image" 
          :alt="title"
@@ -62,7 +62,7 @@ const isWatched = ref(false)
       >
       </div>
          <span :class="['card__line', {card__line_watched: isWatched}]"></span>
-         <h2 class="card__title">{{title}}</h2>
+         <h2 class="card__title">{{ $t('cardTitle') }} {{title}}</h2>
          <h3 class="card__subtitle">Цена:</h3>
          <span class="card__price">{{price}}</span>
       

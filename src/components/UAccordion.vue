@@ -70,11 +70,11 @@ const { isOpenMenu } = inject('toggle')
       }
 
       &__summary {
-         @include adaptiveValue("font-size", 22, 20);
+         @include adaptiveValue("font-size", 22, 18);
          display: flex;
          align-items: center;
          justify-content: space-between;
-         padding-block: toEm(7, 22);
+         padding-block: toEm(6, 22);
          font-weight: 500;
          cursor: pointer;
 
@@ -101,11 +101,11 @@ const { isOpenMenu } = inject('toggle')
       }
 
       &__link {
-         @include adaptiveValue("font-size", 20, 18);
+         @include adaptiveValue("font-size", 20, 16);
          display: grid;
          align-items: center;
          padding-inline: toEm(4, 20);
-         margin-block-end: toEm(2, 20);
+         margin-block-end: toEm(4, 20);
 
          @media (min-width:$tablet){
             border: 1px solid var(--grey-color);

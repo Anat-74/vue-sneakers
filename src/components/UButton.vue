@@ -415,7 +415,7 @@
    white-space: nowrap;
    border-radius: toRem(8);
    border: 1px solid var(--transparent-color);
-   background-color: var(--tab-color);
+   background-color: var(--tab-hover);
 
    span {
       color: var(--white-color);
@@ -424,7 +424,7 @@
 
     @media (any-hover: hover) {
          &:hover {
-          background-color: var(--tab-hover);
+          background-color: var(--tab-color);
         }
       }
    }

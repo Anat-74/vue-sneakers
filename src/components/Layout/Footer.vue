@@ -1,6 +1,6 @@
 <script setup>
-
-import UTabsParent from '@/components/UTabsParent.vue';
+import UTabs from '@/components/UTabs.vue'
+// import UTabsParent from '@/components/UTabsParent.vue';
 import USocial from '@/components/USocial.vue';
 </script>
 
@@ -8,7 +8,7 @@ import USocial from '@/components/USocial.vue';
    <footer class="footer">
       <div class="footer__items">
          <USocial class="footer__social" />
-            <UTabsParent class="footer__tabs" />
+            <UTabs class="footer__tabs" />
       </div>
    </footer>
 </template>

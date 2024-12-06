@@ -23,7 +23,11 @@ onMounted(() => {
   class="dialog-contacts">
     <div class="dialog-contacts__items">
       <form method="dialog">
-        <UButton close="close" type="submit" class="dialog-contacts__btn-close" />
+        <UButton 
+        close="close" 
+        type="submit" 
+        class="dialog-contacts__btn-close" 
+        />
       </form>
       <Footer class="dialog-contacts__footer" />
     </div>

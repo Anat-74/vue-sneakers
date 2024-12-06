@@ -2,7 +2,7 @@
 import { inject } from 'vue';
 
 import UButton from '@/components/UButton.vue'
-import UAccordion from '@/components/Accordion/UAccordion.vue';
+import UAccordion from '@/components/UAccordion.vue';
 
 import UAnimateTitle from '@/components/UAnimateTitle.vue';
 import ULocaleSelect from '@/components/ULocaleSelect.vue';

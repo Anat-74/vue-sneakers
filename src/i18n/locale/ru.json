@@ -1,5 +1,6 @@
 {
       "switchLang": "Русский",
+
       "accordionSidebar": [
          {
             "title": "Мужские",
@@ -28,5 +29,14 @@
                {"name": "Крем / Спрей", "path": "/Cream"}
               ]
          }
+      ],
+
+      "cardTitle": "Мужские Кроссовки",
+
+      "tabsFooter": [
+         {"name": "AboutUs", "label": "О нас"},
+         {"name": "Services", "label": "Наши услуги"},
+         {"name": "News",      "label": "Новости"},
+         {"name": "Contacts", "label": "Контакты"}
       ]
    }

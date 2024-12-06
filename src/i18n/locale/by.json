@@ -28,6 +28,15 @@
             {"name": "Крэм / Спрэй", "path": "/Cream"}
            ]
       }
+   ],
+
+   "cardTitle": "Мужчынскія Красоўкі",
+
+   "tabsFooter": [
+      {"name": "AboutUs", "label": "Пра нас"},
+      {"name": "Services", "label": "Нашы паслугі"},
+      {"name": "News",      "label": "Навіны"},
+      {"name": "Contacts", "label": "Кантакты"}
    ]
 
 }

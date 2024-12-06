@@ -1,21 +1,19 @@
 <script setup>
-import { ref } from 'vue'
-import UTabs from '@/components/UTabs.vue'
+// import { ref } from 'vue'
+// import UTabs from '@/components/UTabs.vue'
 
-const tabs = [
-{name: 'AboutUs', label: 'О нас'},
-{name: 'Services', label: 'Наши услуги'},
-{name: 'News', label: 'Новости'},
-{name: 'Contacts', label: 'Контакты'}
-]
-const selectedTab = ref('Contacts')
+// const tabs = [
+// {name: 'AboutUs', label: 'О нас'},
+// {name: 'Services', label: 'Наши услуги'},
+// {name: 'News', label: 'Новости'},
+// {name: 'Contacts', label: 'Контакты'}
+// ]
+// const selectedTab = ref('Contacts')
 
-const changeTab = (tabName) => {
-   selectedTab.value = tabName
-}
+
 </script>
 
-<template> 
+<!-- <template> 
    <UTabs
    :tabs="tabs"
    :selectedTab="selectedTab"
@@ -26,4 +24,4 @@ const changeTab = (tabName) => {
    <p v-if="selectedTab === 'News'">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex fugiat error commodi tempore facere. Amet minima neque error molestiae ex vero qui tenetur. Voluptatem nostrum ipsam nesciunt, dolorum in est fugit obcaecati illo.</p>
    <p v-if="selectedTab === 'Contacts'">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id neque, sapiente perferendis pariatur ex omnis voluptate. Nobis asperiores expedita facilis aspernatur quo inventore ex, veritatis officia dolor rerum!</p>
    </UTabs>
-</template>
+</template> -->
