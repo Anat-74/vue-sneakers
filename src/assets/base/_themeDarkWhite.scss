@@ -38,11 +38,10 @@
             --background-color: transparent;
          }
 
-         &__switch-lang {
-            background-color: var(--nav-color);
-            color: var(--whitesmoke-color);
+         &__locale {
+            --background-color: transparent;
          }
-      }
+   }
 
       .animate-items {
          --background-color: transparent;
@@ -65,14 +64,28 @@
             }
          }
       }   
+
+      .locale {
+         &__select {
+            border-color: var(--grey-color);
+            background-color: var(--nav-color);
+            color: var(--whitesmoke-color);
+         }
+      &::before,
+      &::after{
+      background-color: var(--whitesmoke-color);
+   }
+
+   }
     //*sidebar-end---------------------------------------------------------------------------------------------------------------
 
    .menu {
-         --background-color: rgb(0 0 0 / .4);
+         --background-color: rgb(40 40 40 / .2);
+         border-top: 1px solid rgb(40 40 40 / .4);
          @media (max-width:$tablet){
             &__price {
                color: var(--white-color);
-               background-color: rgb(0 0 0 / .4);
+               background-color: rgb(40 40 40 / .3);
             }
          }
       }

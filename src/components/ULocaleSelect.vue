@@ -59,9 +59,6 @@ const { locale } = useI18n({
       color: var(--tab-color);
       text-transform: uppercase;
    }
-   &__option {
-
-   }
  }
 
  </style>
