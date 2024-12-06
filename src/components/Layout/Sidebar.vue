@@ -1,20 +1,19 @@
 <script setup>
 import { inject } from 'vue';
-import { useI18n } from 'vue-i18n'
+// import { useI18n } from 'vue-i18n'
 import UButton from '@/components/UButton.vue'
 import UAccordion from '@/components/Accordion/UAccordion.vue';
 
 import UAnimateTitle from '@/components/UAnimateTitle.vue';
+import ULocaleSelect from '@/components/ULocaleSelect.vue';
 const { isOpenMenu, toggleMenu } = inject('toggle')
 
-const { locale } = useI18n({
-   useScope: 'global'
-})
+// const { locale t } = useI18n()
 
-const switchLang = () => {
-   locale.value === 'ru' ? locale.value = 'by' : locale.value = 'ru'
-   localStorage.setItem('lang', locale.value)
-}
+// const switchLang = () => {
+//    locale.value === 'ru' ? locale.value = 'by' : locale.value = 'ru'
+//    localStorage.setItem('lang', locale.value)
+// }
 </script>
 
 <template>
@@ -22,12 +21,14 @@ const switchLang = () => {
    <UAnimateTitle class="sidebar__animate-title" />
    <slot />
    <UAccordion class="sidebar__accordion" />
-   <UButton 
+   <!-- <UButton 
       @click="switchLang"
       switchLang="switchLang"
       class="sidebar__switch-lang"
       >{{ $t('switchLang') }}
-   </UButton>
+   </UButton> -->
+   {{ $t('switchLang.all') }}
+   <ULocaleSelect />
    </aside>
 
    <UButton

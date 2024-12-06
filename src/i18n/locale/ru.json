@@ -1,6 +1,8 @@
 {
-      "switchLang": "BY",
-
+      "switchLang": {
+      "lang": "Русский",
+      "all": "Все языки"
+      },
       "accordionSidebar": [
          {
             "title": "Мужские",
