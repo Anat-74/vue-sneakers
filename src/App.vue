@@ -97,6 +97,7 @@ provide('toggle', {
     }
 
     .app__container {
+      width: 100%;
       min-height: 100dvh;
       transition: transform .6s;
 
@@ -115,6 +116,7 @@ provide('toggle', {
         transform .2s linear,
         opacity .2s,
         filter .1s;
+
       &_isopen {
         @media (prefers-reduced-motion: no-preference) {
           transform: scale(0.995);

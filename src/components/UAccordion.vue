@@ -14,7 +14,7 @@ const { isOpenMenu } = inject('toggle')
          <template
             v-for="accordion in tm('accordionSidebar')"
             :key="accordion.title"
-         >
+            >
          <li class="accordion">
          <details 
             name="faq" 

@@ -1,6 +1,5 @@
 <script setup>
 import UTabs from '@/components/UTabs.vue'
-// import UTabsParent from '@/components/UTabsParent.vue';
 import USocial from '@/components/USocial.vue';
 </script>
 

@@ -48,7 +48,7 @@ const { locale } = useI18n({
       transform: rotate(125deg);
    }
    &__select {
-      width: toRem(42);
+      width: toRem(44);
       padding-inline: toRem(4);
       padding-block: toRem(3);
       border: 2px solid var(--blue-color);
