@@ -7,7 +7,7 @@ import USocial from '@/components/USocial.vue';
    <footer class="footer">
       <div class="footer__items">
          <USocial class="footer__social" />
-            <UTabs class="footer__tabs" />
+            <UTabs/>
       </div>
    </footer>
 </template>
@@ -74,11 +74,6 @@ import USocial from '@/components/USocial.vue';
             margin-block-end: toRem(0);
          }
       }
-
-      &__tabs {
-         position: relative;
-         z-index: 10;
-   }
 }
 
 </style>
