@@ -16,7 +16,6 @@ const emit = defineEmits(['update:modelValue'])
    },
    placeholder: {
       type: String,
-      default: 'Поиск...',
       required: false
    },
    modelValue: {

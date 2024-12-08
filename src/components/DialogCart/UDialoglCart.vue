@@ -29,7 +29,7 @@ onMounted(() => {
   >
     <div class="dialog-cart__items">
       <form class="dialog-cart__form" method="dialog">
-        <h2 class="dialog-cart__title" id="cartDialog-name">Корзина</h2>
+        <h2 class="dialog-cart__title" id="cartDialog-name">{{ $t('cart.cartTitle') }}</h2>
         <UButton
           @click="createOrderStore.orderId = false"
           close="close"
@@ -41,25 +41,25 @@ onMounted(() => {
       <UInfoBlock
         v-if="!cartStore.totalPrice && !createOrderStore.orderId"
         image-url="/image/package-icon.avif"
-        title="Корзина пустая"
-        description="Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."
+        :title="$t('cart.emptyCartTitle')"
+        :description="$t('cart.emptyCartDescription')"
       />
       <UInfoBlock
         v-if="createOrderStore.orderId"
         image-url="/image/order-success-icon.avif"
-        title="Заказ оформлен!"
-        :description="`Ваш заказ #${createOrderStore.orderId} скоро будет передан курьерской доставке`"
+        :title="$t('cart.orderPlacedTitle')"
+        :description="$t('cart.orderPlacedDescription', {orderId: createOrderStore.orderId})"
       />
 
       <UCartItemList v-if="cartStore.totalPrice" class="dialog-cart__item-list" />
       <div v-if="cartStore.totalPrice" class="dialog-cart__bottom">
-        <h3 class="bottom__subtitle">Итого:</h3>
-        <span class="bottom__price">{{ cartStore.totalPrice }} руб.</span>
-        <h3 class="bottom__subtitle">Налог 5%:</h3>
-        <span class="bottom__price">{{ cartStore.vatPrice }} руб. </span>
+        <h3 class="bottom__subtitle">{{ $t('cart.cartTotal') }}</h3>
+        <span class="bottom__price">{{ cartStore.totalPrice }} {{ $t('cart.cartCurrency') }}</span>
+        <h3 class="bottom__subtitle">{{ $t('cart.cartTax') }}</h3>
+        <span class="bottom__price">{{ cartStore.vatPrice }} {{ $t('cart.cartCurrency') }} </span>
         <UButton
           @click="createOrderStore.createOrder"
-          label="Оформить заказ"
+          :label="$t('cart.cartPlaceAnOrder')"
           size="large"
           :disabled="createOrderStore.buttonDisabled"
           class="bottom__btn"

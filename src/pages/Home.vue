@@ -23,12 +23,20 @@ const message = ref('')
       <UBrands class="home__brands" />
     </div>
     <div class="home__forms">
-      <h1 class="home__title">Все кроссовки</h1>
+      <h1 class="home__title">{{ $t('main.title') }}</h1>
       <form class="home__form-sel">
-        <USelect v-model="fetchItemsStore.filters.sortBy" name="sneakers" />
+        <USelect 
+        v-model="fetchItemsStore.filters.sortBy" 
+        name="sneakers" 
+        />
       </form>
       <form class="home__form-input">
-        <UInput v-model="message" label="Удачного поиска!)" name="name" />
+        <UInput 
+        v-model="message" 
+        :placeholder="$t('main.inputPlaceholder')"
+        :label="$t('main.inputLabel')" 
+        name="name" 
+        />
       </form>
     </div>
     <ULoader v-if="fetchItemsStore.loader" />

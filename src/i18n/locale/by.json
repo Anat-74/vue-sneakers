@@ -29,7 +29,35 @@
       }
    ],
 
-   "cardTitle": "Мужчынскія Красоўкі",
+   "cart": {
+      "cartTitle": "Кошык",
+      "emptyCartTitle": "Кошык пусты",
+      "emptyCartDescription": "Дадайце хаця б адну пару красовак, каб зрабіць заказ.",
+      "orderPlacedTitle": "Заказ аформлены!",
+      "orderPlacedDescription": "Ваш заказ # {orderId} хутка будзе перададзены кур'ерскай дастаўцы",
+      "cartTotal": "Разам:",
+      "cartCurrency": "руб.",
+      "cartTax": "Падатак",
+      "cartPlaceAnOrder": "Аформіць замову"
+   },
+
+   "headerDescr": "Крама лепшых красовак",
+
+   "navigation": {
+      "favorite": "Закладкі",
+      "profile": "Профіль"
+   },
+
+   "main": {
+      "title": "Усе красоўкі",
+      "cardTitle": "Мужчынскія Красоўкі",
+      "selectOptionDisabled": "Выберыце тавар",
+      "selectOptionTitle": "Па назве",
+      "selectOptionAscending": "Па кошце (танней)",
+      "selectOptionDescending": "Па кошце (даражэй)",
+      "inputPlaceholder": "Пошук...",
+      "inputLabel": "Удалага пошуку!)"
+   },
 
    "tabsFooter":  [
       {
@@ -47,5 +75,43 @@
          {"id": 4, "content": "Пісьменнае афармленне старонкі «Кантакты» на сайце ўплывае не толькі на паводзіны карыстальнікаў. Наяўнасць некаторых элементаў і даных улічваецца пошукавымі сістэмамі і станоўча ўплывае на прасоўванне сайта ў топ-10."}
          ]
       }
-   ]   
+   ],
+
+      "sneakersForManPage": {
+         "title": "Красоўкі Мужчынскія",
+          "description": "Апісанне характарыстык красовак"
+      },
+      "sneakersForChildrenPage": {
+         "title": "Кроссовки Детские",
+          "description": "Апісанне характарыстык красовак"
+      },
+      "sneakersForWoomanPage": { 
+         "title": "Красоўкі Жаночы",
+          "description": "Апісанне характарыстык красовак"
+      },
+      "sneakersForChildrenWoomanPage": { 
+         "title": "Красоўкі Жаночы",
+          "description": "Апісанне характарыстык красовак"
+      },
+      "lacesAccessoriesPage": { 
+         "title": "Шнуркі",
+         "description": "Апісанне характарыстык тавару"
+      },
+      "insolesAccessoriesPage": { 
+         "title": "Вусцілкі",
+         "description": "Апісанне характарыстык тавару"
+      },
+      "creamPage": { 
+         "title": "Крэм / Спрэй",
+         "description": "Апісанне характарыстык тавару"
+      },
+
+      "favoritesPage": {
+         "title": "Мае закладкі",
+         "text": "У Вас пакуль няма выбраных тавараў"
+      },
+      "ordersPage": {
+         "title": "Мае закладкі",
+         "text": "У Вас пакуль няма выбраных тавараў"
+      }
 }

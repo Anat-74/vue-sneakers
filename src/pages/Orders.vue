@@ -17,7 +17,7 @@ import UCardList from '@/components/UCardList.vue'
       <router-link to="/">
          <font-awesome-icon icon="fa-solid fa-arrow-left" />
          </router-link>
-      <h2 class="orders__title">Мои заказы</h2>
+      <h2 class="orders__title">{{ $t('ordersPage.title') }}</h2>
       <ULoader v-if="pageOrdersStore.loader" />
    <UCardList 
       v-if="pageOrdersStore.orders.length"
@@ -28,7 +28,7 @@ import UCardList from '@/components/UCardList.vue'
       class="orders__no-orders">
    <p
    class="orders__text">
-      У Вас пока нет заказов
+   {{ $t('ordersPage.text') }}
    </p>
    <img 
    width="44" 

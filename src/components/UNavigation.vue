@@ -30,7 +30,7 @@ const cartStore = useCartStore()
                <router-link to="/favorites" class="nav__link">
                   <font-awesome-icon icon="fa-regular fa-heart"
                   />
-               <span class="nav__favorite">Закладки</span>
+               <span class="nav__favorite">{{$t('navigation.favorite')}}</span>
             </router-link>
             </li>
 
@@ -38,7 +38,7 @@ const cartStore = useCartStore()
                <router-link to="/orders" class="nav__link">
                   <font-awesome-icon icon="fa-regular fa-user"
                   />
-               <span class="nav__profile">Профиль</span>
+               <span class="nav__profile">{{$t('navigation.profile')}}</span>
             </router-link>
             </li>
          </ul>

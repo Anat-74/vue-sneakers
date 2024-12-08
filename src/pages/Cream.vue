@@ -1,11 +1,13 @@
 <template>
-   <h1>
-      Крем / Спрей
-   </h1>
+   <h1>{{ $t('creamPage.title') }}</h1>
+   <p>{{ $t('creamPage.description') }}</p>
 </template>
 
 <style lang="scss" scoped>
 h1 {
    font-weight: 800;
+}
+p {
+   font-size: toRem(18);
 }
 </style>

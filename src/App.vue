@@ -1,6 +1,5 @@
 <script setup>
 import { provide, ref } from 'vue'
-
 import { useFetchItemsStore } from '@/stores/FetchItemsStore'
 import { useDarkMode } from '@/composables/DarkModeTheme'
 
@@ -118,14 +117,11 @@ provide('toggle', {
 
       &_isopen {
         @media (prefers-reduced-motion: no-preference) {
-          transform: scale(0.995);
+          transform: scale(.995);
         }
         filter: blur(12px);
-        opacity: 0.7;
-        transition:
-        transform 0.2s linear,
-        opacity 0.2s,
-        filter 0.2s;
+        opacity: .7;
+        transition: transform .2s linear, opacity .2s, filter .2s;
 
        &::before {
          content: '';

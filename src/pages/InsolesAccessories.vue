@@ -1,11 +1,13 @@
 <template>
-   <h1>
-      Стельки
-   </h1>
+   <h1>{{ $t('insolesAccessoriesPage.title') }}</h1>
+   <p>{{ $t('insolesAccessoriesPage.description') }}</p>
 </template>
 
 <style lang="scss" scoped>
 h1 {
    font-weight: 800;
+}
+p {
+   font-size: toRem(18);
 }
 </style>
