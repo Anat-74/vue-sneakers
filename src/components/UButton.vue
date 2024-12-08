@@ -64,6 +64,10 @@
          type: String,
          required: false
     },
+    activeTab: {
+         type: Boolean,
+         required: false
+    },
     burger: {
          type: String,
          required: false
@@ -88,7 +92,7 @@
       { 'btn_icon': icon }, { 'btn_close': close },
       { 'btn_favorite': favorite }, { 'btn_is-favorite': isFavorite },
       { 'btn_add': add }, { 'btn_is-added': isAdded },
-      { 'btn_tab': tab },
+      { 'btn_tab': tab }, { 'btn_active-tab': activeTab },
       { 'btn_large': size === 'large' },
       { 'btn_small': size === 'small' },
    ]"
@@ -410,8 +414,8 @@
 }
 
    &_tab {
-   padding-block: toRem(10);
-   padding-inline: toRem(12);
+   padding-block: toEm(10, 15);
+   padding-inline: toEm(12, 15);
    white-space: nowrap;
    border-radius: toRem(8);
    border: 1px solid var(--transparent-color);
@@ -420,6 +424,10 @@
    span {
       color: var(--white-color);
       background-color: var(--transparent-color);
+      
+      @media (max-width:$tablet){
+         font-weight: 500;
+      }
    }
 
     @media (any-hover: hover) {
@@ -427,6 +435,10 @@
           background-color: var(--tab-color);
         }
       }
+   }
+
+   &_active-tab {
+      background-color: var(--danger-color);
    }
 }
 </style>

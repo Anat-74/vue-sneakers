@@ -13,74 +13,60 @@ const activeTab = ref(4)
 </script>
 
 <template>
-   <ul class="tabs">
+   <div class="tab">
       <template
-         v-for="tab in tm('tabsFooter')"
-         :key="tab.id"
+         v-for="tabs in tm('tabsFooter')"
+         :key="tabs"
       >
-      <li class="tabs__item">
+      <div class="tab__buttons">
          <UButton
-         @click="activeTab = tab.id"
-         :class="['tabs__btn', {'tabs__btn_active': activeTab === tab.id}]"
+         v-for="btn in tabs.tabsBtn"
+         :key="btn.label"
+         @click="activeTab = btn.id"
+         :activeTab="activeTab === btn.id"
          tab="tab" 
-         > {{ rt(tab.label) }}
+         > {{ rt(btn.label) }}
          </UButton>
+      </div>
          <p
-         v-show="activeTab === tab.id"
-         class="tabs__content"
-         >{{ rt(tab.content) }}</p>
-      </li>
+         v-for="content in tabs.tabsContent"
+         :key="content.content"
+         v-show="activeTab === content.id"
+         class="tab__content"
+         >{{ rt(content.content) }}</p>
       </template>
-   </ul>
+   </div>
 </template>
 
 <style lang="scss" scoped>
-  .tabs {
+  .tab {
    position: relative;
    z-index: 10;
 
-   &__item {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-
-      @media (min-width:$tablet){
-         display: flex;
-         flex-direction: row-reverse;
-         align-items: start;
-      }
+   @media (min-width:$tablet){
+   display: flex;
+   flex-direction: row-reverse;
+   align-items: start;
    }
 
    &__buttons {
       @include adaptiveValue("row-gap", 12, 7);
-      display: flex;
-
+      display: grid;
       @media (min-width:$tablet){
          margin-inline-start: toRem(16);
       }
 
       @media (max-width:$tablet){
-         display: flex;
          @include adaptiveValue("column-gap", 24, 12);
-         // grid-template-columns: repeat(auto-fit, minmax(toRem(118), 1fr));
+         grid-template-columns: repeat(auto-fit, minmax(toRem(108), 1fr));
+         margin-block-end: toEm(12, 15)
       }
    }
 
-      &__btn {
-         @media (max-width:$tablet){
-            width: 100%;
-            font-weight: 500;
-         }
-
-        &_active {
-          background-color: var(--danger-color) !important;
-         }
-      }
-
       &__content {
-         padding-block-start: 5px;
-         font-size: toRem(18);
+         @include adaptiveValue("font-size",18 , 16);
          font-weight: 500;
-         letter-spacing: 1.2px;
+         letter-spacing: 1px;
     }
   }
   </style>

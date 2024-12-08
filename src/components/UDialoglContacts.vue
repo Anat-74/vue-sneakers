@@ -65,7 +65,7 @@ onMounted(() => {
   &__btn-close {
     position: absolute !important;
     z-index: 10;
-    top: toRem(18);
+    top: toRem(16);
     right: toRem(14);
   }
 

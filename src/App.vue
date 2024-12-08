@@ -97,7 +97,6 @@ provide('toggle', {
     }
 
     .app__container {
-      width: 100%;
       min-height: 100dvh;
       transition: transform .6s;
 
