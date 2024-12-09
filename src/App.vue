@@ -186,7 +186,7 @@ provide('toggle', {
       display: flex;
       justify-content: center;
       column-gap: toRem(25);
-      background-color: rgb(245 245 245 / 0.1);
+      background-color: rgb(245 245 245 / .1);
 
       svg {
         width: toRem(32);
@@ -203,14 +203,13 @@ provide('toggle', {
       transform: translateX(-50%);
       flex-direction: column;
       column-gap: toRem(0);
-      row-gap: toRem(6);
-      padding-block-start: toRem(59);
-      border-right: 3px solid var(--white-color);
-      border-left: 3px solid var(--white-color);
+      row-gap: toRem(5);
+      padding-block-start: toRem(60);
+      border-right: 2px solid var(--grey-color);
+      border-left: 2px solid var(--grey-color);
 
       svg {
-        width: toRem(28);
-        height: toRem(27);
+        width: toRem(27);
       }
     }
   }

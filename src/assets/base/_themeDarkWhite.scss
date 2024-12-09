@@ -281,7 +281,8 @@
 //*sidebar-end---------------------------------------------------------------------------------------------
 
    .menu {
-      --background-color: rgb(245 245 245 / .8);
+      border-top: 2px solid var(--whitesmoke-color);
+      --background-color: rgb(245 245 245 / .4);
    }
 
    .card {
