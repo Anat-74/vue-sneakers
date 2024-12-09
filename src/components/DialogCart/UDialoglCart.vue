@@ -41,8 +41,8 @@ onMounted(() => {
       <UInfoBlock
         v-if="!cartStore.totalPrice && !createOrderStore.orderId"
         image-url="/image/package-icon.avif"
-        :title="$t('cart.emptyCartTitle')"
-        :description="$t('cart.emptyCartDescription')"
+        :title="$t('cart.cartEmptyTitle')"
+        :description="$t('cart.cartEmptyDescription')"
       />
       <UInfoBlock
         v-if="createOrderStore.orderId"

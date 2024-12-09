@@ -33,8 +33,8 @@
 
       "cart": {
          "cartTitle": "Корзина",
-         "emptyCartTitle": "Корзина пустая",
-         "emptyCartDescription": "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.",
+         "cartEmptyTitle": "Корзина пустая",
+         "cartEmptyDescription": "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.",
          "orderPlacedTitle": "Заказ оформлен!",
          "orderPlacedDescription": "Ваш заказ # {orderId} скоро будет передан курьерской доставке",
          "cartTotal": "Итого:",
@@ -50,13 +50,17 @@
 
       "main": {
          "title": "Все кроссовки",
-         "cardTitle": "Мужские Кроссовки",
          "selectOptionDisabled": "Выбериет товар",
          "selectOptionTitle": "По названию",
          "selectOptionAscending": "По цене (дешевле)",
          "selectOptionDescending": "По цене (дороже)",
          "inputPlaceholder": "Поиск...",
          "inputLabel": "Удачного поиска!)"
+      },
+
+      "card": {
+         "cardTitle": "Мужские Кроссовки",
+         "cardSubtitle": "Цена:"
       },
 
       "tabsFooter":  [

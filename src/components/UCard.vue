@@ -62,8 +62,8 @@ const isWatched = ref(false)
       >
       </div>
          <span :class="['card__line', {card__line_watched: isWatched}]"></span>
-         <h2 class="card__title">{{ $t('main.cardTitle') }} {{title}}</h2>
-         <h3 class="card__subtitle">Цена:</h3>
+         <h2 class="card__title">{{ $t('card.cardTitle') }} {{title}}</h2>
+         <h3 class="card__subtitle">{{ $t('card.cardSubtitle') }}</h3>
          <span class="card__price">{{price}}</span>
       
       <UButton

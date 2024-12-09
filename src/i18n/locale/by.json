@@ -31,8 +31,8 @@
 
    "cart": {
       "cartTitle": "Кошык",
-      "emptyCartTitle": "Кошык пусты",
-      "emptyCartDescription": "Дадайце хаця б адну пару красовак, каб зрабіць заказ.",
+      "cartEmptyTitle": "Кошык пусты",
+      "cartEmptyDescription": "Дадайце хаця б адну пару красовак, каб зрабіць заказ.",
       "orderPlacedTitle": "Заказ аформлены!",
       "orderPlacedDescription": "Ваш заказ # {orderId} хутка будзе перададзены кур'ерскай дастаўцы",
       "cartTotal": "Разам:",
@@ -50,7 +50,6 @@
 
    "main": {
       "title": "Усе красоўкі",
-      "cardTitle": "Мужчынскія Красоўкі",
       "selectOptionDisabled": "Выберыце тавар",
       "selectOptionTitle": "Па назве",
       "selectOptionAscending": "Па кошце (танней)",
@@ -58,6 +57,12 @@
       "inputPlaceholder": "Пошук...",
       "inputLabel": "Удалага пошуку!)"
    },
+
+   "card": {
+      "cardTitle": "Мужчынскія Красоўкі",
+      "cardSubtitle": "Кошт:"
+   },
+
 
    "tabsFooter":  [
       {

@@ -33,7 +33,6 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
    @include adaptiveValue("padding-block-start", 12, 10);
    @include adaptiveValue("padding-block-end", 40, 20);
       height: 100dvh;
-      position: relative;
       overflow-y: auto;
       display: grid;
       grid-template-rows: auto  1fr;
