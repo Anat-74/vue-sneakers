@@ -1,6 +1,6 @@
 <script setup>
 import UNavigation from '@/components/UNavigation.vue'
-import UDialogContacts from '@/components/UDialoglContacts.vue';
+import UDialogContacts from '@/components/UDialoglFooter.vue';
 
 </script>
 

@@ -90,7 +90,6 @@ provide('toggle', {
  @media (min-width: $tablet) {
     display: grid;
     grid-template-columns: auto 1fr;
-
     .app__sidebar {
       @include adaptiveValue('width', 320, 245);
     }

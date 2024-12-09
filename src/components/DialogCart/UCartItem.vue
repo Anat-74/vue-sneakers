@@ -20,7 +20,7 @@ const emit = defineEmits(['onClickRemove'])
       height="80" 
       class="cart-item__image" 
       >
-      <p class="cart-item__descr">{{ $t('main.cardTitle') }} {{title}}</p>
+      <p class="cart-item__descr">{{ $t('card.cardTitle') }} {{title}}</p>
       <span class="cart-item__price">{{price}} руб.</span>
       <UButton 
       @click="emit('onClickRemove')"

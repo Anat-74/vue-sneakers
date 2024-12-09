@@ -12,7 +12,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <UButton onclick="window.dialogContacts.showModal()" burger="burger" class="open-button">
+  <UButton 
+  onclick="window.dialogContacts.showModal()" 
+  burger="burger" 
+  class="open-button"
+  >
     <span></span>
     <span class="visually-hidden">Open navigation menu</span>
   </UButton>
@@ -23,11 +27,6 @@ onMounted(() => {
   class="dialog-contacts">
     <div class="dialog-contacts__items">
       <form method="dialog">
-        <UButton 
-        close="close" 
-        type="submit" 
-        class="dialog-contacts__btn-close" 
-        />
       </form>
       <Footer class="dialog-contacts__footer" />
     </div>
@@ -60,13 +59,6 @@ onMounted(() => {
 
   &__items {
     position: relative;
-  }
-
-  &__btn-close {
-    position: absolute !important;
-    z-index: 10;
-    top: toRem(16);
-    right: toRem(14);
   }
 
   &__footer {

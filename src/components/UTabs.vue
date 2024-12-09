@@ -40,9 +40,6 @@ const activeTab = ref(4)
 
 <style lang="scss" scoped>
   .tab {
-   position: relative;
-   z-index: 10;
-
    @media (min-width:$tablet){
    display: flex;
    flex-direction: row-reverse;
@@ -50,15 +47,17 @@ const activeTab = ref(4)
    }
 
    &__buttons {
-      @include adaptiveValue("row-gap", 12, 7);
-      display: grid;
+      @include adaptiveValue("row-gap", 12, 8);
+      display: inline-flex;
+      flex-direction: column;
+
       @media (min-width:$tablet){
          margin-inline-start: toRem(16);
       }
 
       @media (max-width:$tablet){
-         @include adaptiveValue("column-gap", 24, 12);
-         grid-template-columns: repeat(auto-fit, minmax(toRem(108), 1fr));
+         position: absolute;
+         right: 0;
          margin-block-end: toEm(12, 15)
       }
    }
@@ -67,6 +66,11 @@ const activeTab = ref(4)
          @include adaptiveValue("font-size",18 , 16);
          font-weight: 500;
          letter-spacing: 1px;
+
+         @media (max-width:$tablet){
+            @include adaptiveValue("top", 205, 150);
+            position: relative;
+         }
     }
   }
   </style>
