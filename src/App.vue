@@ -237,7 +237,7 @@ provide('toggle', {
    display: none;
    position: fixed;
    z-index: 99;
-   right: toRem(38);
+   right: toRem(36);
    bottom: toRem(74);
 
    &.close {

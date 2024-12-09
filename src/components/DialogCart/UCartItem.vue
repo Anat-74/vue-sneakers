@@ -41,11 +41,11 @@ const emit = defineEmits(['onClickRemove'])
    display: grid;
    grid-template: repeat(2, auto) / auto 1fr auto;
    align-items: end;
-   row-gap: toEm(8, 15);
+   row-gap: toEm(7, 15);
    grid-template-areas: 
    "img descr descr"
    "img price btn"
-   " ..    price btn"
+   " ..   .. btn"
    ;
    &:not(:last-child) {
       margin-block-end: toEm(20, 15);
@@ -63,7 +63,6 @@ const emit = defineEmits(['onClickRemove'])
 
 &__price {
    grid-area: price;
-   align-self: center;
    font-weight: 600;
    letter-spacing: .5px;
    color: var(--text-color);
