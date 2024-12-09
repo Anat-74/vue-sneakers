@@ -71,7 +71,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .dialog-cart {
-  @include adaptiveValue('width', 395, 270);
+  @include adaptiveValue('width', 395, 275);
   min-height: 100dvh;
   margin-inline-end: 0;
   transition:
@@ -125,7 +125,7 @@ onMounted(() => {
   &__subtitle {
     grid-column: subtitle;
     position: relative;
-    font-weight: 400;
+    font-weight: 500;
   }
 
   &__price {

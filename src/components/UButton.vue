@@ -438,7 +438,7 @@
    }
 
    &_active-tab {
-      background-color: var(--danger-color);
+      background-color: var(--danger-color) !important;
    }
 }
 </style>

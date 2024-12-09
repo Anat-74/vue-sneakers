@@ -28,26 +28,24 @@ const emit = defineEmits(['onClickRemove'])
        type="button"
        class="cart-item__btn" 
       />
-
    </article>
 </template>
 
 <style lang="scss" scoped>
 .cart-item {
-   @include adaptiveValue("padding-block-start",25 , 1);
-   padding-inline: toEm(20, 15);
-   padding-block-end: toEm(25, 15);
+   padding-inline: toEm(16, 15);
+   padding-block: toEm(18, 15);
    border-radius: toEm(20, 15);
-   border: 1px solid #F3F3F3;
    box-shadow: 0px toEm(6, 15) toEm(18, 15) toRem(5) hsla(0, 0%, 0%, 0.07);
 
    display: grid;
-   grid-template: 1fr auto / auto 1fr auto;
+   grid-template: repeat(2, auto) / auto 1fr auto;
    align-items: end;
    row-gap: toEm(8, 15);
    grid-template-areas: 
    "img descr descr"
    "img price btn"
+   " ..    price btn"
    ;
    &:not(:last-child) {
       margin-block-end: toEm(20, 15);

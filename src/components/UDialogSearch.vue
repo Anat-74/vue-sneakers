@@ -17,7 +17,10 @@ const message = ref('')
     <div :class="['dialog-search__items', { isopen: isOpenMenu }]">
       <span class="dialog-search__message">{{ message }}</span>
       <form @submit.prevent class="dialog-search__form">
-        <UInput v-model="message" label="Brand..." />
+        <UInput 
+        v-model="message" 
+        :placeholder="$t('main.inputPlaceholder')"
+        label="Brand..." />
         <USelect v-model="fetchItemsStore.filters.sortBy" name="sneakers" />
       </form>
       <form method="dialog">

@@ -9,6 +9,9 @@
 </template>
 
 <style lang="scss" scoped>
+div {
+   color: var(--text-color);
+}
 h1 {
    font-weight: 800;
 }

@@ -37,7 +37,7 @@
       "orderPlacedDescription": "Ваш заказ # {orderId} хутка будзе перададзены кур'ерскай дастаўцы",
       "cartTotal": "Разам:",
       "cartCurrency": "руб.",
-      "cartTax": "Падатак",
+      "cartTax": "Падатак:",
       "cartPlaceAnOrder": "Аформіць замову"
    },
 
@@ -82,7 +82,7 @@
           "description": "Апісанне характарыстык красовак"
       },
       "sneakersForChildrenPage": {
-         "title": "Кроссовки Детские",
+         "title": "Красоўкі Дзіцячыя",
           "description": "Апісанне характарыстык красовак"
       },
       "sneakersForWoomanPage": { 
@@ -90,7 +90,7 @@
           "description": "Апісанне характарыстык красовак"
       },
       "sneakersForChildrenWoomanPage": { 
-         "title": "Красоўкі Жаночы",
+         "title": "Красоўкі Дзіцячыя",
           "description": "Апісанне характарыстык красовак"
       },
       "lacesAccessoriesPage": { 
@@ -111,7 +111,7 @@
          "text": "У Вас пакуль няма выбраных тавараў"
       },
       "ordersPage": {
-         "title": "Мае закладкі",
+         "title": "Мае замовы",
          "text": "У Вас пакуль няма выбраных тавараў"
       }
 }

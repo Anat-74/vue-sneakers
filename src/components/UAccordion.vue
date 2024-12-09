@@ -105,7 +105,9 @@ const { isOpenMenu } = inject('toggle')
          display: grid;
          align-items: center;
          padding-inline: toEm(4, 20);
-         margin-block-end: toEm(4, 20);
+         &:not(:last-child) {
+         margin-block-end: toEm(6, 20);
+      }
 
          @media (min-width:$tablet){
             border: 1px solid var(--grey-color);
