@@ -88,6 +88,7 @@ const { isOpenMenu } = inject('toggle')
          padding-inline: toEm(8, 22);
          border: 1.4px solid var(--grey-color);
          border-radius: toEm(4, 22);
+         font-weight: 600;
          }
       }
 
@@ -105,14 +106,16 @@ const { isOpenMenu } = inject('toggle')
          display: grid;
          align-items: center;
          padding-inline: toEm(4, 20);
-         &:not(:last-child) {
-         margin-block-end: toEm(6, 20);
-      }
 
          @media (min-width:$tablet){
+            padding-block: toEm(4, 20);
             border: 1px solid var(--grey-color);
             border-radius: 0 0 toEm(4, 20) toEm(4, 20);
             border-top: none;
+            }
+
+            @media (max-width:$tablet){
+               margin-block-end: toEm(6, 20);
             }
       }
 

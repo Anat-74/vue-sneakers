@@ -36,14 +36,7 @@
 
 <style lang="scss" scoped>
    .svg-inline--fa {
-      height: toRem(30);
-      @media (min-width:$tablet){
-         height: toRem(34);
-      }
-
-      @media (max-width:$mobileSmall){
-         height: toRem(26);
-      }
+      @include adaptiveValue("height",32 , 24);
    }
 
    .fa-telegram {

@@ -12,10 +12,19 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
 
 <template>
 <aside :class="['sidebar', {sidebar_isopen: isOpenMenu}]">
-   <UAnimateTitle class="sidebar__animate-title" />
    <slot />
+   <UAnimateTitle class="sidebar__animate-title" />
+   <div class="sidebar__phone">
+      <font-awesome-icon icon="fa-solid fa-phone" />
+         <a href="tel:+3739940551">+373(79)405-51-67</a>
+         <a href="tel:+3739940551">+373(99)305-51-68</a>
+   </div>
    <UAccordion class="sidebar__accordion" />
-   <USocial class="footer__social" />
+   <div class="sidebar__mail">
+      <font-awesome-icon icon="fa-regular fa-comments" />
+      <a href="mailto:hello@sneakers.com">hello@sneakerstop.com</a>
+   </div>
+   <USocial class="sidebar__social" />
    <ULocaleSelect class="sidebar__locale" />
    </aside>
 
@@ -32,12 +41,12 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
 .sidebar {
    @include adaptiveValue("width", 300, 245 );
    @include adaptiveValue("padding-inline", 16, 9);
-   @include adaptiveValue("padding-block-start", 12, 10);
-   @include adaptiveValue("padding-block-end", 40, 20);
+   @include adaptiveValue("padding-block", 18, 12);
       height: 100dvh;
       overflow-y: auto;
-      display: grid;
-      grid-template-rows: auto  1fr;
+      display: flex;
+      flex-direction: column;
+      row-gap: toRem(16);
       position: fixed;
       z-index: 10;
       top: 0;
@@ -63,16 +72,82 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
 
       &__animate-title {
          position: absolute;
-         top: toRem(11);
+         top: toRem(12);
          right: toRem(12);
       }
 
+      &__phone {
+         @include adaptiveValue("font-size", 22, 16);
+         overflow-x: auto;
+         white-space: nowrap;
+         display: flex;
+         align-items: center;
+         column-gap: toRem(1);
+         --background-color: transparent;
+         svg {
+            color: var(--warning-color);
+         }
+         a {
+            color: var(--turquoise-color);
+      }
+
+         @media (min-width:$tablet){
+            position: relative;
+              display: grid;
+              justify-items: center;
+              row-gap: toRem(5);
+              svg {
+               position: absolute;
+               top: 50%;
+               left: toRem(7);
+               transform: translateY(-50%);
+              }
+         }
+
+         @media (max-width:$tablet){
+            padding-block: toRem(3);
+            scrollbar-color: rgb(40 40 40 / .1) transparent;
+            a {
+               &:not(:last-child) {
+            margin-inline-end: toRem(7);
+               }
+            }
+         }
+      }
+
       &__accordion {
-         align-self: center;
+         flex: 1 1 auto;
+         margin-block-start: toRem(16);
+   }
+
+   &__mail {
+      @include adaptiveValue("font-size", 22, 16);
+      overflow-x: auto;
+      display: flex;
+      align-items: center;
+      column-gap: toRem(3);
+      scrollbar-color: var(--white-color) rgb(245 245 245 / .7);
+      --background-color: transparent;
+      svg {
+            color: var(--danger-color);
+         }
+         a {
+            color: var(--warning-hover);
+         }
+
+         @media (max-width:$tablet){
+            padding-block: toRem(3);
+            scrollbar-color: rgb(40 40 40 / .1) transparent;
+         }
+   }
+
+   &__social {
+      display: flex;
+      justify-content: space-between;
    }
 
    &__locale {
-      justify-self: start;
+      align-self: start;
    }
 }
 

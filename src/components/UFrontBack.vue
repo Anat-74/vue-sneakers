@@ -65,7 +65,7 @@ const toggleActive = () => {
       bottom: 0;
       height: toRem(22);
       transform: rotate(-45deg);
-      color: var(--warning-color);
+      color: var(--lime-color);
       background-color: transparent;
 
       animation-name: ican-rotate;
@@ -81,7 +81,7 @@ const toggleActive = () => {
          transform: rotate(-45deg) scale(1);
       }
       100% {
-         transform: rotate(-15deg) scale(1.2);
+         transform: rotate(-15deg) scale(1.1);
       }
    }
 

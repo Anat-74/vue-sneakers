@@ -10,10 +10,10 @@ import { useI18n } from 'vue-i18n'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faHouse, faMagnifyingGlass, faAnglesLeft, faCartShopping, faRubleSign, faChevronRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import { faHeart, faUser, faHandPointer } from '@fortawesome/free-regular-svg-icons'
+import { faHouse, faMagnifyingGlass, faAnglesLeft, faCartShopping, faRubleSign, faChevronRight, faArrowLeft, faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faUser, faHandPointer, faComments } from '@fortawesome/free-regular-svg-icons'
 import { faTelegram, faViber, faInstagram, faVk, faOpencart } from '@fortawesome/free-brands-svg-icons'
-library.add([ faHandPointer, faMagnifyingGlass, faTelegram, faViber, faInstagram, faVk, faHouse,  faHeart, faUser, faAnglesLeft, faCartShopping, faOpencart, faRubleSign, faHeart, faChevronRight, faArrowLeft ])
+library.add([faComments, faPhone, faHandPointer, faMagnifyingGlass, faTelegram, faViber, faInstagram, faVk, faHouse,  faHeart, faUser, faAnglesLeft, faCartShopping, faOpencart, faRubleSign, faHeart, faChevronRight, faArrowLeft ])
 
 const pinia = createPinia()
 

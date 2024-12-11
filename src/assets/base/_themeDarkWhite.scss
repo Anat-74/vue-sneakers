@@ -34,8 +34,22 @@
          --background-color: rgb(0 0 0 / .3);
          color: var(--grey-color);
 
+         &__phone {
+            scrollbar-color: #464646 #333333;
+            a {
+               color: var(--warning-hover);
+            }
+         }
+
          &__accordion {
             --background-color: transparent;
+         }
+
+         &__mail {
+            scrollbar-color: #464646 #333333;
+            a {
+               color: var(--grey-color);
+            }
          }
 
          &__locale {
@@ -241,15 +255,15 @@
             }
          }
 
-         &__card {
+         .card {
             &__icon {
                color: var(--grey-color);
             }
          }
       }
+
       .tab {
          &__content {
-            font-weight: 400;
             backdrop-filter: blur(2px);
             border-radius: toRem(25);
          }
@@ -299,15 +313,6 @@
    .menu {
       border-top: 2px solid var(--whitesmoke-color);
       --background-color: rgb(245 245 245 / .4);
-   }
-
-   .card {
-      &__slider {
-         scrollbar-color: var(--white-color) rgb(245 245 245 / .7);
-         @media (max-width:$tablet){
-            scrollbar-color: var(--whitesmoke-color) transparent;
-         }
-      }
    }
 
    .btn {
