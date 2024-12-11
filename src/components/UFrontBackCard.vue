@@ -17,13 +17,16 @@ const toggleActive = () => {
       >
       <span>Front</span>
       <font-awesome-icon 
-      icon="fa-regular fa-hand-pointer" 
-      class="card__icon"
-      />
+         class="card__icon"
+         icon="fa-solid fa-arrow-pointer" />
       </div>
       <div 
       :class="['card__back', { card__back_back: active }]"
       >
+      <img 
+      width="22"
+      height="22"
+      src="/public/image/rotate_15395632-removebg-preview.avif" alt="">
          <span>Back</span>
       </div>
    </div>
@@ -34,6 +37,7 @@ const toggleActive = () => {
    position: relative;
    perspective: toRem(480);
    transform-style: preserve-3d;
+   cursor: pointer;
 
    &__front,
    &__back {
@@ -44,6 +48,8 @@ const toggleActive = () => {
       background-color: transparent;
       transition: transform .9s;
       box-shadow: 0px toEm(6, 15) toEm(18, 15) toRem(5) hsla(0, 0%, 0%, 0.22);
+      color: var(--text-color);
+      font-size: toRem(16);
    }
 
    &__front {
@@ -54,34 +60,38 @@ const toggleActive = () => {
 
    &__back {
       transform: rotateY(180deg);
+      img {
+         position: absolute;
+         right: 0;
+         bottom: 0;
+         background-color: transparent;
+      }
       &_back {
          transform: rotateY(360deg);
       }
    }
 
    &__icon {
+      height: toRem(20);
       position: absolute;
-      right: 0;
-      bottom: 0;
-      height: toRem(22);
-      transform: rotate(-45deg);
-      color: var(--lime-color);
+      right: toRem(-9);
+      bottom: toRem(-10);
       background-color: transparent;
-
+      color: var(--warning-hover);
       animation-name: ican-rotate;
-      animation-duration: 1.5s;
-      animation-delay: 3s;
+      animation-duration: 3s;
+      animation-delay: 2s;
       animation-direction: alternate;
       animation-timing-function: linear;
-      animation-iteration-count: 6;
+      animation-iteration-count: infinite;
    }
 
    @keyframes ican-rotate {
       0% {
-         transform: rotate(-45deg) scale(1);
+         transform:translate3d(0, 0, 0) scale(1);
       }
       100% {
-         transform: rotate(-15deg) scale(1.1);
+         transform:translate3d(2px, 2px, 0px) scale(1.1);
       }
    }
 

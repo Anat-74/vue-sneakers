@@ -36,6 +36,9 @@
 
          &__phone {
             scrollbar-color: #464646 #333333;
+            svg {
+               color: var(--lime-color);
+            }
             a {
                color: var(--warning-hover);
             }
@@ -46,9 +49,12 @@
          }
 
          &__mail {
-            scrollbar-color: #464646 #333333;
+            scrollbar-color: #333333 transparent;
+            svg {
+               color: var(--warning-color);
+            }
             a {
-               color: var(--grey-color);
+               color: var(--danger-hover);
             }
          }
 

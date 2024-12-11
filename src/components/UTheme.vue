@@ -14,14 +14,19 @@ const model = defineModel()
 <style lang="scss" scoped>
 .theme {
   position: relative;
-  width: toRem(84);
-  height: toRem(25);
+  width: toRem(88);
+  height: toRem(29);
   border-radius: toRem(25);
   background-color: transparent;
 
+  @media (max-width:$tablet){
+   width: toRem(84);
+   height: toRem(25);
+  }
+
   &__input {
-    width: toRem(75);
-    height: toRem(25);
+    width: toRem(80);
+    height: toRem(29);
     border-radius: toRem(25);
     appearance: none;
     outline: none;
@@ -34,19 +39,19 @@ const model = defineModel()
       z-index: 20;
       top: 50%;
       transform: translateY(-50%);
-      font-size: toRem(14);
+      font-size: toRem(16);
     }
 
     &::before {
       content: '🌙';
       left: toRem(8);
-      top: toRem(15);
+      top: toRem(16);
     }
 
     &::after {
       content: '🌞';
       right: toRem(8);
-      top: toRem(15);
+      top: toRem(16);
     }
 
     &:checked + label {
@@ -67,12 +72,12 @@ const model = defineModel()
     }
 
     &:checked {
-      background-color: rgb(245 245 245 / 0.1);
+      background-color: rgb(245 245 245 / .1);
       border: 1px solid var(--grey-color);
     }
 
     &:not(:checked) {
-      background-color: rgb(245 245 245 / 0.1);
+      background-color: rgb(245 245 245 / .8);
       border: 1px solid var(--grey-color);
     }
 
@@ -82,6 +87,31 @@ const model = defineModel()
 
     &:checked + label {
       background-color: #333333;
+    }
+
+    @media (max-width:$tablet){
+      width: toRem(75);
+      height: toRem(25);
+
+   &::before,
+    &::after {
+      content: '';
+      font-size: toRem(14);
+    }
+
+      &::before {
+      content: '🌙';
+      left: toRem(8);
+      top: toRem(15);
+      font-size: toRem(14);
+    }
+
+    &::after {
+      content: '🌞';
+      right: toRem(8);
+      top: toRem(15);
+      font-size: toRem(14);
+    }
     }
   }
 

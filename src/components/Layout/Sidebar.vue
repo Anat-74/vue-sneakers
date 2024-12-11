@@ -22,7 +22,7 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
    <UAccordion class="sidebar__accordion" />
    <div class="sidebar__mail">
       <font-awesome-icon icon="fa-regular fa-comments" />
-      <a href="mailto:hello@sneakers.com">hello@sneakerstop.com</a>
+      <a href="mailto:hello@sneakers.com">hello@sneakers.com</a>
    </div>
    <USocial class="sidebar__social" />
    <ULocaleSelect class="sidebar__locale" />
@@ -42,11 +42,11 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
    @include adaptiveValue("width", 300, 245 );
    @include adaptiveValue("padding-inline", 16, 9);
    @include adaptiveValue("padding-block", 18, 12);
+   @include adaptiveValue("row-gap", 25, 14);
       height: 100dvh;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      row-gap: toRem(16);
       position: fixed;
       z-index: 10;
       top: 0;
@@ -71,8 +71,8 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
       }
 
       &__animate-title {
+         @include adaptiveValue("top", 15, 12);
          position: absolute;
-         top: toRem(12);
          right: toRem(12);
       }
 
@@ -126,7 +126,7 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
       display: flex;
       align-items: center;
       column-gap: toRem(3);
-      scrollbar-color: var(--white-color) rgb(245 245 245 / .7);
+      scrollbar-color: var(--white-color) rgb(245 245 245 / .6);
       --background-color: transparent;
       svg {
             color: var(--danger-color);
