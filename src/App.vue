@@ -204,7 +204,7 @@ provide('toggle', {
       flex-direction: column;
       column-gap: toRem(0);
       row-gap: toRem(5);
-      padding-block-start: toRem(60);
+      padding-block-start: toRem(61);
       border-right: 2px solid var(--grey-color);
       border-left: 2px solid var(--grey-color);
 

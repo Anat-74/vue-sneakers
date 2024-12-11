@@ -7,7 +7,7 @@
 
 [data-theme='true'] {
    --background-color: #333333;
-   --text-color: rgb(245 245 245 / .9); 
+   --text-color: var(--whitesmoke-color); 
 .app {
    &__social {
       @media (max-width:$mobile){
@@ -19,7 +19,7 @@
 &__navigation {
    .router-link-active {
       .fa-house {
-         color: rgb(245 245 245 / 0.9);
+         color: rgb(245 245 245 / .9);
          }
       }
     }
@@ -123,6 +123,10 @@
             }
          }
 
+         &_tab {
+            filter: brightness(85%);
+         }
+
          .fa-opencart {
             transition: color .2s; 
             @media (max-width:$tablet){
@@ -140,6 +144,7 @@
 
       .nav {
          --background-color: transparent;
+
          &__link {
             &:not(.router-link-active) {
                @media (min-width:$tablet){
@@ -178,12 +183,7 @@
          border: 1px solid rgb(0 0 0 / .2);
          color: var(--grey-color);
       }
-   
-      .tab__content {
-         color: var(--white-color);
-         font-weight: 400;
-      }
-   
+
       .input-search {
          border: 2px solid var(--grey-color);
          border-right: 1px solid var(--grey-color);
@@ -228,14 +228,30 @@
    
       .footer {
          &__items {
-            background-image:none;
+            background-image: url('/image/depositphotos_18984481-stock-illustration-black-gym-shoes-removebg-preview.avif');
+            background-size: cover;
+            background-position: 50%;
+            --background-color: transparent;
             &::before {
                display: none;
             }
+
+            @media (max-width:$tablet){
+               background-position: 50% toRem(77);
+            }
          }
-         &__social {
-            border-top: 1px solid var(--grey-color);
-            border-bottom: 1px solid var(--grey-color);
+
+         &__card {
+            &__icon {
+               color: var(--grey-color);
+            }
+         }
+      }
+      .tab {
+         &__content {
+            font-weight: 400;
+            backdrop-filter: blur(2px);
+            border-radius: toRem(25);
          }
       }
    }

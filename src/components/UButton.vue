@@ -388,10 +388,6 @@
       opacity: .9;
       background-color: var(--transparent-color);
    }
-
-   // &:active {
-   //    background-color: var(--lime-color);
-   // }
   }
 
    &_is-open {
@@ -414,7 +410,7 @@
 }
 
    &_tab {
-   padding-block: toEm(10, 15);
+   padding-block: toEm(10.5, 15);
    padding-inline: toEm(12, 15);
    white-space: nowrap;
    border-radius: toRem(8);

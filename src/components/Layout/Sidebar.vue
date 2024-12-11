@@ -3,6 +3,7 @@ import { inject } from 'vue';
 
 import UButton from '@/components/UButton.vue'
 import UAccordion from '@/components/UAccordion.vue';
+import USocial from '@/components/USocial.vue';
 
 import UAnimateTitle from '@/components/UAnimateTitle.vue';
 import ULocaleSelect from '@/components/ULocaleSelect.vue';
@@ -14,6 +15,7 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
    <UAnimateTitle class="sidebar__animate-title" />
    <slot />
    <UAccordion class="sidebar__accordion" />
+   <USocial class="footer__social" />
    <ULocaleSelect class="sidebar__locale" />
    </aside>
 

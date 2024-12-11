@@ -66,9 +66,11 @@ const activeTab = ref(4)
          @include adaptiveValue("font-size",18 , 16);
          font-weight: 500;
          letter-spacing: 1px;
+         backdrop-filter: blur(4px);
+         color: var(--text-color);
 
          @media (max-width:$tablet){
-            @include adaptiveValue("top", 205, 150);
+            @include adaptiveValue("top", 207, 154);
             position: relative;
          }
     }
