@@ -265,6 +265,7 @@
 
             @media (max-width:$tablet){
                background-position: 50% toRem(77);
+               transition: background-position .7s;
             }
          }
 

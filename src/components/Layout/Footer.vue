@@ -20,6 +20,18 @@ import UFrontBackCard from '@/components/UFrontBackCard.vue';
 
    @media (max-width:$tablet){
       display: none;
+      .footer__items:has(.card__back_back) {
+         background-position: 50% toRem(140);
+         &::before {
+            background-position: 50% toRem(145);
+         }
+         transition: background-position 1s;
+      .footer__tabs {
+         visibility: hidden;
+         opacity: 0;
+         transition: visibility 0s linear .5s, opacity .5s;
+      }
+    }
    }
 
    &__items {

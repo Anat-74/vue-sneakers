@@ -23,10 +23,6 @@ const toggleActive = () => {
       <div 
       :class="['card__back', { card__back_back: active }]"
       >
-      <img 
-      width="22"
-      height="22"
-      src="/image/rotate_15395632-removebg-preview.avif" alt="">
          <span>Back</span>
       </div>
    </div>
