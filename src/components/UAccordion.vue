@@ -88,7 +88,6 @@ const { isOpenMenu } = inject('toggle')
          padding-inline: toEm(8, 22);
          border: 1.4px solid var(--grey-color);
          border-radius: toEm(4, 22);
-         font-weight: 600;
          }
       }
 

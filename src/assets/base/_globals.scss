@@ -36,6 +36,13 @@ body:has(.dialog-cart[open]) {
    body:has(.sidebar_isopen) {
       overflow: hidden;
     }
+    .footer__items:has(.card__back_back) {
+      .footer__tabs {
+         visibility: hidden;
+         opacity: 0;
+         transition: visibility 0s linear .5s, opacity .5s;
+      }
+    }
  }
 
 a,

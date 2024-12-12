@@ -88,6 +88,9 @@ import UFrontBackCard from '@/components/UFrontBackCard.vue';
             top: toRem(12);
             right: toRem(12);
             left: toRem(12);
+            visibility: visible;
+            opacity: 1;
+            transition: visibility .7s, opacity .7s;
          }
       }
 }

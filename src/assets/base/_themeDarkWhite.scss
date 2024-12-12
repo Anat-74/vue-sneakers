@@ -40,7 +40,7 @@
                color: var(--lime-color);
             }
             a {
-               color: var(--warning-hover);
+               color: var(--whitesmoke-color);
             }
          }
 
@@ -51,10 +51,10 @@
          &__mail {
             scrollbar-color: #333333 transparent;
             svg {
-               color: var(--warning-color);
+               color: var(--lime-color);
             }
             a {
-               color: var(--danger-hover);
+               color: var(--whitesmoke-color);
             }
          }
 
@@ -85,6 +85,12 @@
          }
       }   
 
+      .social {
+         svg {
+            filter: brightness(85%);
+         }
+      }
+
       .locale {
          &__select {
             border-color: var(--grey-color);
@@ -113,6 +119,7 @@
       .btn {
          --background-color: transparent;
          &_toggle-menu {
+            filter: brightness(80%);
             border-color: rgb(245 245 245 / .1);
             svg {
                @media (max-width:$tablet){
@@ -261,9 +268,13 @@
             }
          }
 
+         &__front-back {
+            box-shadow: 0px toEm(0) toEm(0) toRem(0) hsla(0, 0%, 0%, 0);
+         }
          .card {
             &__icon {
                color: var(--grey-color);
+               background-color: transparent;
             }
          }
       }

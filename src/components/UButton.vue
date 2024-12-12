@@ -355,7 +355,6 @@
 
    &_toggle-menu {
    background-color: var(--lime-color);
-   opacity: .6;
 
    span {
          display: grid;

@@ -164,7 +164,7 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
 
    @media (max-width:$tablet){
       top: 50%;
-      // transform: translateY(-50%);
+      transform: translateY(-50%);
       right: toRem(7);
    }
    }
