@@ -1,12 +1,12 @@
 <script setup>
 import UTabs from '@/components/UTabs.vue';
-import UFrontBackCard from '@/components/UFrontBackCard.vue';
+import UCardFooter from '@/components/UCardFooter.vue';
 </script>
 
 <template>
    <footer class="footer">
       <div class="footer__items">
-         <UFrontBackCard class="footer__front-back" />
+         <UCardFooter class="footer__front-back" />
             <UTabs class="footer__tabs"/>
       </div>
    </footer>

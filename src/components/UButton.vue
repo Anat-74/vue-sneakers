@@ -368,7 +368,7 @@
    padding-inline: toRem(3);
    padding-block: toRem(6);
    transform: rotate(-180deg);
-   border: 1px solid var(--lime-color);
+   border: 1px solid var(--white-color);
    border-radius: toRem(4);
    background-color: var(--lime-color);
    color: var(--white-color);

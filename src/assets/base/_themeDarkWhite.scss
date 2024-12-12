@@ -293,7 +293,6 @@
 //*sidebar-start---------------------------------------------------------------------------------------------
    .sidebar {
       --background-color: rgb(245 245 245 / .3);
-      border-right: 2px solid var(--whitesmoke-color);
 
       @media (max-width:$tablet){
          --background-color: rgb(245 245 245 / .5);
