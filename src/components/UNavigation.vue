@@ -57,6 +57,7 @@ const cartStore = useCartStore()
 
    @media (max-width:$tablet){
       @include adaptiveValue("column-gap", 64, 14);
+      border-top: 2px solid var(--whitesmoke-color);
    }
 
    &__cart {

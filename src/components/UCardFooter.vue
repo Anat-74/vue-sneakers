@@ -35,29 +35,18 @@ const toggleActive = () => {
    transform-style: preserve-3d;
    cursor: pointer;
 
-      @media (any-hover: hover) {
-      &:hover {
-         .card-items__front {
-            transform: rotateY(180deg);
-         }
-         .card-items__back {
-            transform: rotateY(360deg);
-            }
-         }
-      }
-
    &__front,
    &__back {
       position: absolute;
       inset: 0;
       padding: toRem(12);
+      font-size: toRem(16);
       backface-visibility: hidden;
       border-radius: toRem(16);
       background-color: transparent;
+      color: var(--text-color);
       transition: transform .9s;
       box-shadow: 0px toEm(6, 15) toEm(18, 15) toRem(5) hsla(0, 0%, 0%, 0.22);
-      color: var(--text-color);
-      font-size: toRem(16);
    }
 
    &__front {
@@ -78,11 +67,11 @@ const toggleActive = () => {
          transform: rotateY(360deg) rotateX(4deg) scale(1.8) translate(toRem(85), toRem(42));
 
          @media (max-width:$mobile){
-            transform: rotateX(4deg) scale(1.8) translate(toRem(55), toRem(49));
+            transform: rotateX(4deg) scaleX(1.8) translate(toRem(55), toRem(49));
          }
 
          @media (max-width:$mobileSmall){
-            transform: rotateX(4deg) scale(1.7) translate(toRem(40), toRem(40));
+            transform: rotateX(4deg) scaleX(1.7) translate(toRem(40), toRem(40));
          }
       }
    }
@@ -115,10 +104,10 @@ const toggleActive = () => {
    // @media (min-width:$tablet){
    //    @media (any-hover: hover) {
    //    &:hover {
-   //       .card-items__front {
+   //       .card__front {
    //          transform: rotateY(180deg);
    //       }
-   //       .card-items__back {
+   //       .card__back {
    //          transform: rotateY(360deg);
    //          }
    //       }

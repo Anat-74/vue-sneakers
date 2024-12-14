@@ -115,7 +115,7 @@ const isWatched = ref(false)
    display: flex;
    overflow-x: auto;
    scroll-snap-type: x mandatory;
-   scrollbar-color: var(--white-color) rgb(245 245 245 / .7);
+   scrollbar-color: rgb(132 132 132 / .1) rgb(245 245 245 / 0);
    border-radius: toRem(10);
 
    @media (max-width:$tablet){

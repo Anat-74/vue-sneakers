@@ -30,7 +30,7 @@
             border-right: 1px solid var(--main-color); 
             --background-color: rgb(0 0 0 / .1);
          }
-
+         scrollbar-color: #464646 #333333;
          --background-color: rgb(0 0 0 / .3);
          color: var(--grey-color);
 
@@ -48,16 +48,6 @@
             --background-color: transparent;
          }
 
-         &__mail {
-            scrollbar-color: #333333 transparent;
-            svg {
-               color: var(--lime-color);
-            }
-            a {
-               color: var(--whitesmoke-color);
-            }
-         }
-
          &__locale {
             --background-color: transparent;
          }
@@ -70,6 +60,13 @@
             &:nth-child(1) {
                color: #ffff;
             }
+         }
+      }
+
+      .card {
+         &__front,
+         &__back {
+            box-shadow: 0px toEm(6, 15) toEm(18, 15) toRem(5) hsla(0, 0%, 0%, 0.5);
          }
       }
 
@@ -293,7 +290,7 @@
 //*sidebar-start---------------------------------------------------------------------------------------------
    .sidebar {
       --background-color: rgb(245 245 245 / .3);
-
+      border-right: 2px solid var(--whitesmoke-color);
       @media (max-width:$tablet){
          --background-color: rgb(245 245 245 / .5);
          border-right: 1px solid var(--whitesmoke-color);
@@ -328,7 +325,6 @@
 //*sidebar-end---------------------------------------------------------------------------------------------
 
    .menu {
-      border-top: 2px solid var(--whitesmoke-color);
       --background-color: rgb(245 245 245 / .4);
    }
 

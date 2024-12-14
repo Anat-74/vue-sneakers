@@ -2,6 +2,7 @@
 import { inject } from 'vue';
 
 import UButton from '@/components/UButton.vue'
+import UCardSidebar from '@/components/UCardSidebar.vue';
 import UAccordion from '@/components/UAccordion.vue';
 import USocial from '@/components/USocial.vue';
 
@@ -20,10 +21,7 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
          <a href="tel:+3739940551">+373(99)305-51-68</a>
    </div>
    <UAccordion class="sidebar__accordion" />
-   <div class="sidebar__mail">
-      <font-awesome-icon icon="fa-regular fa-comments" />
-      <a href="mailto:hello@sneakers.com">hello@sneakers.com</a>
-   </div>
+   <UCardSidebar class="sidebar__card" />
    <USocial class="sidebar__social" />
    <ULocaleSelect class="sidebar__locale" />
    </aside>
@@ -43,6 +41,7 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
    @include adaptiveValue("padding-inline", 16, 9);
    @include adaptiveValue("padding-block", 18, 12);
    @include adaptiveValue("row-gap", 25, 14);
+      scrollbar-color: var(--whitesmoke-color) transparent;
       height: 100dvh;
       overflow-y: auto;
       display: flex;
@@ -78,67 +77,35 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
 
       &__phone {
          @include adaptiveValue("font-size", 22, 16);
-         overflow-x: auto;
-         white-space: nowrap;
-         display: flex;
-         align-items: center;
-         column-gap: toRem(1);
          --background-color: transparent;
+         overflow: visible;
+         white-space: nowrap;
+         position: relative;
+         display: grid;
+         justify-items: center;
+         row-gap: toRem(5);
+         margin-block-end: toRem(16);
+
          svg {
-            color: var(--warning-color);
-         }
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          color: var(--warning-color);
+           }
+
          a {
             color: var(--turquoise-color);
       }
-
-         @media (min-width:$tablet){
-            position: relative;
-              display: grid;
-              justify-items: center;
-              row-gap: toRem(5);
-              svg {
-               position: absolute;
-               top: 50%;
-               left: toRem(7);
-               transform: translateY(-50%);
-              }
-         }
-
-         @media (max-width:$tablet){
-            padding-block: toRem(3);
-            scrollbar-color: rgb(40 40 40 / .1) transparent;
-            a {
-               &:not(:last-child) {
-            margin-inline-end: toRem(7);
-               }
-            }
-         }
-      }
+   }
 
       &__accordion {
          flex: 1 1 auto;
-         margin-block-start: toRem(16);
    }
 
-   &__mail {
-      @include adaptiveValue("font-size", 22, 16);
-      overflow-x: auto;
-      display: flex;
-      align-items: center;
-      column-gap: toRem(3);
-      scrollbar-color: var(--white-color) rgb(245 245 245 / .6);
+   &__card {
       --background-color: transparent;
-      svg {
-            color: var(--danger-color);
-         }
-         a {
-            color: var(--warning-hover);
-         }
-
-         @media (max-width:$tablet){
-            padding-block: toRem(3);
-            scrollbar-color: rgb(40 40 40 / .1) transparent;
-         }
+      @include adaptiveValue("margin-block-end", 9, 44);
    }
 
    &__social {

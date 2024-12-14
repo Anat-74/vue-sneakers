@@ -29,7 +29,7 @@ import UCardFooter from '@/components/UCardFooter.vue';
       .footer__tabs {
          visibility: hidden;
          opacity: 0;
-         transition: visibility 0s linear .5s, opacity .5s;
+         transition: visibility 0s linear .7s, opacity .7s;
       }
     }
    }
@@ -102,7 +102,7 @@ import UCardFooter from '@/components/UCardFooter.vue';
             left: toRem(12);
             visibility: visible;
             opacity: 1;
-            transition: visibility .7s, opacity .7s;
+            transition: visibility 1.9s, opacity 1.7s;
          }
       }
 }
