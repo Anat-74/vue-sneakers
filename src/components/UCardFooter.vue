@@ -64,14 +64,18 @@ const toggleActive = () => {
          background-color: transparent;
       }
       &_back {
-         transform: rotateY(360deg) rotateX(4deg) scale(1.8) translate(toRem(85), toRem(42));
+         height: toEm(260, 15);
+         transform: rotateY(360deg) rotateX(4deg) scale(1.8) translate(toRem(85), toRem(72));
 
          @media (max-width:$mobile){
-            transform: rotateX(4deg) scaleX(1.8) translate(toRem(55), toRem(49));
+            transform: rotateX(4deg) scale(1.8) translate(toRem(55), toRem(75));
          }
 
-         @media (max-width:$mobileSmall){
-            transform: rotateX(4deg) scaleX(1.7) translate(toRem(40), toRem(40));
+         @media (max-width:toEm(517)){
+            transform: rotateX(4deg) scale(1.7) translate(toRem(40), toRem(70));
+         }
+         @media (max-width:toEm(347)){
+            transform: rotateX(4deg) scale(1.7) translate(toRem(33), toRem(70));
          }
       }
    }
