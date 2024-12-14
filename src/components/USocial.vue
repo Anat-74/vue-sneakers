@@ -36,7 +36,7 @@
 
 <style lang="scss" scoped>
    .svg-inline--fa {
-      @include adaptiveValue("height",32 , 24);
+      @include adaptiveValue("height",32 , 26);
    }
 
    .fa-telegram {

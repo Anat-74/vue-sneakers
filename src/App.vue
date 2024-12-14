@@ -176,7 +176,7 @@ provide('toggle', {
   &__social {
     @media (min-width: $mobile) {
       @include adaptiveValue('margin-inline-start', 192, 112, 0, $containerWidth, 767.98);
-      padding-block: toRem(12);
+      padding-block: toRem(10);
       border-radius: toRem(8);
       border: 1px solid var(--grey-color);
       background-color: var(--background-color);
@@ -186,7 +186,7 @@ provide('toggle', {
       @include adaptiveValue('padding-inline', 16, 2);
       display: flex;
       justify-content: center;
-      column-gap: toRem(25);
+      column-gap: toRem(28);
       background-color: rgb(245 245 245 / .1);
 
       svg {

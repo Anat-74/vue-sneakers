@@ -89,8 +89,7 @@ const toggleActive = () => {
       background-color: transparent;
       color: rgb(0 0 0 / .5);
       animation-name: ican-rotate;
-      animation-duration: 2.5s;
-      animation-delay: 1s;
+      animation-duration: 3.5s;
       animation-direction: alternate;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
@@ -101,7 +100,7 @@ const toggleActive = () => {
          transform:translate3d(-2px, -2px, 0) scale(1) rotate(-35deg);
       }
       100% {
-         transform:translate3d(1px, 1px, 0) scale(1.1) rotate(-35deg);
+         transform:translate3d(0, 0, 0) scale(1.1) rotate(-35deg);
       }
    }
 
