@@ -204,8 +204,8 @@ provide('toggle', {
       transform: translateX(-50%);
       flex-direction: column;
       column-gap: toRem(0);
-      row-gap: toRem(5);
-      padding-block-start: toRem(61);
+      row-gap: toRem(6);
+      padding-block-start: toRem(67);
       border-right: 2px solid var(--grey-color);
       border-left: 2px solid var(--grey-color);
 
@@ -227,9 +227,6 @@ provide('toggle', {
       color: var(--white-color);
       background-color: var(--danger-color);
     }
-  }
-
-  &__footer {
   }
 
   &__scroll-button {
