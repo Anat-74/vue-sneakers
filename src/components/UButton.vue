@@ -64,14 +64,14 @@
          type: String,
          required: false
     },
-    burger: {
-         type: String,
-         required: false
-    },
-    isOpen: {
+    activeTab: {
          type: Boolean,
          required: false
     },
+    burger: {
+         type: String,
+         required: false
+    }
  })
 
  const emit = defineEmits(['click'])
@@ -89,11 +89,10 @@
       'btn',
       { 'btn_burger': burger },
       { 'btn_toggle-menu': toggle }, { 'btn_is-open': isOpenMenu },
-      { 'btn_is-open-accordion': isOpen },
       { 'btn_icon': icon }, { 'btn_close': close },
       { 'btn_favorite': favorite }, { 'btn_is-favorite': isFavorite },
       { 'btn_add': add }, { 'btn_is-added': isAdded },
-      { 'btn_tab': tab },
+      { 'btn_tab': tab }, { 'btn_active-tab': activeTab },
       { 'btn_large': size === 'large' },
       { 'btn_small': size === 'small' },
    ]"
@@ -122,15 +121,6 @@
     cursor: default;
   }
 
-  &_is-open-accordion {
-   color: var(--danger-color) !important;
-   svg {
-      transition: transform .3s;
-      transform: rotate(90deg);
-   }
-
-  }
-
   &_icon {
    .svg-inline--fa {
    height: toRem(18);
@@ -152,11 +142,6 @@
   //-------------------------------------------------------------------------------------------
   .fa-magnifying-glass {
    color: var(--warning-hover);
-}
-
-.fa-chevron-right {
-   width: toRem(8);
-   transition: transform .3s;
 }
 
   }
@@ -236,9 +221,9 @@
    &_favorite {
    padding: toRem(6);
    border-radius: toRem(8);
-   opacity: .4;
+   opacity: .6;
    color: var(--grey-color);
-   box-shadow: 0px toEm(1, 15) toEm(1, 15) toRem(2) hsla(0, 0%, 0%, 0.035);
+   box-shadow: 0px toEm(1, 15) toEm(1, 15) toRem(2) hsla(0, 0%, 0%, 0.07);
 
     span {
       display: flex;
@@ -266,7 +251,7 @@
    position: relative;
    opacity: .4;
    border-radius: toRem(8);
-   box-shadow: 0px toEm(1, 15) toEm(1, 15) toRem(2) hsla(0, 0%, 0%, 0.040);
+   box-shadow: 0px toEm(1, 15) toEm(1, 15) toRem(2) hsla(0, 0%, 0%, 0.09);
 
        &::before,
       &::after{
@@ -370,7 +355,6 @@
 
    &_toggle-menu {
    background-color: var(--lime-color);
-   opacity: .6;
 
    span {
          display: grid;
@@ -384,7 +368,7 @@
    padding-inline: toRem(3);
    padding-block: toRem(6);
    transform: rotate(-180deg);
-   border: 1px solid var(--lime-color);
+   border: 1px solid var(--white-color);
    border-radius: toRem(4);
    background-color: var(--lime-color);
    color: var(--white-color);
@@ -403,10 +387,6 @@
       opacity: .9;
       background-color: var(--transparent-color);
    }
-
-   // &:active {
-   //    background-color: var(--lime-color);
-   // }
   }
 
    &_is-open {
@@ -422,30 +402,38 @@
   .fa-angles-left {
       @media (max-width:$tablet){
          transform: rotate(180deg);
-         color: var(--danger-color) !important;
+         color: var(--blue-color) !important;
          border-radius: 50%;
       }
   }
 }
 
    &_tab {
-   padding-block: toRem(10);
-   padding-inline: toRem(12);
+   padding-block: toEm(10.5, 15);
+   padding-inline: toEm(12, 15);
    white-space: nowrap;
    border-radius: toRem(8);
    border: 1px solid var(--transparent-color);
-   background-color: var(--blue-color);
+   background-color: var(--tab-hover);
 
    span {
       color: var(--white-color);
       background-color: var(--transparent-color);
+      
+      @media (max-width:$tablet){
+         font-weight: 500;
+      }
    }
 
     @media (any-hover: hover) {
          &:hover {
-          background-color: var(--blue-hover);
+          background-color: var(--tab-color);
         }
       }
+   }
+
+   &_active-tab {
+      background-color: var(--danger-color) !important;
    }
 }
 </style>

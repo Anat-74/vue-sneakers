@@ -17,10 +17,10 @@ const onChangeSelect = (e) => {
  @change="onChangeSelect" 
  class="select"
    >
-   <option disabled value="">Выбериет товар</option>
-      <option value="title">По названию</option>
-      <option value="price">По цене (дешевле)</option>
-      <option value="-price">По цене (дороже)</option>
+   <option disabled value="">{{ $t('main.selectOptionDisabled') }}</option>
+      <option value="title">{{ $t('main.selectOptionTitle') }}</option>
+      <option value="price">{{ $t('main.selectOptionAscending') }}</option>
+      <option value="-price">{{ $t('main.selectOptionDescending') }}</option>
    </select> 
 </div>
 </template>

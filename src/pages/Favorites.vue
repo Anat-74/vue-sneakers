@@ -1,18 +1,14 @@
 <script setup>
 import { onMounted } from 'vue';
 import { usePageFavoritesStore } from '@/stores/PageFavoritesStore';
-import { useAddToFavoriteStore } from '@/stores/AddToFavoriteStore'
-import { useOnClickAddOrRemove } from '@/composables/OnClickAddOrRemove'
 import UCardList from '@/components/UCardList.vue';
+import ULoader from '@/components/ULoader.vue'
 
-const { onClickAddOrRemove } = useOnClickAddOrRemove()
 const pageFavoritesStore = usePageFavoritesStore()
-const addToFavoriteStore = useAddToFavoriteStore()
 
 onMounted(async() => {
-   await pageFavoritesStore.pageFavorites()
+      await pageFavoritesStore.pageFavorites()
 })
-
 </script>
 
 <template>
@@ -20,19 +16,18 @@ onMounted(async() => {
          <router-link to="/">
          <font-awesome-icon icon="fa-solid fa-arrow-left" />
          </router-link>
-   <h2 class="favorites__title">Мои закладки</h2>
+   <h2 class="favorites__title">{{$t('favoritesPage.title')}}</h2>
+   <ULoader v-if="pageFavoritesStore.loader" />
    <UCardList
    v-if="pageFavoritesStore.favorites.length"
-   @add-to-favorite="addToFavoriteStore.addToFavorite"
-   @add-to-cart="onClickAddOrRemove"
    :items="pageFavoritesStore.favorites" 
-   isFavorites
+   is-favorites
    />
    <div v-else
    class="favorites__no-favorites">
    <p
    class="favorites__text">
-      У Вас пока нет избранных товаров
+      {{ $t('favoritesPage.text') }}
    </p>
    <img 
    width="44" 
@@ -63,7 +58,7 @@ onMounted(async() => {
          font-size: toRem(20);
          font-family: var(--font-family);
          color: var(--danger-color);
-         letter-spacing: 1px;
+         letter-spacing: .7px;
          margin-block-end: toRem(9);
       }
    }

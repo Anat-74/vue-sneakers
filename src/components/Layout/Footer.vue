@@ -1,14 +1,13 @@
 <script setup>
-
-import UTabsParent from '@/components/UTabsParent.vue';
-import USocial from '@/components/USocial.vue';
+import UTabs from '@/components/UTabs.vue';
+import UCardFooter from '@/components/UCardFooter.vue';
 </script>
 
 <template>
    <footer class="footer">
       <div class="footer__items">
-         <USocial class="footer__social" />
-            <UTabsParent class="footer__tabs" />
+         <UCardFooter class="footer__front-back" />
+            <UTabs class="footer__tabs"/>
       </div>
    </footer>
 </template>
@@ -21,28 +20,42 @@ import USocial from '@/components/USocial.vue';
 
    @media (max-width:$tablet){
       display: none;
+      .footer__items:has(.card__back_back) {
+         background-position: 50% toRem(140);
+         &::before {
+            background-position: 50% toRem(145);
+         }
+         transition: background-position 1s;
+      .footer__tabs {
+         visibility: hidden;
+         opacity: 0;
+         transition: visibility 0s linear .7s, opacity .7s;
+      }
+    }
    }
 
    &__items {
          position: relative;
          padding-block-start: toRem(24);
          padding-block-end: toRem(52);
-         background-image: url('/image/sneakers-desktop-bg.webp');
+         background-image: url('/image/sneakers-bg.avif');
          background-size: cover;
-         background-position: 50% 85%;
+         background-position: 50%;
 
          @media (max-width:$tablet){
          min-height: 100vh;
          padding-inline: toRem(12);
-         padding-block-start: toEm(88, 15);
+         padding-block-start: toEm(184, 15);
          display: flex;
          flex-direction: column;
          align-items: center;
-         row-gap: toRem(22);
-         background-image: url('/image/sneakers-desktop-bg.webp');
+         background-image: url('/image/sneakers-bg.avif');
          background-size: cover;
-         background-position: 30% toRem(-114);
+         background-position: 50% toRem(-299);
          }
+          @media (max-width:$mobile){
+            background-position: 57% toRem(-214);
+          }
    
    &:before {
 			content: "";
@@ -50,36 +63,48 @@ import USocial from '@/components/USocial.vue';
          inset: 0;
 			background-image: url('/image/drops-splash.avif');
 			background-size: cover;
-			background-position: 50% 60%;
+			background-position: 50%;
 			mix-blend-mode: screen;
 
          @media (max-width:$tablet){
-            background-position:40% toRem(-252);
+            background-position: 80% toRem(-279);
+         }
+
+         @media (max-width:$mobile){
+            background-position: 55% toRem(-299);
          }
 		}
    }
 
-      &__social {
-         position: relative;
-         z-index: 10;
-         display: flex;
-         column-gap: toRem(44);
-         padding-block: toRem(12);
-         margin-block-end: toRem(16);
+   &__front-back {
+      display: none;
 
-         @media (max-width:$tablet){
-            width: 100%;
-            justify-content: space-between;
-            border-top: 3px solid var(--whitesmoke-color);
-            border-bottom: 3px solid var(--whitesmoke-color);
-            margin-block-end: toRem(0);
-         }
+      @media (max-width:$tablet){
+      display: block;
+      @include adaptiveValue("width", 385, 150);
+      @include adaptiveValue("height", 199, 150);
+      background-color: transparent;
+      position: absolute;
+      z-index: 20;
+      top: toRem(12);
+      left: toRem(12);
       }
+   }
 
       &__tabs {
          position: relative;
          z-index: 10;
-   }
+
+         @media (max-width:$tablet){
+            position: absolute;
+            top: toRem(12);
+            right: toRem(12);
+            left: toRem(12);
+            visibility: visible;
+            opacity: 1;
+            transition: visibility 1.9s, opacity 1.7s;
+         }
+      }
 }
 
 </style>

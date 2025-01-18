@@ -1,35 +1,35 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, useTemplateRef } from 'vue'
+
 import { useCloseDialogElement } from '@/composables/CloseDialogElement'
 import { useCreateOrderStore } from '@/stores/CreateOrderStore'
+import { useCartStore } from '@/stores/CartStore'
 
 import UInfoBlock from './UInfoBlock.vue'
 import UCartItemList from './UCartItemList.vue'
 import UButton from '@/components/UButton.vue'
 
-defineProps({
-  totalPrice: Number,
-  vatPrice: Number
-})
-
 const createOrderStore = useCreateOrderStore()
+const cartStore = useCartStore()
+
+const dialogElement = useTemplateRef('dialog-cart')
 
 onMounted(() => {
-  const dialogElement = document.querySelector('.dialog-cart')
-  useCloseDialogElement(dialogElement)
+  useCloseDialogElement(dialogElement.value)
 })
 </script>
 
 <template>
   <dialog
     @click="createOrderStore.orderId = false"
+    ref="dialog-cart"
     id="cartDialog"
     aria-labelledby="cartDialog-name"
     class="dialog-cart"
   >
     <div class="dialog-cart__items">
       <form class="dialog-cart__form" method="dialog">
-        <h2 class="dialog-cart__title" id="cartDialog-name">Корзина</h2>
+        <h2 class="dialog-cart__title" id="cartDialog-name">{{ $t('cart.cartTitle') }}</h2>
         <UButton
           @click="createOrderStore.orderId = false"
           close="close"
@@ -39,27 +39,27 @@ onMounted(() => {
       </form>
 
       <UInfoBlock
-        v-if="!totalPrice && !createOrderStore.orderId"
+        v-if="!cartStore.totalPrice && !createOrderStore.orderId"
         image-url="/image/package-icon.avif"
-        title="Корзина пустая"
-        description="Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."
+        :title="$t('cart.cartEmptyTitle')"
+        :description="$t('cart.cartEmptyDescription')"
       />
       <UInfoBlock
         v-if="createOrderStore.orderId"
         image-url="/image/order-success-icon.avif"
-        title="Заказ оформлен!"
-        :description="`Ваш заказ #${createOrderStore.orderId} скоро будет передан курьерской доставке`"
+        :title="$t('cart.orderPlacedTitle')"
+        :description="$t('cart.orderPlacedDescription', {orderId: createOrderStore.orderId})"
       />
 
-      <UCartItemList v-if="totalPrice" class="dialog-cart__item-list" />
-      <div v-if="totalPrice" class="dialog-cart__bottom">
-        <h3 class="bottom__subtitle">Итого:</h3>
-        <span class="bottom__price">{{ totalPrice }} руб.</span>
-        <h3 class="bottom__subtitle">Налог 5%:</h3>
-        <span class="bottom__price">{{ vatPrice }} руб. </span>
+      <UCartItemList v-if="cartStore.totalPrice" class="dialog-cart__item-list" />
+      <div v-if="cartStore.totalPrice" class="dialog-cart__bottom">
+        <h3 class="bottom__subtitle">{{ $t('cart.cartTotal') }}</h3>
+        <span class="bottom__price">{{ cartStore.totalPrice }} {{ $t('cart.cartCurrency') }}</span>
+        <h3 class="bottom__subtitle">{{ $t('cart.cartTax') }}</h3>
+        <span class="bottom__price">{{ cartStore.vatPrice }} {{ $t('cart.cartCurrency') }} </span>
         <UButton
-          @click="createOrderStore.createOrder()"
-          label="Оформить заказ"
+          @click="createOrderStore.createOrder"
+          :label="$t('cart.cartPlaceAnOrder')"
           size="large"
           :disabled="createOrderStore.buttonDisabled"
           class="bottom__btn"
@@ -71,19 +71,18 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .dialog-cart {
-  @include adaptiveValue('width', 395, 270);
+  @include adaptiveValue('width', 395, 275);
   min-height: 100dvh;
   margin-inline-end: 0;
   transition:
-    min-height 0.2s,
-    display 0.1s allow-discrete,
-    overlay 0.1s allow-discrete,
-    opacity 0.2s;
-  opacity: 0;
-
+    min-height .2s,
+    display .1s allow-discrete,
+    overlay .1s allow-discrete,
+    opacity .2s;
   &[open] {
+   margin-inline-end: 0px;
     opacity: 1;
-    transition: opacity 0.4s ease-out;
+    transition: opacity .5s ease-out;
 
     @starting-style {
       opacity: 0;
@@ -126,7 +125,7 @@ onMounted(() => {
   &__subtitle {
     grid-column: subtitle;
     position: relative;
-    font-weight: 400;
+    font-weight: 500;
   }
 
   &__price {

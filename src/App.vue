@@ -1,5 +1,5 @@
 <script setup>
-import { computed, provide, ref, watch, onMounted } from 'vue'
+import { provide, ref } from 'vue'
 import { useFetchItemsStore } from '@/stores/FetchItemsStore'
 import { useDarkMode } from '@/composables/DarkModeTheme'
 
@@ -12,6 +12,7 @@ import Footer from '@/components/Layout/Footer.vue'
 import USocial from '@/components/USocial.vue'
 import UButton from '@/components/UButton.vue'
 import UTheme from '@/components/UTheme.vue'
+import UScrollToTopButton from '@/components/UScrollTopButton.vue'
 
 const { darkMode, toggleDarkMode } = useDarkMode()
 const fetchItemsStore = useFetchItemsStore()
@@ -24,37 +25,8 @@ provide('toggle', {
   isOpenMenu,
   toggleMenu
 })
-
-/* Корзина */
-const cartItems = ref([])
-
-const totalPrice = computed(() => cartItems.value.reduce((acc, item) => acc + item.price, 0))
-
-const vatPrice = computed(() => Math.round((totalPrice.value * 5) / 100))
-
-onMounted(async() => {
-   const localCartItems = localStorage.getItem('cartItems')
-   cartItems.value = localCartItems ? JSON.parse(localCartItems) : []
-   await fetchItemsStore.fetchItems()
-      fetchItemsStore.items = fetchItemsStore.items.map((item) => ({
-    ...item,
-         isAdded: cartItems.value.some((cartItem) => cartItem.id === item.id)
-  }))
-})
-
-watch(cartItems,
-     async () => {
-         localStorage.setItem('cartItems', JSON.stringify(cartItems.value))
-   },
-  { deep: true }
-)
-
-provide('cart', {
-  cartItems,
-  totalPrice
-})
-/* Корзина */
 </script>
+
 <template>
   <div :data-theme="darkMode" class="app">
     <div class="app__sidebar">
@@ -63,10 +35,11 @@ provide('cart', {
       </Sidebar>
     </div>
 
-    <div :class="['app__container', { app__container_isopen: isOpenMenu }]">
+    <div :class="['app__container', { app__container_isopen: isOpenMenu }]"
+    >
       <Header class="app__header" />
       <main class="app__main">
-            <RouterView />
+          <RouterView />
       </main>
 
       <UNavigation :class="['app__navigation', { app__navigation_isopen: isOpenMenu }]">
@@ -92,11 +65,11 @@ provide('cart', {
       <Footer class="app__footer" />
 
       <UDialogSearch />
-      <UDialogCart 
-      :total-price="totalPrice" 
-      :vat-price="vatPrice" 
-      />
+      <UDialogCart />
     </div>
+    <UScrollToTopButton 
+    :class="['app__scroll-button', { close: isOpenMenu }]"
+   />
   </div>
 </template>
 
@@ -106,7 +79,7 @@ provide('cart', {
     main:has(article:hover) {
       article:not(:hover) {
         opacity: 0.8;
-        filter: grayscale(90%);
+        filter: grayscale(77%);
       }
     }
   }
@@ -114,43 +87,48 @@ provide('cart', {
 
 .app {
   //*min-width: $tablet start-----------------------------------------------------------------------------------------------------------------
-  @media (min-width: $tablet) {
+ @media (min-width: $tablet) {
     display: grid;
     grid-template-columns: auto 1fr;
-
     .app__sidebar {
       @include adaptiveValue('width', 320, 245);
     }
 
     .app__container {
       min-height: 100dvh;
-      transition: transform 0.6s;
+      transition: transform .6s;
 
       &_isopen {
         transform: translateX(toRem(-160));
-        transition: transform 0.6s;
+        transition: transform .6s;
       }
     }
   }
   //*min-width: $tablet end---------------------------------------------------------------------------------------------------------
+
   &__container {
     min-height: 100dvh;
 
     @media (max-width: $tablet) {
       transition:
-        transform 0.2s linear,
-        opacity 0.2s,
-        filter 0.1s;
+        transform .2s linear,
+        opacity .2s,
+        filter .1s;
+
       &_isopen {
         @media (prefers-reduced-motion: no-preference) {
-          transform: scale(0.995);
+          transform: scale(.995);
         }
         filter: blur(12px);
-        opacity: 0.7;
-        transition:
-          transform 0.2s linear,
-          opacity 0.2s,
-          filter 0.2s;
+        opacity: .7;
+        transition: transform .2s linear, opacity .2s, filter .2s;
+
+       &::before {
+         content: '';
+         position: absolute;
+         inset: 0;
+         z-index: 999;
+         }
       }
     }
   }
@@ -198,7 +176,7 @@ provide('cart', {
   &__social {
     @media (min-width: $mobile) {
       @include adaptiveValue('margin-inline-start', 192, 112, 0, $containerWidth, 767.98);
-      padding-block: toRem(12);
+      padding-block: toRem(10);
       border-radius: toRem(8);
       border: 1px solid var(--grey-color);
       background-color: var(--background-color);
@@ -208,8 +186,8 @@ provide('cart', {
       @include adaptiveValue('padding-inline', 16, 2);
       display: flex;
       justify-content: center;
-      column-gap: toRem(25);
-      background-color: rgb(245 245 245 / 0.1);
+      column-gap: toRem(28);
+      background-color: rgb(245 245 245 / .1);
 
       svg {
         width: toRem(32);
@@ -227,13 +205,12 @@ provide('cart', {
       flex-direction: column;
       column-gap: toRem(0);
       row-gap: toRem(6);
-      padding-block-start: toRem(59);
-      border-right: 3px solid var(--white-color);
-      border-left: 3px solid var(--white-color);
+      padding-block-start: toRem(67);
+      border-right: 2px solid var(--grey-color);
+      border-left: 2px solid var(--grey-color);
 
       svg {
-        width: toRem(28);
-        height: toRem(27);
+        width: toRem(27);
       }
     }
   }
@@ -252,7 +229,16 @@ provide('cart', {
     }
   }
 
-  &__footer {
+  &__scroll-button {
+   display: none;
+   position: fixed;
+   z-index: 99;
+   right: toRem(36);
+   bottom: toRem(74);
+
+   &.close {
+      display: none !important;
+   }
   }
 }
 </style>

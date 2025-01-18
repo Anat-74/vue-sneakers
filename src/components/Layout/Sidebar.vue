@@ -1,15 +1,31 @@
 <script setup>
 import { inject } from 'vue';
+
 import UButton from '@/components/UButton.vue'
-import UAccordion from '@/components/Accordion/UAccordion.vue';
+import UCardSidebar from '@/components/UCardSidebar.vue';
+import UAccordion from '@/components/UAccordion.vue';
+import USocial from '@/components/USocial.vue';
+
+import UAnimateTitle from '@/components/UAnimateTitle.vue';
+import ULocaleSelect from '@/components/ULocaleSelect.vue';
 const { isOpenMenu, toggleMenu } = inject('toggle')
 </script>
 
 <template>
 <aside :class="['sidebar', {sidebar_isopen: isOpenMenu}]">
    <slot />
+   <UAnimateTitle class="sidebar__animate-title" />
+   <div class="sidebar__phone">
+      <font-awesome-icon icon="fa-solid fa-phone" />
+         <a href="tel:+3739940551">+373(79)405-51-67</a>
+         <a href="tel:+3739940551">+373(99)305-51-68</a>
+   </div>
    <UAccordion class="sidebar__accordion" />
+   <UCardSidebar class="sidebar__card" />
+   <USocial class="sidebar__social" />
+   <ULocaleSelect class="sidebar__locale" />
    </aside>
+
    <UButton
       @click="toggleMenu" 
       :isOpenMenu="isOpenMenu"
@@ -23,13 +39,13 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
 .sidebar {
    @include adaptiveValue("width", 300, 245 );
    @include adaptiveValue("padding-inline", 16, 9);
-   @include adaptiveValue("padding-block-start", 12, 10);
-   @include adaptiveValue("padding-block-end", 40, 20);
+   @include adaptiveValue("padding-block", 18, 12);
+   @include adaptiveValue("row-gap", 25, 14);
+      scrollbar-color: var(--whitesmoke-color) transparent;
       height: 100dvh;
-      position: relative;
       overflow-y: auto;
-      display: grid;
-      grid-template-rows: auto  1fr;
+      display: flex;
+      flex-direction: column;
       position: fixed;
       z-index: 10;
       top: 0;
@@ -53,8 +69,52 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
          }
       }
 
+      &__animate-title {
+         @include adaptiveValue("top", 15, 12);
+         position: absolute;
+         right: toRem(12);
+      }
+
+      &__phone {
+         @include adaptiveValue("font-size", 22, 16);
+         --background-color: transparent;
+         overflow: visible;
+         white-space: nowrap;
+         position: relative;
+         display: grid;
+         justify-items: center;
+         row-gap: toRem(5);
+         margin-block-end: toRem(16);
+
+         svg {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          color: var(--warning-color);
+           }
+
+         a {
+            color: var(--turquoise-color);
+      }
+   }
+
       &__accordion {
-         align-self: center;
+         flex: 1 1 auto;
+   }
+
+   &__card {
+      --background-color: transparent;
+      @include adaptiveValue("margin-block-end", 9, 44);
+   }
+
+   &__social {
+      display: flex;
+      justify-content: space-between;
+   }
+
+   &__locale {
+      align-self: start;
    }
 }
 
@@ -71,7 +131,7 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
 
    @media (max-width:$tablet){
       top: 50%;
-      // transform: translateY(-50%);
+      transform: translateY(-50%);
       right: toRem(7);
    }
    }

@@ -3,19 +3,31 @@
 
 <template>
    <div class="social">
-      <a href="https://www.viber.com/ru">
+      <a 
+      href="https://www.viber.com/ru"
+      class="social__link"
+      >
       <font-awesome-icon icon="fa-brands fa-viber"
       />
    </a>
-      <a href="https://web.telegram.org">
+      <a 
+      href="https://web.telegram.org"
+      class="social__link"
+      >
       <font-awesome-icon icon="fa-brands fa-telegram"
       />
    </a>
-      <a href="https://www.instagram.com">
+      <a 
+      href="https://www.instagram.com"
+      class="social__link"
+      >
       <font-awesome-icon icon="fa-brands fa-instagram"
       />
    </a>
-      <a href="https://vk.com">
+      <a 
+      href="https://vk.com"
+      class="social__link"
+      >
       <font-awesome-icon icon="fa-brands fa-vk"
       />
    </a>
@@ -23,22 +35,8 @@
 </template>
 
 <style lang="scss" scoped>
-   .social {
-      a {
-         display: flex;
-         align-items: center;
-      }
-   }
-
    .svg-inline--fa {
-      height: toRem(30);
-      @media (min-width:$tablet){
-         height: toRem(34);
-      }
-
-      @media (max-width:$mobileSmall){
-         height: toRem(26);
-      }
+      @include adaptiveValue("height",32 , 26);
    }
 
    .fa-telegram {

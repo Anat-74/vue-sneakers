@@ -1,13 +1,15 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted } from 'vue';
 import { usePageOrdersStore } from '@/stores/PageOrdersStore';
-import UOrderList from '@/components/UOrderList.vue';
+import ULoader from '@/components/ULoader.vue'
 
 const pageOrdersStore = usePageOrdersStore()
 
 onMounted(async () => {
    await pageOrdersStore.fetchOrders()
 })
+
+import UCardList from '@/components/UCardList.vue'
 </script>
 
 <template>
@@ -15,17 +17,18 @@ onMounted(async () => {
       <router-link to="/">
          <font-awesome-icon icon="fa-solid fa-arrow-left" />
          </router-link>
-      <h2 class="orders__title">Мои заказы</h2>
-   <UOrderList 
+      <h2 class="orders__title">{{ $t('ordersPage.title') }}</h2>
+      <ULoader v-if="pageOrdersStore.loader" />
+   <UCardList 
       v-if="pageOrdersStore.orders.length"
-      :orders="pageOrdersStore.orders"
-      isOrders
+      :items="pageOrdersStore.orders"
+      is-favorites
       />
       <div v-else
       class="orders__no-orders">
    <p
    class="orders__text">
-      У Вас пока нет заказов
+   {{ $t('ordersPage.text') }}
    </p>
    <img 
    width="44" 
@@ -56,7 +59,7 @@ onMounted(async () => {
          font-size: toRem(20);
          font-family: var(--font-family);
          color: var(--danger-color);
-         letter-spacing: 1px;
+         letter-spacing: .7px;
          margin-block-end: toRem(9);
       }
    }

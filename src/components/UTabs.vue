@@ -1,39 +1,42 @@
 <script setup>
-import UButton from '@/components/UButton.vue'
-   defineProps({
-   tabs: {
-      type: Array,
-      required: true
-   },
-   selectedTab: {
-      type: String,
-      required: false
-   }
-})
-const emit = defineEmits(['changeTab'])
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-const clickOnTab = (tabName) => {
-   emit('changeTab', tabName)
-}
+import UButton from '@/components/UButton.vue'
+
+const { rt, tm } = useI18n({
+   useScope: 'global'
+})
+
+const activeTab = ref(4)
+
 </script>
 
 <template>
    <div class="tab">
+      <template
+         v-for="tabs in tm('tabsFooter')"
+         :key="tabs"
+      >
       <div class="tab__buttons">
          <UButton
-            v-for="tab in tabs"
-             @click="clickOnTab(tab.name)"
-             :key="tab.name"
-             :class="['tab__btn', {'tab__btn_selected': tab.name === selectedTab}]"
-             tab="tab" 
-            > {{ tab.label }}
+         v-for="btn in tabs.tabsBtn"
+         :key="btn.label"
+         @click="activeTab = btn.id"
+         :activeTab="activeTab === btn.id"
+         tab="tab" 
+         > {{ rt(btn.label) }}
          </UButton>
       </div>
-   <div class="tab__content">
-      <slot />
-      </div>
+         <p
+         v-for="content in tabs.tabsContent"
+         :key="content.content"
+         v-show="activeTab === content.id"
+         class="tab__content"
+         >{{ rt(content.content) }}</p>
+      </template>
    </div>
-   </template>
+</template>
 
 <style lang="scss" scoped>
   .tab {
@@ -44,34 +47,32 @@ const clickOnTab = (tabName) => {
    }
 
    &__buttons {
-      @include adaptiveValue("row-gap", 12, 7);
-      display: grid;
+      @include adaptiveValue("row-gap", 12, 8);
+      display: inline-flex;
+      flex-direction: column;
+
       @media (min-width:$tablet){
          margin-inline-start: toRem(16);
       }
 
       @media (max-width:$tablet){
-         @include adaptiveValue("column-gap", 24, 12);
-         grid-template-columns: repeat(auto-fit, minmax(toRem(118), 1fr));
+         position: absolute;
+         right: 0;
+         margin-block-end: toEm(12, 15)
       }
    }
 
-      &__btn {
-         @media (max-width:$tablet){
-            width: 100%;
-            font-weight: 500;
-         }
-
-        &_selected {
-          background-color: var(--danger-color) !important;
-         }
-      }
-
       &__content {
-         padding-block-start: 5px;
-         font-size: toRem(18);
+         @include adaptiveValue("font-size",18 , 16);
          font-weight: 500;
-         letter-spacing: 1.2px;
+         letter-spacing: 1px;
+         backdrop-filter: blur(4px);
+         color: var(--text-color);
+
+         @media (max-width:$tablet){
+            @include adaptiveValue("top", 207, 154);
+            position: relative;
+         }
     }
   }
   </style>

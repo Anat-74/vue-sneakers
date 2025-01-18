@@ -52,7 +52,7 @@ const isWatched = ref(false)
       class="card__slider" 
       >
       <img 
-         v-for="image of imageUrl"
+         v-for="image in imageUrl"
          :key="image"
          :src="image" 
          :alt="title"
@@ -62,8 +62,8 @@ const isWatched = ref(false)
       >
       </div>
          <span :class="['card__line', {card__line_watched: isWatched}]"></span>
-         <h2 class="card__title">{{title}}</h2>
-         <h3 class="card__subtitle">Цена:</h3>
+         <h2 class="card__title">{{ $t('card.cardTitle') }} {{title}}</h2>
+         <h3 class="card__subtitle">{{ $t('card.cardSubtitle') }}</h3>
          <span class="card__price">{{price}}</span>
       
       <UButton
@@ -88,6 +88,14 @@ const isWatched = ref(false)
    box-shadow: 0px toEm(6, 15) toEm(18, 15) toRem(5) hsla(0, 0%, 0%, 0.05);
    transition: all .7s ease;
 
+   @media (max-width:$mobile){
+   @media (prefers-reduced-motion: no-preference) {
+   animation: scroll-animate;
+   animation-timeline: view();
+   animation-range: entry 0% entry 150%;
+   }
+}
+
 &__btn-heart {
    @include adaptiveValue("left", 32, 27);
    @include adaptiveValue("top", 30, 25);
@@ -107,10 +115,12 @@ const isWatched = ref(false)
    display: flex;
    overflow-x: auto;
    scroll-snap-type: x mandatory;
+   scrollbar-color: rgb(132 132 132 / .1) rgb(245 245 245 / 0);
    border-radius: toRem(10);
 
    @media (max-width:$tablet){
-      outline: 2px inset rgb(245 245 245 / .3);
+      scrollbar-color: rgb(40 40 40 / .1) transparent;
+      outline: 1px inset rgb(245 245 245 / .2);
       box-shadow: 0px toEm(1, 15) toEm(1, 15) toRem(1) hsla(0, 0%, 0%, 0.015);
    }
 }
@@ -123,13 +133,13 @@ const isWatched = ref(false)
 }
 
 &__line {
-   width: toRem(22);
-   border-bottom: 2px dashed var(--grey-color);
+   width: toRem(24);
+   border-bottom: toRem(3) dashed var(--grey-color);
    margin-block-start: toEm(12, 15);
    margin-block-end: toEm(5, 15);
 
    &_watched {
-      border-color: var(--lime-color) !important;
+      border-color: var(--turquoise-color) !important;
    }
 }
 
@@ -175,4 +185,11 @@ const isWatched = ref(false)
       }
    }
 }
+@keyframes scroll-animate {
+      0% {
+         opacity: 0;
+         filter: brightness(2);
+         scale: .5;
+      }
+   }
 </style>

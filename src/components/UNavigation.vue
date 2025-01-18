@@ -1,7 +1,8 @@
 <script setup>
-import { inject } from 'vue';
+import { useCartStore } from '@/stores/CartStore'
 import UButton from '@/components/UButton.vue'
-const { totalPrice } = inject('cart')
+
+const cartStore = useCartStore()
 
 </script>
 
@@ -10,12 +11,12 @@ const { totalPrice } = inject('cart')
       <slot name="search"></slot>
       <UButton
       onclick="window.cartDialog.showModal()" 
-      :totalPrice="totalPrice"
+      :totalPrice="cartStore.totalPrice"
       icon="opencart"
       class="menu__cart" 
       >
-      <span class="menu__price">{{ totalPrice }} <font-awesome-icon icon="fa-solid fa-ruble-sign" /></span>
-         </UButton>
+         <span class="menu__price">{{ cartStore.totalPrice }} <font-awesome-icon icon="fa-solid fa-ruble-sign" /></span>
+      </UButton>
 
          <slot name="social"></slot>
 
@@ -29,7 +30,7 @@ const { totalPrice } = inject('cart')
                <router-link to="/favorites" class="nav__link">
                   <font-awesome-icon icon="fa-regular fa-heart"
                   />
-               <span class="nav__favorite">Закладки</span>
+               <span class="nav__favorite">{{$t('navigation.favorite')}}</span>
             </router-link>
             </li>
 
@@ -37,7 +38,7 @@ const { totalPrice } = inject('cart')
                <router-link to="/orders" class="nav__link">
                   <font-awesome-icon icon="fa-regular fa-user"
                   />
-               <span class="nav__profile">Профиль</span>
+               <span class="nav__profile">{{$t('navigation.profile')}}</span>
             </router-link>
             </li>
          </ul>
@@ -56,6 +57,7 @@ const { totalPrice } = inject('cart')
 
    @media (max-width:$tablet){
       @include adaptiveValue("column-gap", 64, 14);
+      border-top: 2px solid var(--whitesmoke-color);
    }
 
    &__cart {

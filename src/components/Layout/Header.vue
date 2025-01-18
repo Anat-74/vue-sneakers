@@ -1,6 +1,6 @@
 <script setup>
 import UNavigation from '@/components/UNavigation.vue'
-import UDialogContacts from '@/components/UDialoglContacts.vue';
+import UDialogContacts from '@/components/UDialoglFooter.vue';
 
 </script>
 
@@ -15,7 +15,7 @@ import UDialogContacts from '@/components/UDialoglContacts.vue';
          >
       </router-link>
          <h2 class="header__title">vue sneakers</h2>
-         <p class="header__descr">Магазин лучших кроссовок</p>
+         <p class="header__descr">{{ $t('headerDescr') }}</p>
          <UNavigation class="header__nav"/>
    <UDialogContacts />
    </header>
@@ -70,6 +70,6 @@ import UDialogContacts from '@/components/UDialoglContacts.vue';
    font-style: italic;
    font-weight: 400;
    color: var(--warning-hover);
-}
+   }
 }
 </style>

@@ -7,7 +7,7 @@
 
 [data-theme='true'] {
    --background-color: #333333;
-   --text-color: rgb(245 245 245 / .9); 
+   --text-color: var(--whitesmoke-color); 
 .app {
    &__social {
       @media (max-width:$mobile){
@@ -19,7 +19,7 @@
 &__navigation {
    .router-link-active {
       .fa-house {
-         color: rgb(245 245 245 / 0.9);
+         color: rgb(245 245 245 / .9);
          }
       }
     }
@@ -30,47 +30,85 @@
             border-right: 1px solid var(--main-color); 
             --background-color: rgb(0 0 0 / .1);
          }
+         scrollbar-color: #464646 #333333;
          --background-color: rgb(0 0 0 / .3);
          color: var(--grey-color);
+
+         &__phone {
+            scrollbar-color: #464646 #333333;
+            svg {
+               color: var(--lime-color);
+            }
+            a {
+               color: var(--whitesmoke-color);
+            }
+         }
 
          &__accordion {
             --background-color: transparent;
          }
 
-         &__list{
+         &__locale {
             --background-color: transparent;
+         }
+   }
+
+      .animate-items {
+         --background-color: transparent;
+         opacity: .8;
+         &__title {
+            &:nth-child(1) {
+               color: #ffff;
+            }
          }
       }
 
-      .titles {
-         &__title {
-            color: rgb(245 245 245 / 0.8);
+      .card {
+         &__front,
+         &__back {
+            box-shadow: 0px toEm(6, 15) toEm(18, 15) toRem(5) hsla(0, 0%, 0%, 0.5);
          }
-         &__subtitle {
+      }
+
+      .accordion {
+         &__summary {
+            color: rgb(245 245 245 / .8);
+         }
+         &__link {
             color: var(--grey-color);
             @media (max-width:$tablet){
                text-decoration: 1px underline  currentColor;
             }
          }
-
-         // @media (max-width:$tablet){
-         //    &__title {
-         //       color: var(--lime-color);
-         //    }
-         //    &__subtitle {
-         //       color: var(--warning-color);
-         //       text-decoration: 1px underline  var( --warning-color);
-         //    }
-         // }
       }   
+
+      .social {
+         svg {
+            filter: brightness(85%);
+         }
+      }
+
+      .locale {
+         &__select {
+            border-color: var(--grey-color);
+            background-color: var(--nav-color);
+            color: var(--whitesmoke-color);
+         }
+      &::before,
+      &::after{
+      background-color: var(--whitesmoke-color);
+   }
+
+   }
     //*sidebar-end---------------------------------------------------------------------------------------------------------------
 
    .menu {
-         --background-color: rgb(0 0 0 / .4);
+         --background-color: rgb(40 40 40 / .2);
+         border-top: 1px solid rgb(40 40 40 / .4);
          @media (max-width:$tablet){
             &__price {
                color: var(--white-color);
-               background-color: rgb(0 0 0 / .4);
+               background-color: rgb(40 40 40 / .3);
             }
          }
       }
@@ -78,6 +116,7 @@
       .btn {
          --background-color: transparent;
          &_toggle-menu {
+            filter: brightness(80%);
             border-color: rgb(245 245 245 / .1);
             svg {
                @media (max-width:$tablet){
@@ -108,6 +147,10 @@
             }
          }
 
+         &_tab {
+            filter: brightness(85%);
+         }
+
          .fa-opencart {
             transition: color .2s; 
             @media (max-width:$tablet){
@@ -125,6 +168,7 @@
 
       .nav {
          --background-color: transparent;
+
          &__link {
             &:not(.router-link-active) {
                @media (min-width:$tablet){
@@ -146,7 +190,7 @@
          &__slider {
             scrollbar-color: #464646 #333333;
             @media (max-width:$tablet){
-               outline: 2px inset rgb(0 0 0 / .3);
+               outline: 2px outset rgb(0 0 0 / .4);
             }
          }
    
@@ -163,12 +207,7 @@
          border: 1px solid rgb(0 0 0 / .2);
          color: var(--grey-color);
       }
-   
-      .tab__content {
-         color: var(--white-color);
-         font-weight: 400;
-      }
-   
+
       .input-search {
          border: 2px solid var(--grey-color);
          border-right: 1px solid var(--grey-color);
@@ -213,14 +252,35 @@
    
       .footer {
          &__items {
-            background-image:none;
+            background-image: url('/image/depositphotos_18984481-stock-illustration-black-gym-shoes-removebg-preview.avif');
+            background-size: cover;
+            background-position: 50%;
+            --background-color: transparent;
             &::before {
                display: none;
             }
+
+            @media (max-width:$tablet){
+               background-position: 50% toRem(77);
+               transition: background-position .7s;
+            }
          }
-         &__social {
-            border-top: 1px solid var(--grey-color);
-            border-bottom: 1px solid var(--grey-color);
+
+         &__front-back {
+            box-shadow: 0px toEm(0) toEm(0) toRem(0) hsla(0, 0%, 0%, 0);
+         }
+         .card {
+            &__icon {
+               color: var(--grey-color);
+               background-color: transparent;
+            }
+         }
+      }
+
+      .tab {
+         &__content {
+            backdrop-filter: blur(2px);
+            border-radius: toRem(25);
          }
       }
    }
@@ -231,7 +291,6 @@
    .sidebar {
       --background-color: rgb(245 245 245 / .3);
       border-right: 2px solid var(--whitesmoke-color);
-
       @media (max-width:$tablet){
          --background-color: rgb(245 245 245 / .5);
          border-right: 1px solid var(--whitesmoke-color);
@@ -239,24 +298,26 @@
       &__accordion {
          --background-color: transparent;
       }
-      &__list{
-         --background-color: transparent;
-      }
    }
 
-   .titles {
-      &__title {
+   .animate-items {
+      --background-color: transparent;
+      opacity: .7;
+   }
+   .accordion {
+      &__summary {
          color: rgb(0 0 0 / .5);
       }
-      &__subtitle {
+      &__link {
          color: rgb(0 0 0 / .8);
       }
       @media (max-width:$tablet){
-         &__title {
+         &__summary {
             color: var(--lime-color);
          }
-         &__subtitle {
-            // color: var(--blue-color);
+         &__link {
+            color: var(--lime-color);
+            opacity: .9;
             text-decoration: 1px underline  currentColor;
          }
       }
@@ -264,16 +325,7 @@
 //*sidebar-end---------------------------------------------------------------------------------------------
 
    .menu {
-      --background-color: rgb(245 245 245 / .8);
-   }
-
-   .card {
-      &__slider {
-         scrollbar-color: var(--white-color) rgb(245 245 245 / .7);
-         @media (max-width:$tablet){
-            scrollbar-color: var(--whitesmoke-color) transparent;
-         }
-      }
+      --background-color: rgb(245 245 245 / .4);
    }
 
    .btn {
