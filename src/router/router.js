@@ -2,6 +2,7 @@ import { createWebHistory, createRouter } from 'vue-router'
 
 import Home from '@/pages/Home.vue';
 import Favorites from '@/pages/Favorites.vue';
+import Orders from '@/pages/Orders.vue';
 import SneakersForMan from '@/pages/SneakersForMan.vue';
 import SneakersForChildren from '@/pages/SneakersForChildren.vue';
 import SneakersForChildrenWooman from '@/pages/SneakersForChildrenWooman.vue';
@@ -20,6 +21,11 @@ const routes = [
       path: '/favorites',
       name: 'Favorites',
       component: Favorites
+   },
+   {
+      path: '/orders',
+      name: 'Orders',
+      component: Orders
    },
    {
       path: '/sneakers-man',
