@@ -36,8 +36,6 @@ function showDialogContacts() {
   aria-label="Контакты" 
   class="dialog-contacts">
     <div class="dialog-contacts__items">
-      <form method="dialog">
-      </form>
       <Footer class="dialog-contacts__footer" />
     </div>
   </dialog>
@@ -45,7 +43,7 @@ function showDialogContacts() {
 
 <style lang="scss" scoped>
 .dialog-contacts {
-  @include adaptiveValue('width', 855, 290);
+  @include adaptiveValue('width', 855, 285);
   min-height: 100dvh;
   margin-inline-end: 0;
   opacity: 0;
