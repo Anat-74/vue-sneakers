@@ -1,3 +1,5 @@
+import { onUnmounted } from 'vue'
+
 export function useCloseDialogElement(dialogElement) {
    dialogElement.addEventListener("click", closeOnBackDropClick)
 
@@ -8,4 +10,8 @@ export function useCloseDialogElement(dialogElement) {
             dialogElement.close()
       }
    }
+
+   onUnmounted(() => {
+      dialogElement.removeEventListener("click", closeOnBackDropClick);
+    })
 }
