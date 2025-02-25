@@ -1,5 +1,5 @@
 <script setup>
-import { provide, ref } from 'vue'
+import { provide, ref, onMounted } from 'vue'
 import { useFetchItemsStore } from '@/stores/FetchItemsStore'
 import { useDarkMode } from '@/composables/DarkModeTheme'
 
@@ -25,6 +25,16 @@ provide('toggle', {
   isOpenMenu,
   toggleMenu
 })
+
+const searchNavigation = ref(null);
+
+onMounted(() => {
+  searchNavigation.value = window.searchNavigation;
+})
+
+function showSearch() {
+  searchNavigation.value.show();
+}
 </script>
 
 <template>
@@ -45,7 +55,7 @@ provide('toggle', {
       <UNavigation :class="['app__navigation', { app__navigation_isopen: isOpenMenu }]">
         <template #search>
           <UButton 
-          onclick="window.searchNavigation.show()" 
+          @click="showSearch"  
           icon="magnifying-glass" 
           />
         </template>

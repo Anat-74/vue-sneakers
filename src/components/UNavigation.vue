@@ -1,8 +1,19 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 import { useCartStore } from '@/stores/CartStore'
 import UButton from '@/components/UButton.vue'
 
 const cartStore = useCartStore()
+
+const cartDialog = ref(null);
+
+onMounted(() => {
+   cartDialog.value = window.cartDialog;
+});
+
+function showCartDialog() {
+   cartDialog.value.showModal();
+}
 
 </script>
 
@@ -10,7 +21,7 @@ const cartStore = useCartStore()
    <div class="menu">
       <slot name="search"></slot>
       <UButton
-      onclick="window.cartDialog.showModal()" 
+      @click="showCartDialog" 
       :totalPrice="cartStore.totalPrice"
       icon="opencart"
       class="menu__cart" 

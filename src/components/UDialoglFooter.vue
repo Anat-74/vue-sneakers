@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted,  useTemplateRef } from 'vue'
+import { ref, onMounted, useTemplateRef } from 'vue'
 import { useCloseDialogElement } from '@/composables/CloseDialogElement'
 
 import UButton from '@/components/UButton.vue'
@@ -9,11 +9,21 @@ const dialogElement = useTemplateRef('dialog-contacts')
 onMounted(() => {
   useCloseDialogElement(dialogElement.value)
 })
+
+const dialogContacts = ref(null);
+
+onMounted(() => {
+   dialogContacts.value = window.dialogContacts;
+});
+
+function showDialogContacts() {
+   dialogContacts.value.showModal();
+}
 </script>
 
 <template>
   <UButton 
-  onclick="window.dialogContacts.showModal()" 
+  @click="showDialogContacts" 
   burger="burger" 
   class="open-button"
   >
