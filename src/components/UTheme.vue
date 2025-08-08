@@ -1,5 +1,5 @@
 <script setup>
-import { useDarkMode } from '@/composables/DarkModeTheme'
+import { useDarkMode } from '../composables/use-dark-mode.js'
 const { darkMode } = useDarkMode()
 const model = defineModel()
 </script>

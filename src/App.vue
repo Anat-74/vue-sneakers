@@ -1,7 +1,7 @@
 <script setup>
 import { provide, ref, onMounted } from 'vue'
 import { useFetchItemsStore } from '@/stores/FetchItemsStore'
-import { useDarkMode } from './composables/DarkModeTheme.js'
+import { useDarkMode } from './composables/use-dark-mode.js'
 
 import Header from '@/components/Layout/Header.vue'
 import UDialogCart from '@/components/DialogCart/UDialoglCart.vue'
