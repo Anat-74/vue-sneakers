@@ -1,15 +1,15 @@
 <script setup>
-import { useDarkMode } from '../composables/use-dark-mode.js'
-const { darkMode } = useDarkMode()
+// import { useDarkMode } from '../composables/use-dark-mode.js'
+// const { darkMode } = useDarkMode()
 const model = defineModel()
 </script>
 
-<template>
+<!-- <template>
   <div class="theme">
     <input @input="model" :checked="darkMode" id="switcher" type="checkbox" class="theme__input" />
     <label for="switcher" class="theme__label"></label>
   </div>
-</template>
+</template> -->
 
 <style lang="scss" scoped>
 .theme {

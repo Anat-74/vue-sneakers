@@ -1,7 +1,7 @@
 <script setup>
 import { provide, ref, onMounted } from 'vue'
 import { useFetchItemsStore } from '@/stores/FetchItemsStore'
-import { useDarkMode } from './composables/use-dark-mode.js'
+// import { useDarkMode } from './composables/use-dark-mode.js'
 
 import Header from '@/components/Layout/Header.vue'
 import UDialogCart from '@/components/DialogCart/UDialoglCart.vue'
@@ -14,7 +14,7 @@ import UButton from '@/components/UButton.vue'
 import UTheme from '@/components/UTheme.vue'
 import UScrollToTopButton from '@/components/UScrollTopButton.vue'
 
-const { darkMode, toggleDarkMode } = useDarkMode()
+// const { darkMode, toggleDarkMode } = useDarkMode()
 const fetchItemsStore = useFetchItemsStore()
 
 const isOpenMenu = ref(false)
@@ -35,13 +35,14 @@ onMounted(() => {
 function showSearch() {
   searchNavigation.value.show();
 }
+// :data-theme="darkMode" 
 </script>
 
 <template>
-  <div :data-theme="darkMode" class="app">
+  <div  class="app">
     <div class="app__sidebar">
       <Sidebar>
-        <UTheme v-model="toggleDarkMode" />
+        <!-- <UTheme v-model="toggleDarkMode" /> -->
       </Sidebar>
     </div>
 
