@@ -1,19 +1,31 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useCartStore } from '@/stores/CartStore'
 import UButton from '@/components/UButton.vue'
 
 const cartStore = useCartStore()
 
-const cartDialog = ref(null);
-
-onMounted(() => {
-   cartDialog.value = window.cartDialog;
-});
+const cartDialog = ref(null)
 
 function showCartDialog() {
+     if (!cartDialog.value) {
+    return
+  }
    cartDialog.value.showModal();
 }
+
+onMounted(() => {
+   cartDialog.value = window.cartDialog || null
+})
+
+onUnmounted(() => {
+  // Закрываем диалог при размонтировании
+  if (cartDialog.value && typeof cartDialog.value.close === 'function') {
+    cartDialog.value.close();
+  }
+  // Освобождаем ссылку
+   cartDialog.value = null;
+})
 
 </script>
 

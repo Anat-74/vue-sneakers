@@ -13,7 +13,7 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
 
 <template>
 <aside :class="['sidebar', {sidebar_isopen: isOpenMenu}]">
-   <div class="sidebar__test">
+   <div class="sidebar__body">
    <slot />
    <UAnimateTitle class="sidebar__animate-title" />
    <div class="sidebar__phone">
@@ -66,7 +66,7 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
          }
       }
 
-      &__test {
+      &__body {
       height: 100%;
       display: flex;
       flex-direction: column;

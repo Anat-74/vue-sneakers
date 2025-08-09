@@ -12,33 +12,40 @@ const dialogElement = useTemplateRef('dialog-contacts')
 
 const dialogContacts = ref(null);
 
-onMounted(() => {
-   dialogContacts.value = window.dialogContacts;
+function showDialogContacts() {
+   if (!dialogContacts.value) {
+    return
+  }
+   dialogContacts.value.showModal()
+}
 
-   if (!dialogElement.value) return
-   
-      dialogElement.value.addEventListener("click", closeOnBackDropClick)
-
-      function closeOnBackDropClick ({ currentTarget, target }) {
-         const dialogElement = currentTarget
-         const isClickedOnBackDrop = target === dialogElement
-         if (isClickedOnBackDrop) {
-            dialogElement.close()
+function closeOnBackDropClick({ currentTarget, target }) {
+   const dialogEl = currentTarget
+   const isClickedOnBackDrop = target === dialogEl
+   if (isClickedOnBackDrop) {
+      dialogEl.close()
       }
    }
-});
 
-onUnmounted(() => {
-  // Удаляем обработчик
-  if (dialogElement.value && closeOnBackDropClick) {
-    dialogElement.value.removeEventListener("click", closeOnBackDropClick)
-  }
+onMounted(() => {
+   dialogContacts.value = window.dialogContacts || null;
+
+   if (!dialogElement.value) return
+      dialogElement.value.addEventListener("click", closeOnBackDropClick)
 })
 
+onUnmounted(() => {
+  if (dialogContacts.value && typeof dialogContacts.value.close === 'function') {
+    dialogContacts.value.close();
+  }
 
-function showDialogContacts() {
-   dialogContacts.value.showModal();
-}
+   dialogContacts.value = null;
+
+  if (dialogElement.value) {
+     dialogElement.value.removeEventListener("click", closeOnBackDropClick)
+   }
+})
+
 </script>
 
 <template>

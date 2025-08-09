@@ -14,27 +14,23 @@ const cartStore = useCartStore()
 
 const dialogElement = useTemplateRef('dialog-cart')
 
-
-onMounted(() => {
-   //   useCloseDialogElement(dialogElement.value)
-   if (!dialogElement.value) return
-   
-   dialogElement.value.addEventListener("click", closeOnBackDropClick)
-
-      function closeOnBackDropClick ({ currentTarget, target }) {
-         const dialogElement = currentTarget
-         const isClickedOnBackDrop = target === dialogElement
+function closeOnBackDropClick({ currentTarget, target }) {
+         const dialogEl = currentTarget
+         const isClickedOnBackDrop = target === dialogEl
          if (isClickedOnBackDrop) {
-            dialogElement.close()
+            dialogEl.close()
       }
    }
+
+onMounted(() => {
+   if (!dialogElement.value) return
+      dialogElement.value.addEventListener("click", closeOnBackDropClick)
 })
 
 onUnmounted(() => {
-  // Удаляем обработчик
-  if (dialogElement.value && closeOnBackDropClick) {
+   if (dialogElement.value) {
     dialogElement.value.removeEventListener("click", closeOnBackDropClick)
-  }
+   }
 })
 </script>
 
@@ -89,6 +85,11 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss" scoped>
+.test {
+   background-color: var(--red);
+   position: relative;
+   z-index: 999;
+}
 .dialog-cart {
   @include adaptiveValue('width', 395, 275);
   min-height: 100dvh;

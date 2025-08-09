@@ -1,5 +1,5 @@
 <script setup>
-import { provide, ref, onMounted } from 'vue'
+import { provide, ref, onMounted, onUnmounted } from 'vue'
 import { useFetchItemsStore } from '@/stores/FetchItemsStore'
 // import { useDarkMode } from '@/composables/DarkMode'
 
@@ -28,13 +28,25 @@ provide('toggle', {
 
 const searchNavigation = ref(null)
 
+function showSearch() {
+   if (!searchNavigation.value) {
+    return
+  }
+  searchNavigation.value.show()
+}
+
 onMounted(() => {
   searchNavigation.value = window.searchNavigation
 })
 
-function showSearch() {
-  searchNavigation.value.show()
-}
+onUnmounted(() => {
+  // Закрываем диалог при размонтировании
+  if (searchNavigation.value && typeof searchNavigation.value.close === 'function') {
+    searchNavigation.value.close();
+  }
+  // Освобождаем ссылку
+   searchNavigation.value = null;
+})
 
    const getInitialDarkMode = () => {
       const userPreference = localStorage.getItem('darkMode')

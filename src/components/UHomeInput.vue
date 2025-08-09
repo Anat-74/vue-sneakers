@@ -159,7 +159,7 @@ class="image-search"
       display: block;
       position: absolute;
       top: toRem(18);
-      left: toRem(32);
+      left: toRem(50);
       opacity: 0;
       z-index: -1;
       font-family: var(--font-family);
