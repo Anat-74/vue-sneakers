@@ -1,14 +1,14 @@
 <script setup>
 import { ref, onMounted, useTemplateRef } from 'vue'
-import { useCloseDialogElement } from '@/composables/CloseDialogElement'
+// import { useCloseDialogElement } from '@/composables/CloseDialogElement'
 
 import UButton from '@/components/UButton.vue'
 import Footer from '@/components/Layout/Footer.vue'
 
 const dialogElement = useTemplateRef('dialog-contacts')
-onMounted(() => {
-  useCloseDialogElement(dialogElement.value)
-})
+// onMounted(() => {
+//   useCloseDialogElement(dialogElement.value)
+// })
 
 const dialogContacts = ref(null);
 

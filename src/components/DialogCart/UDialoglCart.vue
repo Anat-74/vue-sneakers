@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, useTemplateRef } from 'vue'
 
-import { useCloseDialogElement } from '@/composables/CloseDialogElement'
+// import { useCloseDialogElement } from '@/composables/CloseDialogElement'
 import { useCreateOrderStore } from '@/stores/CreateOrderStore'
 import { useCartStore } from '@/stores/CartStore'
 
@@ -14,9 +14,9 @@ const cartStore = useCartStore()
 
 const dialogElement = useTemplateRef('dialog-cart')
 
-onMounted(() => {
-  useCloseDialogElement(dialogElement.value)
-})
+// onMounted(() => {
+//   useCloseDialogElement(dialogElement.value)
+// })
 </script>
 
 <template>
