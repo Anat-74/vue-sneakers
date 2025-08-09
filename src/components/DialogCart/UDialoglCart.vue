@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, useTemplateRef } from 'vue'
+import { onMounted, useTemplateRef, onUnmounted } from 'vue'
 
 // import { useCloseDialogElement } from '@/composables/CloseDialogElement'
 import { useCreateOrderStore } from '@/stores/CreateOrderStore'
@@ -14,9 +14,24 @@ const cartStore = useCartStore()
 
 const dialogElement = useTemplateRef('dialog-cart')
 
-// onMounted(() => {
-//   useCloseDialogElement(dialogElement.value)
-// })
+
+onMounted(() => {
+   //   useCloseDialogElement(dialogElement.value)
+
+   dialogElement.value.addEventListener("click", closeOnBackDropClick)
+
+      function closeOnBackDropClick ({ currentTarget, target }) {
+         const dialogElement = currentTarget
+         const isClickedOnBackDrop = target === dialogElement
+         if (isClickedOnBackDrop) {
+            dialogElement.close()
+      }
+   }
+})
+
+   onUnmounted(() => {
+      dialogElement.value.removeEventListener("click", closeOnBackDropClick);
+    })
 </script>
 
 <template>

@@ -13,6 +13,7 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
 
 <template>
 <aside :class="['sidebar', {sidebar_isopen: isOpenMenu}]">
+   <div class="sidebar__test">
    <slot />
    <UAnimateTitle class="sidebar__animate-title" />
    <div class="sidebar__phone">
@@ -24,8 +25,8 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
    <UCardSidebar class="sidebar__card" />
    <USocial class="sidebar__social" />
    <ULocaleSelect class="sidebar__locale" />
+      </div>
    </aside>
-
    <UButton
       @click="toggleMenu" 
       :isOpenMenu="isOpenMenu"
@@ -37,15 +38,11 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
 
 <style lang="scss" scoped>
 .sidebar {
-   @include adaptiveValue("width", 300, 245 );
-   @include adaptiveValue("padding-inline", 16, 9);
-   @include adaptiveValue("padding-block", 18, 12);
-   @include adaptiveValue("row-gap", 25, 14);
+   @include adaptiveValue("padding-inline", 16, 12);
+   @include adaptiveValue("padding-block-start", 18, 9);
       scrollbar-color: var(--whitesmoke-color) transparent;
       height: 100dvh;
       overflow-y: auto;
-      display: flex;
-      flex-direction: column;
       position: fixed;
       z-index: 10;
       top: 0;
@@ -67,6 +64,17 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
          @media (max-width:$tablet){
             left: 0;
          }
+      }
+
+      &__test {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      @include adaptiveValue("row-gap", 25, 14);
+
+      @media (min-width:$tablet){
+         width: toRem(245);
+      }
       }
 
       &__animate-title {
@@ -115,6 +123,7 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
 
    &__locale {
       align-self: start;
+      @include adaptiveValue("padding-block-end", 18, 9);
    }
 }
 

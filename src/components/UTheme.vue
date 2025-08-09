@@ -1,15 +1,28 @@
 <script setup>
-// import { useDarkMode } from '../composables/use-dark-mode.js'
+import { ref } from 'vue';
+// import { useDarkMode } from '@/composables/DarkMode'
 // const { darkMode } = useDarkMode()
 const model = defineModel()
+
+   const getInitialDarkMode = () => {
+      const userPreference = localStorage.getItem('darkMode')
+      return userPreference === 'true' ? true : false
+    }
+
+    const darkMode = ref(getInitialDarkMode())
 </script>
 
-<!-- <template>
+<template>
   <div class="theme">
-    <input @input="model" :checked="darkMode" id="switcher" type="checkbox" class="theme__input" />
+    <input 
+    @input="model" 
+    :checked="darkMode" 
+    id="switcher" 
+    type="checkbox" 
+    class="theme__input" />
     <label for="switcher" class="theme__label"></label>
   </div>
-</template> -->
+</template>
 
 <style lang="scss" scoped>
 .theme {
@@ -19,9 +32,9 @@ const model = defineModel()
   border-radius: toRem(25);
   background-color: transparent;
 
-  @media (max-width:$tablet){
-   width: toRem(84);
-   height: toRem(25);
+  @media (max-width: $tablet) {
+    width: toRem(84);
+    height: toRem(25);
   }
 
   &__input {
@@ -72,12 +85,12 @@ const model = defineModel()
     }
 
     &:checked {
-      background-color: rgb(245 245 245 / .1);
+      background-color: rgb(245 245 245 / 0.1);
       border: 1px solid var(--grey-color);
     }
 
     &:not(:checked) {
-      background-color: rgb(245 245 245 / .8);
+      background-color: rgb(245 245 245 / 0.8);
       border: 1px solid var(--grey-color);
     }
 
@@ -89,29 +102,29 @@ const model = defineModel()
       background-color: #333333;
     }
 
-    @media (max-width:$tablet){
+    @media (max-width: $tablet) {
       width: toRem(75);
       height: toRem(25);
 
-   &::before,
-    &::after {
-      content: '';
-      font-size: toRem(14);
-    }
+      &::before,
+      &::after {
+        content: '';
+        font-size: toRem(14);
+      }
 
       &::before {
-      content: '🌙';
-      left: toRem(8);
-      top: toRem(15);
-      font-size: toRem(14);
-    }
+        content: '🌙';
+        left: toRem(8);
+        top: toRem(15);
+        font-size: toRem(14);
+      }
 
-    &::after {
-      content: '🌞';
-      right: toRem(8);
-      top: toRem(15);
-      font-size: toRem(14);
-    }
+      &::after {
+        content: '🌞';
+        right: toRem(8);
+        top: toRem(15);
+        font-size: toRem(14);
+      }
     }
   }
 

@@ -103,7 +103,7 @@
     //*sidebar-end---------------------------------------------------------------------------------------------------------------
 
    .menu {
-         --background-color: rgb(40 40 40 / .2);
+         --background-color: rgb(40 40 40 / .7);
          border-top: 1px solid rgb(40 40 40 / .4);
          @media (max-width:$tablet){
             &__price {
@@ -117,10 +117,10 @@
          --background-color: transparent;
          &_toggle-menu {
             filter: brightness(80%);
-            border-color: rgb(245 245 245 / .1);
+            border-color: rgb(245 245 245 / .7);
             svg {
                @media (max-width:$tablet){
-                  color: rgb(0 0 0 / .5) !important;
+                  color: rgb(245 245 245 / .7) !important;
                }
             }
          }
@@ -325,7 +325,7 @@
 //*sidebar-end---------------------------------------------------------------------------------------------
 
    .menu {
-      --background-color: rgb(245 245 245 / .4);
+      --background-color: rgb(245 245 245 / .7);
    }
 
    .btn {

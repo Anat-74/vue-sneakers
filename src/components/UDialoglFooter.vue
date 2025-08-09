@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, useTemplateRef } from 'vue'
+import { ref, onMounted, useTemplateRef, onUnmounted } from 'vue'
 // import { useCloseDialogElement } from '@/composables/CloseDialogElement'
 
 import UButton from '@/components/UButton.vue'
@@ -14,7 +14,21 @@ const dialogContacts = ref(null);
 
 onMounted(() => {
    dialogContacts.value = window.dialogContacts;
+
+      dialogElement.value.addEventListener("click", closeOnBackDropClick)
+
+      function closeOnBackDropClick ({ currentTarget, target }) {
+         const dialogElement = currentTarget
+         const isClickedOnBackDrop = target === dialogElement
+         if (isClickedOnBackDrop) {
+            dialogElement.close()
+      }
+   }
 });
+
+   onUnmounted(() => {
+      dialogElement.value.removeEventListener("click", closeOnBackDropClick);
+    })
 
 function showDialogContacts() {
    dialogContacts.value.showModal();

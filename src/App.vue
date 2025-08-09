@@ -1,7 +1,7 @@
 <script setup>
 import { provide, ref, onMounted } from 'vue'
 import { useFetchItemsStore } from '@/stores/FetchItemsStore'
-// import { useDarkMode } from './composables/use-dark-mode.js'
+// import { useDarkMode } from '@/composables/DarkMode'
 
 import Header from '@/components/Layout/Header.vue'
 import UDialogCart from '@/components/DialogCart/UDialoglCart.vue'
@@ -26,48 +26,55 @@ provide('toggle', {
   toggleMenu
 })
 
-const searchNavigation = ref(null);
+const searchNavigation = ref(null)
 
 onMounted(() => {
-  searchNavigation.value = window.searchNavigation;
+  searchNavigation.value = window.searchNavigation
 })
 
 function showSearch() {
-  searchNavigation.value.show();
+  searchNavigation.value.show()
 }
-// :data-theme="darkMode" 
+
+   const getInitialDarkMode = () => {
+      const userPreference = localStorage.getItem('darkMode')
+      return userPreference === 'true' ? true : false
+}
+        const darkMode = ref(getInitialDarkMode())
+    
+    const saveDarkModePreference = (isDarkMode) => {
+      localStorage.setItem('darkMode', isDarkMode)
+    }
+    
+    const toggleDarkMode = () => {
+      darkMode.value = !darkMode.value
+      saveDarkModePreference(darkMode.value)
+   }
 </script>
 
 <template>
-  <div  class="app">
+  <div :data-theme="darkMode" class="app">
     <div class="app__sidebar">
       <Sidebar>
-        <!-- <UTheme v-model="toggleDarkMode" /> -->
+        <UTheme v-model="toggleDarkMode" />
       </Sidebar>
     </div>
 
-    <div :class="['app__container', { app__container_isopen: isOpenMenu }]"
-    >
+    <div :class="['app__container', { app__container_isopen: isOpenMenu }]">
       <Header class="app__header" />
       <main class="app__main">
-          <RouterView />
+        <RouterView />
       </main>
 
       <UNavigation :class="['app__navigation', { app__navigation_isopen: isOpenMenu }]">
         <template #search>
-          <UButton 
-          @click="showSearch"  
-          icon="magnifying-glass" 
-          />
+          <UButton @click="showSearch" icon="magnifying-glass" />
         </template>
         <template #social>
           <USocial class="app__social"></USocial>
         </template>
         <template #home>
-          <router-link 
-          to="/" 
-          @click="fetchItemsStore.filters.searchQuery = ''"
-          >
+          <router-link to="/" @click="fetchItemsStore.filters.searchQuery = ''">
             <font-awesome-icon icon="fa-solid fa-house" />
           </router-link>
         </template>
@@ -78,9 +85,7 @@ function showSearch() {
       <UDialogSearch />
       <UDialogCart />
     </div>
-    <UScrollToTopButton 
-    :class="['app__scroll-button', { close: isOpenMenu }]"
-   />
+    <UScrollToTopButton :class="['app__scroll-button', { close: isOpenMenu }]" />
   </div>
 </template>
 
@@ -98,7 +103,7 @@ function showSearch() {
 
 .app {
   //*min-width: $tablet start-----------------------------------------------------------------------------------------------------------------
- @media (min-width: $tablet) {
+  @media (min-width: $tablet) {
     display: grid;
     grid-template-columns: auto 1fr;
     .app__sidebar {
@@ -107,11 +112,11 @@ function showSearch() {
 
     .app__container {
       min-height: 100dvh;
-      transition: transform .6s;
+      transition: transform 0.6s;
 
       &_isopen {
         transform: translateX(toRem(-160));
-        transition: transform .6s;
+        transition: transform 0.6s;
       }
     }
   }
@@ -122,30 +127,31 @@ function showSearch() {
 
     @media (max-width: $tablet) {
       transition:
-        transform .2s linear,
-        opacity .2s,
-        filter .1s;
+        transform 0.2s linear,
+        opacity 0.2s,
+        filter 0.1s;
 
       &_isopen {
         @media (prefers-reduced-motion: no-preference) {
-          transform: scale(.995);
+          transform: scale(0.995);
         }
         filter: blur(12px);
-        opacity: .7;
-        transition: transform .2s linear, opacity .2s, filter .2s;
+        opacity: 0.7;
+        transition:
+          transform 0.2s linear,
+          opacity 0.2s,
+          filter 0.2s;
 
-       &::before {
-         content: '';
-         position: absolute;
-         inset: 0;
-         z-index: 999;
-         }
+        &::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          z-index: 999;
+        }
       }
     }
   }
 
-  &_header {
-  }
   &__main {
     margin-block-end: toRem(52);
   }
@@ -198,7 +204,7 @@ function showSearch() {
       display: flex;
       justify-content: center;
       column-gap: toRem(28);
-      background-color: rgb(245 245 245 / .1);
+      background-color: rgb(245 245 245 / 0.1);
 
       svg {
         width: toRem(32);
@@ -241,15 +247,15 @@ function showSearch() {
   }
 
   &__scroll-button {
-   display: none;
-   position: fixed;
-   z-index: 99;
-   right: toRem(36);
-   bottom: toRem(74);
+    display: none;
+    position: fixed;
+    z-index: 99;
+    right: toRem(36);
+    bottom: toRem(74);
 
-   &.close {
+    &.close {
       display: none !important;
-   }
+    }
   }
 }
 </style>

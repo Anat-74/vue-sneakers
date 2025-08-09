@@ -382,7 +382,7 @@
 
    @media (max-width:$tablet){
       padding: toRem(8);
-      border: toRem(4) solid var(--whitesmoke-color);
+      border: toRem(3) solid var(--lime-color);
       border-radius: 50%;
       opacity: .9;
       background-color: var(--transparent-color);
