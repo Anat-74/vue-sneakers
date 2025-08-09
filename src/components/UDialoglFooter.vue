@@ -15,6 +15,8 @@ const dialogContacts = ref(null);
 onMounted(() => {
    dialogContacts.value = window.dialogContacts;
 
+   if (!dialogElement.value) return
+   
       dialogElement.value.addEventListener("click", closeOnBackDropClick)
 
       function closeOnBackDropClick ({ currentTarget, target }) {
@@ -26,9 +28,13 @@ onMounted(() => {
    }
 });
 
-   onUnmounted(() => {
-      dialogElement.value.removeEventListener("click", closeOnBackDropClick);
-    })
+onUnmounted(() => {
+  // Удаляем обработчик
+  if (dialogElement.value && closeOnBackDropClick) {
+    dialogElement.value.removeEventListener("click", closeOnBackDropClick)
+  }
+})
+
 
 function showDialogContacts() {
    dialogContacts.value.showModal();
