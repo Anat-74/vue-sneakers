@@ -38,8 +38,6 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
 
 <style lang="scss" scoped>
 .sidebar {
-   @include adaptiveValue("padding-inline", 16, 12);
-   @include adaptiveValue("padding-block-start", 18, 9);
       scrollbar-color: var(--whitesmoke-color) transparent;
       height: 100dvh;
       overflow-y: auto;
@@ -48,9 +46,11 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
       top: 0;
       left: 0;
       transition: left .6s;
+      @include adaptiveValue("padding-inline", 22, 12);
+      @include adaptiveValue("padding-block-start", 18, 9);
 
       @media (min-width:$tablet){
-          margin-inline-start: toRem(24); 
+          margin-inline-start: toRem(24);
       }
 
       @media (max-width:$tablet){
@@ -71,6 +71,8 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
       display: flex;
       flex-direction: column;
       @include adaptiveValue("row-gap", 25, 14);
+      // @include adaptiveValue("padding-inline", 16, 12);
+      // @include adaptiveValue("padding-block-start", 18, 9);
 
       @media (min-width:$tablet){
          width: toRem(245);
@@ -95,12 +97,19 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
          margin-block-end: toRem(16);
 
          svg {
+         visibility: hidden;
+         opacity: 0;
           position: absolute;
           top: 50%;
-          left: 0;
+          left: toRem(-4);
           transform: translateY(-50%);
           color: var(--warning-color);
-           }
+
+         @media (max-width:$tablet){
+            visibility: visible;
+            opacity: 1;
+         }
+      }
 
          a {
             color: var(--turquoise-color);

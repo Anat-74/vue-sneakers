@@ -33,6 +33,10 @@
          --background-color: rgb(0 0 0 / .3);
          color: var(--grey-color);
 
+         &__body {
+            --background-color: rgb(0 0 0 / 0);
+         }
+
          &__phone {
             scrollbar-color: #464646 #333333;
             svg {

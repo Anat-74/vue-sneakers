@@ -119,7 +119,7 @@ onUnmounted(() => {
     display: grid;
     grid-template-columns: auto 1fr;
     .app__sidebar {
-      @include adaptiveValue('width', 320, 245);
+      @include adaptiveValue('width', 320, 255);
     }
 
     .app__container {
