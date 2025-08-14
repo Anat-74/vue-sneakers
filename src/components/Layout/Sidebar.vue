@@ -55,7 +55,7 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
 
       @media (max-width:$tablet){
       @include adaptiveValue("left", -270, -205);
-      @include adaptiveValue("width", 270, 205 );
+      // @include adaptiveValue("width", 270, 205 );
       transition: left .2s;
    }
 
@@ -71,6 +71,7 @@ const { isOpenMenu, toggleMenu } = inject('toggle')
       display: flex;
       flex-direction: column;
       @include adaptiveValue("row-gap", 25, 14);
+      @include adaptiveValue("width", 270, 205 );
 
       @media (min-width:$tablet){
          width: toRem(245);
